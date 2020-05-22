@@ -223,7 +223,8 @@
             android:textSize="24sp"
             android:text="NEXT"
             android:layout_marginTop="8dp"
-            android:layout_marginHorizontal="8dp" />
+            android:layout_marginHorizontal="8dp"
+            android:onClick="intentCall"/>
 
     </LinearLayout>
 

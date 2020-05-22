@@ -13,7 +13,7 @@ public class CreateEvent1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event1);
     }
-    private void intentCall(View view){
+    public void intentCall(View view){
         Intent homeIntent=new Intent(CreateEvent1.this,CreateEvent2.class);
         startActivity(homeIntent);
     }
