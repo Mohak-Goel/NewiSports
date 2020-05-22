@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ParticipationForm"
+    android:layout_margin="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="16dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="University Name"
+            android:textSize="28sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"
+            android:hint="Enter University Name"
+            android:textSize="20sp"
+            android:inputType="textPersonName"
+            android:background="@drawable/editbackgound"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="University Address"
+            android:textSize="28sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Enter University Full Address"
+            android:inputType="textMultiLine"
+            android:background="@drawable/editbackgound"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City"
+            android:textSize="28sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Enter University City"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            android:background="@drawable/editbackgound"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="University Phone no."
+            android:textSize="28sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"
+            android:hint="Enter University Phone Number"
+            android:inputType="phone"
+            android:textSize="20sp"
+            android:background="@drawable/editbackgound"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="University E-Mail"
+            android:textSize="28sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"
+            android:hint="Enter Manager E-Mail Address"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp"
+            android:background="@drawable/editbackgound"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manager Name"
+            android:textSize="28sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"
+            android:hint="Enter Manager Name"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            android:background="@drawable/editbackgound"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manager Phone no."
+            android:textSize="28sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"
+            android:hint="Enter Manager Phone Number"
+            android:inputType="phone"
+            android:textSize="20sp"
+            android:background="@drawable/editbackgound"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manager E-Mail"
+            android:textSize="28sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"
+            android:hint="Enter Manager E-Mail Address"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp"
+            android:background="@drawable/editbackgound"/>
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Transport"
+            android:textSize="28sp" />
+
+
+        <RadioGroup android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Yes"
+                android:textSize="20dp"/>
+
+            <RadioButton android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="8dp"
+                android:text="No"
+                android:textSize="20dp"/>
+
+        </RadioGroup>
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Food"
+            android:textSize="28sp" />
+
+
+        <RadioGroup android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Yes"
+                android:textSize="20dp"/>
+
+            <RadioButton android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="8dp"
+                android:text="No"
+                android:textSize="20dp"/>
+
+        </RadioGroup>
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lodging"
+            android:textSize="28sp" />
+
+
+        <RadioGroup android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Yes"
+                android:textSize="20dp"/>
+
+            <RadioButton android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="8dp"
+                android:text="No"
+                android:textSize="20dp"/>
+
+        </RadioGroup>
+
+        <Button android:layout_marginBottom="24dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="24sp"
+            android:text="NEXT"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="8dp" />
+
+    </LinearLayout>
+
+</ScrollView>
