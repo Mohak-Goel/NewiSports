@@ -17,4 +17,6 @@ public class CreateEvent1 extends AppCompatActivity {
         Intent homeIntent=new Intent(CreateEvent1.this,CreateEvent2.class);
         startActivity(homeIntent);
     }
+
+
 }
