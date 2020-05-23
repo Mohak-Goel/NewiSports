@@ -24,9 +24,11 @@
         </activity>
         <activity android:name=".Select" />
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".CreateEvent1" />
-        <activity android:name=".CreateEvent2" />
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".CreateEvent1"/>
+        <activity android:name=".CreateEvent2"/>
+        <activity android:name=".ParticipantsDetail"/>
+        <activity android:name=".HomePage" />
     </application>
 
 </manifest>
