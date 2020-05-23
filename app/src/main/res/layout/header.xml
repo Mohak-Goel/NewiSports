@@ -4,26 +4,24 @@
     android:layout_height="200dp"
     android:gravity="bottom"
     android:background="#fcf876"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:padding="10dp"
         android:src="@drawable/profile_icon" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="User's Name"
-        android:padding="10dp"
+        android:hint="@string/user_s_name"
         android:textSize="24sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="User's e-mail address"
-        android:padding="10dp"
+        android:hint="@string/user_s_e_mail_address"
         android:textSize="14sp" />
 
 </LinearLayout>
