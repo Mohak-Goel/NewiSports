@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/etChooseTime"
             android:layout_margin="10dp"
-            android:hint="hh:mm:amPm"
+            android:hint="HH:MM:AM/PM"
             android:textSize="20sp" />
 
 
