@@ -9,12 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ParticipantsDetail extends AppCompatActivity {
 
-
+    //  ScrollView sv;
       LinearLayout participantList;
       Button addParticipants;
       Button removeParticipants;
    // TextView noParticipantText;
       int count = 0;
+      String idString="participant_";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class ParticipantsDetail extends AppCompatActivity {
          addParticipants = (Button)findViewById(R.id.addParticipantsButton);
          removeParticipants = (Button)findViewById(R.id.removeParticipantsButton);
          participantList = (LinearLayout)findViewById(R.id.participant_1);
+
        // Spinner bloodGroup = (Spinner)findViewById(R.id.bloodGroupSpinner);
 
 
@@ -31,7 +33,7 @@ public class ParticipantsDetail extends AppCompatActivity {
               @Override
               public void onClick(View v) {
                   count++;
-                 // addParticipantsView();
+                //  addParticipantsView();
             }
          });
 
@@ -45,17 +47,6 @@ public class ParticipantsDetail extends AppCompatActivity {
         });
     }
 
- /*   private void addParticipantsView(){
-
-        EditText et = new EditText(this);
-        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        et.setLayoutParams(p);
-        et.setHint("Enter Participant Name");
-        et.setTextSize(20);
-        et.setBackgroundResource(R.drawable.editbackgound);
-        participantList.addView(et);
-
-        //participantList.addView(bloodGroup);
-    }
-    */
+   /* private void addParticipantsView(){
+    }*/
 }
