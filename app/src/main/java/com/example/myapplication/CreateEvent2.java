@@ -13,13 +13,17 @@ public class CreateEvent2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event2);
 
-        RadioButton rb;
+        //Below code to be used while saving Radio button response
+     /*   RadioButton rb;
         rb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
             }
-        });
+        });*/
+
+
+
     }
 
 
