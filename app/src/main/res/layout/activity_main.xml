@@ -36,27 +36,26 @@
         android:layout_marginLeft="120sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <TextView
+
+
+
+    <Button
         android:id="@+id/forgot"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forgot Password?"
-        android:textColor="#CFCFCF"
+        android:layout_width="200dp"
         android:layout_gravity="center_horizontal"
-
-        />
-
+        android:layout_height="wrap_content"
+        android:onClick="fp"
+        android:text="Forgot Password?" />
 
     <TextView
 
         android:id="@+id/register"
-        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:text="New user? Register Here"
-        android:textColor="#CFCFCF" />
+        android:textColor="@android:color/widget_edittext_dark" />
 
 
 

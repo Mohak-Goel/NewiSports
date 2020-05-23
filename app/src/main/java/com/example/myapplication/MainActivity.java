@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText mEmail, mPassword;
     Button mLogin;
+    Button forgotpass;
     TextView mRegister;
-    TextView Forgot_Password;
     FirebaseAuth firebaseAuth;
     FirebaseAuth.AuthStateListener firebaseAuthListener;
     private static final String TAG = "AndroidClarified";
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         mPassword =findViewById(R.id.pass);
         mLogin=findViewById(R.id.login);
         mRegister =findViewById(R.id.register);
-        Forgot_Password=findViewById(R.id.forgot);
+        forgotpass=findViewById(R.id.forgot);
         firebaseAuth=FirebaseAuth.getInstance();
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,13 +92,53 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Forgot_Password.setOnClickListener(new View.OnClickListener() {
+
+      /*  forgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // startActivity(new Intent(MainActivity.this,//Forgot.class));
+            public void onClick(View v) {
+                final EditText resetMail=new EditText(v.getContext());
+                final AlertDialog.Builder passwordResetDialog=new AlertDialog.Builder(v.getContext());
+                passwordResetDialog.setTitle("Reset Password ?");
+                passwordResetDialog.setMessage("Enter Your Email To Recieve Reset Link");
+                passwordResetDialog.setView(resetMail);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        String mail=resetMail.getText().toString();
+                        firebaseAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(MainActivity.this,"Reset Link sent to your mail",Toast.LENGTH_LONG).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(MainActivity.this,"Error! Reset Link not sent"+e.getMessage(),Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        passwordResetDialog.create().show();
+                    }
+                });
+
+                passwordResetDialog.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //.......
+                    }
+                });
+
             }
-        });
+        });  */
     }
+
+    public void fp(View v)
+    {
+        Intent I=new Intent(MainActivity.this,Forgotpass.class);
+        startActivity(I);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();

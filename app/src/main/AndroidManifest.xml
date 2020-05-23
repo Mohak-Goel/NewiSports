@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ParticipationForm"
-            android:label="Fill Participation Form"/>
+        <activity android:name=".Forgotpass"></activity>
+        <activity
+            android:name=".ParticipationForm"
+            android:label="Fill Participation Form" />
         <activity
             android:name=".Splash"
             android:theme="@style/hmStyle">
@@ -22,9 +24,9 @@
         </activity>
         <activity android:name=".Select" />
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".CreateEvent1"/>
-        <activity android:name=".CreateEvent2"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".CreateEvent1" />
+        <activity android:name=".CreateEvent2" />
     </application>
 
 </manifest>
