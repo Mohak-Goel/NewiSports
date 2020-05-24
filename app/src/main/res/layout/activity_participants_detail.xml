@@ -9,90 +9,70 @@
     android:layout_margin="16dp">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:paddingVertical="8dp"
+        android:id="@+id/participant">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Participant"
-            android:textSize="20sp"
-            android:layout_margin="8dp"
-            android:id="@+id/addParticipantsButton"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Remove Participant"
-            android:layout_margin="8dp"
-            android:id="@+id/removeParticipantsButton"/>
-
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/editbackgound">
+            android:hint="Enter Participant Name"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/editbackgound"
+            android:id="@+id/participant_name"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/participantList">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="4dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <Spinner
+                android:id="@+id/bloodGroupSpinner_1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingVertical="8dp">
+                android:verticalScrollbarPosition="right"
+                android:dropDownWidth="wrap_content"
+                android:isScrollContainer="true"
+                android:entries="@array/blood"
+                />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter Participant Name"
-                    android:inputType="textPersonName"
-                    android:background="@drawable/editbackgound"
-                    android:id="@+id/participant_1"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginVertical="4dp">
-
-                    <Spinner
-                        android:id="@+id/bloodGroupSpinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:verticalScrollbarPosition="right"
-                        android:dropDownWidth="wrap_content"
-                        android:isScrollContainer="true"
-                        android:entries="@array/blood"
-                        />
-
-                    <Spinner
-                        android:id="@+id/sportsName"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:verticalScrollbarPosition="right"
-                        android:dropDownWidth="wrap_content"
-                        android:isScrollContainer="true"
-                        android:entries="@array/sportsGame"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
+            <Spinner
+                android:id="@+id/sportsName_1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:verticalScrollbarPosition="right"
+                android:dropDownWidth="wrap_content"
+                android:isScrollContainer="true"
+                android:entries="@array/sportsGame"
+                />
 
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Participant"
+        android:textSize="20sp"
+        android:id="@+id/addParticipantsButton"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/participantList"
+        android:paddingHorizontal="4dp"
+        android:paddingBottom="4dp"
+        android:scrollbars="vertical"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/editbackgound"
+        android:backgroundTint="@android:color/darker_gray"/>
 
 </LinearLayout>

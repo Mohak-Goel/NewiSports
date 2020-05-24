@@ -1,87 +1,105 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class ParticipantsDetail extends AppCompatActivity {
 
-      Button addParticipants;
-      Button removeParticipants;
-      LinearLayout pList;
-      int count = 1;
+    private RecyclerView participantList;
+    private ParticipantsAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+    ArrayList<ParticipantItem> aboutParticipant;
+    Button addParticipantButton;
+    EditText pName;
+    Spinner spinnerBG, spinnerSN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participants_detail);
 
-         addParticipants = (Button)findViewById(R.id.addParticipantsButton);
-         removeParticipants = (Button)findViewById(R.id.removeParticipantsButton);
-         pList = (LinearLayout)findViewById(R.id.participantList);
+        aboutParticipant = new ArrayList<>();
+        addParticipantButton = (Button)findViewById(R.id.addParticipantsButton);
+        pName = (EditText)findViewById(R.id.participant_name);
+        spinnerBG = (Spinner)findViewById(R.id.bloodGroupSpinner_1);
+        spinnerSN = (Spinner)findViewById(R.id.sportsName_1);
 
+        participantList = findViewById(R.id.participantList);
+        participantList.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new ParticipantsAdapter(aboutParticipant);
 
-         addParticipants.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  count++;
-                  addParticipantsView();
-            }
-         });
+        participantList.setLayoutManager(mLayoutManager);
+        participantList.setAdapter(mAdapter);
 
-         removeParticipants.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
+        addParticipantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-              if (count>1)
-                  count--;
+                String name = pName.getText().toString();
+                String bg = spinnerBG.getSelectedItem().toString();
+                String sn = spinnerSN.getSelectedItem().toString();
+
+                if (name.isEmpty() || spinnerSN.getSelectedItemPosition()==0 || spinnerBG.getSelectedItemPosition()==0){
+
+                    String error = "";
+                    if (name.isEmpty())
+                        error = "Enter Participant Name\n";
+
+                    if (spinnerBG.getSelectedItemPosition()==0)
+                        error+= "Select Blood Group\n";
+
+                    if (spinnerSN.getSelectedItemPosition()==0)
+                        error+="Select Sport Name";
+
+                    Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
+                }
+
+                else {
+                    try {
+                        pName.setText("");
+                        spinnerBG.setSelection(0);
+                        spinnerSN.setSelection(0);
+                        aboutParticipant.add(new ParticipantItem(name, bg, sn));
+                        mAdapter.notifyItemInserted(aboutParticipant.size() - 1);
+                        Toast.makeText(getApplicationContext(), "Participant Added Successfully!!", Toast.LENGTH_SHORT).show();
+                    } catch (NumberFormatException e) {
+
+                    }
+                }
             }
         });
+
+
+        mAdapter.setOnClickListener(new ParticipantsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+
+            }
+
+            @Override
+            public void onDeleteClick(int position) {
+            removeItem(position);
+            }
+        });
+
     }
 
-    public void addParticipantsView(){
-        LinearLayout ll = new LinearLayout(this);
-        ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        ll.setOrientation(LinearLayout.VERTICAL);
-        ll.setPadding(0,8,0,8);
-        EditText et = new EditText(this);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        et.setLayoutParams(layoutParams);
-        et.setHint("Enter Participant Name");
-        et.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
-        et.setBackgroundResource(R.drawable.editbackgound);
-        ll.addView(et);
-        LinearLayout ll1 = new LinearLayout(this);
-        ll1.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        ll1.setOrientation(LinearLayout.HORIZONTAL);
-        ll1.setPadding(0,4,0,4);
-        Spinner sp1 = new Spinner(this);
-        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        sp1.setLayoutParams(layoutParams2);
-        sp1.setScrollContainer(true);
-        String[] testArray = getResources().getStringArray(R.array.blood);
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, testArray );
-        sp1.setAdapter(spinnerArrayAdapter);
-        ll1.addView(sp1);
-        Spinner sp2 = new Spinner(this);
-        LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams3.weight=1;
-        sp2.setLayoutParams(layoutParams3);
-        sp2.setScrollContainer(true);
-        String[] testArray2 = getResources().getStringArray(R.array.sportsGame);
-        ArrayAdapter<String> spinnerArrayAdapter2 = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, testArray2 );
-        sp2.setAdapter(spinnerArrayAdapter2);
-        ll1.addView(sp2);
-        ll.addView(ll1);
-        pList.addView(ll);
+    public void removeItem(int position){
+        aboutParticipant.remove(position);
+        mAdapter.notifyItemRemoved(position);
+        Toast.makeText(getApplicationContext(), "Participant Removed Successfully!!", Toast.LENGTH_SHORT).show();
     }
+
 }
