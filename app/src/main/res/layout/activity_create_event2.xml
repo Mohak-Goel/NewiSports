@@ -103,12 +103,16 @@
         android:layout_margin="10dp"
         android:textSize="20sp"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pickImages"
+            android:text="Pick Images"/>
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        android:layout_margin="16dp" />
 
         <Button
             android:id="@+id/button2"
