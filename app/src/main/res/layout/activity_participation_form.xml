@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ParticipationForm"
-    android:layout_margin="24dp">
+    android:padding="24dp"
+    android:background="#E0E0E0">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,12 +15,6 @@
         android:orientation="vertical"
         android:layout_marginRight="16dp">
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="University Name"
-            android:textSize="28sp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -32,11 +27,6 @@
             android:background="@drawable/editbackgound"
             />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="University Address"
-            android:textSize="28sp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -48,12 +38,6 @@
             android:background="@drawable/editbackgound"
             android:textSize="20sp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="City"
-            android:textSize="28sp"/>
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,11 +48,6 @@
             android:textSize="20sp"
             android:background="@drawable/editbackgound"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="University Phone no."
-            android:textSize="28sp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -80,28 +59,17 @@
             android:textSize="20sp"
             android:background="@drawable/editbackgound"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="University E-Mail"
-            android:textSize="28sp"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="4dp"
-            android:hint="Enter Manager E-Mail Address"
+            android:hint="Enter University E-Mail Address"
             android:inputType="textEmailAddress"
             android:textSize="20sp"
             android:background="@drawable/editbackgound"/>
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Manager Name"
-            android:textSize="28sp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -113,11 +81,6 @@
             android:textSize="20sp"
             android:background="@drawable/editbackgound"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Manager Phone no."
-            android:textSize="28sp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -128,12 +91,6 @@
             android:inputType="phone"
             android:textSize="20sp"
             android:background="@drawable/editbackgound"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Manager E-Mail"
-            android:textSize="28sp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -148,16 +105,20 @@
         <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Transport"
-            android:textSize="28sp" />
+            android:textSize="28sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="4dp"
+            android:textColor="@android:color/holo_green_dark"/>
 
 
         <RadioGroup android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp">
 
             <RadioButton android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Yes"
                 android:textSize="20dp"/>
 
@@ -172,16 +133,20 @@
         <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Food"
-            android:textSize="28sp" />
+            android:textSize="28sp"
+            android:textColor="@android:color/holo_green_dark"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="10dp"/>
 
 
         <RadioGroup android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp">
 
             <RadioButton android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Yes"
                 android:textSize="20dp"/>
 
@@ -196,16 +161,20 @@
         <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lodging"
-            android:textSize="28sp" />
+            android:textSize="28sp"
+            android:textColor="@android:color/holo_green_dark"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="4dp"/>
 
 
         <RadioGroup android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp">
 
             <RadioButton android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Yes"
                 android:textSize="20dp"/>
 
@@ -217,14 +186,14 @@
 
         </RadioGroup>
 
-        <Button android:layout_marginBottom="24dp"
-            android:layout_height="wrap_content"
+        <Button
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:textSize="24sp"
             android:text="NEXT"
             android:layout_marginTop="8dp"
-            android:layout_marginHorizontal="8dp"
-            android:onClick="iCall"/>
+            android:onClick="iCall"
+            android:background="@android:color/holo_green_light"/>
 
     </LinearLayout>
 

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ParticipantsDetail"
     android:orientation="vertical"
-    android:layout_margin="16dp">
+    android:padding="16dp"
+    android:background="#E0E0E0">
 
 
     <LinearLayout
@@ -62,7 +63,8 @@
         android:layout_height="wrap_content"
         android:text="Add Participant"
         android:textSize="20sp"
-        android:id="@+id/addParticipantsButton"/>
+        android:id="@+id/addParticipantsButton"
+        android:backgroundTint="@android:color/holo_green_light"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -72,7 +74,6 @@
         android:paddingBottom="4dp"
         android:scrollbars="vertical"
         android:layout_marginTop="10dp"
-        android:background="@drawable/editbackgound"
-        android:backgroundTint="@android:color/darker_gray"/>
+        android:background="@color/cardview_light_background"/>
 
 </LinearLayout>
