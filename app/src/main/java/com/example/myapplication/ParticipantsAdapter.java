@@ -25,14 +25,15 @@ public class ParticipantsAdapter extends RecyclerView.Adapter<ParticipantsAdapte
     }
 
     public static class participantViewHolder extends RecyclerView.ViewHolder{
-        public TextView participantName, bloodGroup, sportName;
+        public TextView participantName, bloodGroup, participantEmail, participantPhNo;
         public ImageView deleteButton;
 
         public participantViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             participantName = itemView.findViewById(R.id.participant_name);
+            participantEmail = itemView.findViewById(R.id.participant_email);
+            participantPhNo = itemView.findViewById(R.id.participant_phoneNo);
             bloodGroup = itemView.findViewById(R.id.participant_bg);
-            sportName = itemView.findViewById(R.id.participant_game);
             deleteButton = itemView.findViewById(R.id.image_delete);
 
             deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +67,8 @@ public class ParticipantsAdapter extends RecyclerView.Adapter<ParticipantsAdapte
         ParticipantItem currentItem = mParticipantsList.get(position);
 
         holder.participantName.setText(currentItem.getParticipantName());
-        holder.sportName.setText(currentItem.getSportName());
+        holder.participantEmail.setText(currentItem.getParticipantEmail());
+        holder.participantPhNo.setText(currentItem.getParticipantPhNo());
         holder.bloodGroup.setText(currentItem.getBloodGroup());
     }
 

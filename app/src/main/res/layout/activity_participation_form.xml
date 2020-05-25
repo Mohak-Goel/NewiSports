@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ParticipationForm"
-    android:padding="24dp"
     android:background="#E0E0E0">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginRight="16dp">
+        android:padding="24dp"
+        android:paddingTop="10dp">
 
 
         <EditText
@@ -48,6 +48,26 @@
             android:textSize="20sp"
             android:background="@drawable/editbackgound"/>
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Enter University State"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            android:background="@drawable/editbackgound"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Enter University Postal Code"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            android:background="@drawable/editbackgound"/>
+
 
         <EditText
             android:layout_width="match_parent"
@@ -76,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="4dp"
-            android:hint="Enter Manager Name"
+            android:hint="Enter Manager/Coach Name"
             android:inputType="textPersonName"
             android:textSize="20sp"
             android:background="@drawable/editbackgound"/>
@@ -87,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="4dp"
-            android:hint="Enter Manager Phone Number"
+            android:hint="Enter Manager/Coach Phone No."
             android:inputType="phone"
             android:textSize="20sp"
             android:background="@drawable/editbackgound"/>
@@ -97,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="4dp"
-            android:hint="Enter Manager E-Mail Address"
+            android:hint="Enter Manager/Coach E-Mail"
             android:inputType="textEmailAddress"
             android:textSize="20sp"
             android:background="@drawable/editbackgound"/>
@@ -113,20 +133,25 @@
 
         <RadioGroup android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp">
+            android:layout_marginLeft="6dp"
+            android:orientation="vertical"
+            android:id="@+id/transport_radio_group">
 
             <RadioButton android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="10dp"
                 android:text="Yes"
-                android:textSize="20dp"/>
+                android:checked="true"
+                android:textSize="20dp"
+                android:id="@+id/transport_radio_yes"/>
 
             <RadioButton android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="8dp"
                 android:text="No"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:id="@+id/transport_radio_no"/>
 
         </RadioGroup>
 
@@ -141,19 +166,24 @@
 
         <RadioGroup android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp">
+            android:layout_marginLeft="6dp"
+            android:orientation="vertical"
+            android:id="@+id/food_radio_group">
 
             <RadioButton android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="10dp"
                 android:text="Yes"
-                android:textSize="20dp"/>
+                android:id="@+id/food_radio_yes"
+                android:textSize="20dp"
+                android:checked="true"/>
 
             <RadioButton android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="8dp"
                 android:text="No"
+                android:id="@+id/food_radio_no"
                 android:textSize="20dp"/>
 
         </RadioGroup>
@@ -169,32 +199,38 @@
 
         <RadioGroup android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp">
+            android:layout_marginLeft="6dp"
+            android:orientation="vertical"
+            android:id="@+id/lodging_radio_group">
 
             <RadioButton android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="10dp"
                 android:text="Yes"
-                android:textSize="20dp"/>
+                android:checked="true"
+                android:textSize="20dp"
+                android:id="@+id/lodging_radio_yes"/>
 
             <RadioButton android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="8dp"
                 android:text="No"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:id="@+id/lodging_radio_no"/>
 
         </RadioGroup>
 
         <Button
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:text="NEXT"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:onClick="iCall"
-            android:background="@android:color/holo_green_light"/>
-
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/submit_button_style"
+            android:textColor="@color/common_google_signin_btn_text_light_default"/>
     </LinearLayout>
 
 </ScrollView>

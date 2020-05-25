@@ -1,22 +1,27 @@
 package com.example.myapplication;
 
 public class ParticipantItem {
-    private String participantName, bloodGroup, sportName;
+    private String participantName, participantEmail, participantPhNo ,bloodGroup;
 
 
-    public ParticipantItem(String pName, String blg, String spName)
+    public ParticipantItem(String pName, String email, String phNo, String blg)
     {
         participantName = pName;
+        participantEmail = email;
+        participantPhNo = phNo;
         bloodGroup = blg;
-        sportName = spName;
     }
 
     public String getParticipantName() {
         return participantName;
     }
 
-    public String getSportName() {
-        return sportName;
+    public String getParticipantEmail() {
+        return participantEmail;
+    }
+
+    public String getParticipantPhNo() {
+        return participantPhNo;
     }
 
     public String getBloodGroup() {
@@ -27,8 +32,12 @@ public class ParticipantItem {
         this.bloodGroup = bloodGroup;
     }
 
-    public void setSportName(String sportName) {
-        this.sportName = sportName;
+    public void setParticipantEmail(String participantEmail) {
+        this.participantEmail = participantEmail;
+    }
+
+    public void setParticipantPhNo(String participantPhNo) {
+        this.participantPhNo = participantPhNo;
     }
 
     public void setParticipantName(String participantName) {

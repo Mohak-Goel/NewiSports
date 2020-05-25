@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0"
         android:orientation="vertical"
         android:paddingVertical="8dp"
         android:id="@+id/participant">
@@ -26,54 +27,77 @@
             android:background="@drawable/editbackgound"
             android:id="@+id/participant_name"/>
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Participant E-Mail"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/editbackgound"
+            android:id="@+id/participant_email"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Participant Phone No."
+            android:inputType="phone"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/editbackgound"
+            android:id="@+id/participant_phoneNo"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginVertical="4dp">
+            android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/bloodGroupSpinner_1"
-                android:layout_width="wrap_content"
+                android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:verticalScrollbarPosition="right"
                 android:dropDownWidth="wrap_content"
                 android:isScrollContainer="true"
                 android:entries="@array/blood"
+                android:background="@drawable/spinner_background"
                 />
 
-            <Spinner
-                android:id="@+id/sportsName_1"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:verticalScrollbarPosition="right"
-                android:dropDownWidth="wrap_content"
-                android:isScrollContainer="true"
-                android:entries="@array/sportsGame"
-                />
+        <Button
+            android:id="@+id/addParticipantsButton"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/button_shape"
+            android:text="Add Participant"
+            android:textColor="@color/common_google_signin_btn_text_light_default"/>
+
 
         </LinearLayout>
 
     </LinearLayout>
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Participant"
-        android:textSize="20sp"
-        android:id="@+id/addParticipantsButton"
-        android:backgroundTint="@android:color/holo_green_light"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:id="@+id/participantList"
         android:paddingHorizontal="4dp"
         android:paddingBottom="4dp"
         android:scrollbars="vertical"
         android:layout_marginTop="10dp"
         android:background="@color/cardview_light_background"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="SUBMIT"
+        android:textSize="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="2dp"
+        android:textColor="@color/common_google_signin_btn_text_light_default"
+        android:background="@drawable/submit_button_style"/>
 
 </LinearLayout>

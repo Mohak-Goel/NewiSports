@@ -10,16 +10,17 @@
     <string name="user_s_name">User\'s Name</string>
 
     <string-array name="blood">
-    <item>Blood Group</item>
-    <item>A+</item>
-    <item>A-</item>
-    <item>B+</item>
-    <item>B-</item>
-    <item>AB+</item>
-    <item>AB-</item>
-    <item>O+</item>
-    <item>O-</item>
-</string-array>
+        <item>Blood Group</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>Unknown</item>
+    </string-array>
 
     <string-array name="sportsGame">
         <item>Select Sport</item>

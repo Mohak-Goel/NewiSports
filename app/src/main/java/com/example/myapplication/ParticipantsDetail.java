@@ -21,8 +21,8 @@ public class ParticipantsDetail extends AppCompatActivity {
 
     ArrayList<ParticipantItem> aboutParticipant;
     Button addParticipantButton;
-    EditText pName;
-    Spinner spinnerBG, spinnerSN;
+    EditText pName, pEmail, pPhNo;
+    Spinner spinnerBG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,9 @@ public class ParticipantsDetail extends AppCompatActivity {
         aboutParticipant = new ArrayList<>();
         addParticipantButton = (Button)findViewById(R.id.addParticipantsButton);
         pName = (EditText)findViewById(R.id.participant_name);
+        pEmail = (EditText)findViewById(R.id.participant_email);
+        pPhNo = (EditText)findViewById(R.id.participant_phoneNo);
         spinnerBG = (Spinner)findViewById(R.id.bloodGroupSpinner_1);
-        spinnerSN = (Spinner)findViewById(R.id.sportsName_1);
 
         participantList = findViewById(R.id.participantList);
         participantList.setHasFixedSize(true);
@@ -43,35 +44,43 @@ public class ParticipantsDetail extends AppCompatActivity {
         participantList.setLayoutManager(mLayoutManager);
         participantList.setAdapter(mAdapter);
 
+        if (aboutParticipant.size()==0)
+            Toast.makeText(getApplicationContext(),"Kindly Add Participants!!", Toast.LENGTH_LONG).show();
+
         addParticipantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String name = pName.getText().toString();
+                String phNo = pPhNo.getText().toString();
+                String email = pEmail.getText().toString();
                 String bg = spinnerBG.getSelectedItem().toString();
-                String sn = spinnerSN.getSelectedItem().toString();
 
-                if (name.isEmpty() || spinnerSN.getSelectedItemPosition()==0 || spinnerBG.getSelectedItemPosition()==0){
+                if (name.isEmpty() || phNo.isEmpty() || email.isEmpty() || spinnerBG.getSelectedItemPosition()==0){
 
                     String error = "";
                     if (name.isEmpty())
                         error = "Enter Participant Name\n";
 
+                    if (email.isEmpty())
+                        error+= "Enter Participant Email\n";
+
+                    if (phNo.isEmpty())
+                        error+="Enter Participant Phone No.\n";
+
                     if (spinnerBG.getSelectedItemPosition()==0)
-                        error+= "Select Blood Group\n";
+                        error+= "Select Blood Group";
 
-                    if (spinnerSN.getSelectedItemPosition()==0)
-                        error+="Select Sport Name";
-
-                    Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
                 }
 
                 else {
                     try {
                         pName.setText("");
+                        pEmail.setText("");
+                        pPhNo.setText("");
                         spinnerBG.setSelection(0);
-                        spinnerSN.setSelection(0);
-                        aboutParticipant.add(new ParticipantItem(name, bg, sn));
+                        aboutParticipant.add(new ParticipantItem(name, email , phNo, bg));
                         mAdapter.notifyItemInserted(aboutParticipant.size() - 1);
                         Toast.makeText(getApplicationContext(), "Participant Added Successfully!!", Toast.LENGTH_SHORT).show();
                     } catch (NumberFormatException e) {
@@ -91,6 +100,8 @@ public class ParticipantsDetail extends AppCompatActivity {
             @Override
             public void onDeleteClick(int position) {
             removeItem(position);
+            if (aboutParticipant.size()==0)
+                Toast.makeText(getApplicationContext(),"Kindly Add Participants!!", Toast.LENGTH_LONG).show();
             }
         });
 
