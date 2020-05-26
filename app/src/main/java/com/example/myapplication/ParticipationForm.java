@@ -26,9 +26,11 @@ public class ParticipationForm extends AppCompatActivity {
     RadioButton radioButtonTransport, radioButtonFood, radioButtonLodging;
 
     Button buttonNext;
+    Button buttonReset;
     Toast t;
 
     ArrayList<participantFormItem> participantFormItemArrayList;
+    int flag=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,41 @@ public class ParticipationForm extends AppCompatActivity {
 
         t = Toast.makeText(getApplicationContext(), "Kindly Fill Participation Form", Toast.LENGTH_SHORT);
         t.show();
+
+        buttonReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (flag==0){
+                    t.cancel();
+                    t = Toast.makeText(getApplicationContext(), "Press Reset Button Once again\nto Reset the fields of the form !!", Toast.LENGTH_LONG);
+                    t.show();
+                    flag=1;
+                }
+
+                else {
+                    participantUnivName.getText().clear();
+                    participantUnivAddress.getText().clear();
+                    participantUnivCity.getText().clear();
+                    participantUnivState.setSelection(0);
+                    participantUnivPostalCode.getText().clear();
+                    participantUnivPhNo.getText().clear();
+                    participantUnivEmail.getText().clear();
+                    participantUnivCoachName.getText().clear();
+                    participantUnivPhNo.getText().clear();
+                    participantUnivCoachEmail.getText().clear();
+                    radioGroupTransport.check(R.id.transport_radio_yes);
+                    radioGroupLodging.check(R.id.lodging_radio_yes);
+                    radioGroupFood.check(R.id.food_radio_yes);
+
+                    t.cancel();
+                    t = Toast.makeText(getApplicationContext(), "Reset Successfull !!", Toast.LENGTH_SHORT);
+                    t.show();
+
+                    flag=0;
+                }
+            }
+        });
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,6 +221,7 @@ public class ParticipationForm extends AppCompatActivity {
         radioGroupLodging = findViewById(R.id.lodging_radio_group);
         radioGroupTransport = findViewById(R.id.transport_radio_group);
         buttonNext = findViewById(R.id.participant_next_button);
+        buttonReset = findViewById(R.id.reset_button);
 
         participantFormItemArrayList = new ArrayList<>();
 
