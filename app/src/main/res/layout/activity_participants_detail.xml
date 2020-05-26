@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter Participant Name"
             android:inputType="textPersonName"
+            android:importantForAutofill="no"
             android:layout_marginBottom="6dp"
             android:background="@drawable/editbackgound"
             android:id="@+id/participant_name"/>
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter Participant E-Mail"
             android:inputType="textEmailAddress"
+            android:importantForAutofill="no"
             android:layout_marginBottom="6dp"
             android:background="@drawable/editbackgound"
             android:id="@+id/participant_email"/>
@@ -41,6 +43,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter Participant Phone No."
             android:inputType="phone"
+            android:importantForAutofill="no"
             android:layout_marginBottom="6dp"
             android:background="@drawable/editbackgound"
             android:id="@+id/participant_phoneNo"/>

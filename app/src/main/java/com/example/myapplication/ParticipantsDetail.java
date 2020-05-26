@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ParticipantsDetail extends AppCompatActivity {
 
@@ -23,6 +25,8 @@ public class ParticipantsDetail extends AppCompatActivity {
     Button addParticipantButton;
     EditText pName, pEmail, pPhNo;
     Spinner spinnerBG;
+    int flag=0;
+    Toast t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,13 @@ public class ParticipantsDetail extends AppCompatActivity {
         participantList.setLayoutManager(mLayoutManager);
         participantList.setAdapter(mAdapter);
 
-        if (aboutParticipant.size()==0)
-            Toast.makeText(getApplicationContext(),"Kindly Add Participants!!", Toast.LENGTH_LONG).show();
+        if (aboutParticipant.size()==0) {
+            aboutParticipant.add(new ParticipantItem("NO PARTICIPANT ADDED", "Kindly Add Participant!!", "NA", "NA"));
+            mAdapter.notifyItemInserted(aboutParticipant.size()-1);
+            flag = 1;
+            t = Toast.makeText(getApplicationContext(), "Kindly Add Participants!!", Toast.LENGTH_SHORT);
+            t.show();
+        }
 
         addParticipantButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,19 +79,41 @@ public class ParticipantsDetail extends AppCompatActivity {
 
                     if (spinnerBG.getSelectedItemPosition()==0)
                         error+= "Select Blood Group";
+                    t.cancel();
+                    t = Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG);
+                    t.show();
+                }
 
-                    Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
+                else if (!isValidMobile(phNo)){
+                    t.cancel();
+                    t = Toast.makeText(getApplicationContext(), "Invalid Participant Phone No.!!", Toast.LENGTH_LONG);
+                    t.show();
+                }
+
+                else if(!isEmailValid(email)){
+                    t.cancel();
+                    t = Toast.makeText(getApplicationContext(), "Invalid Participant E-mail!!", Toast.LENGTH_LONG);
+                    t.show();
                 }
 
                 else {
                     try {
+
+                        if (flag==1){
+                            flag = 0;
+                            aboutParticipant.remove(0);
+                            mAdapter.notifyItemRemoved(aboutParticipant.size()-1);
+                        }
+
                         pName.setText("");
                         pEmail.setText("");
                         pPhNo.setText("");
                         spinnerBG.setSelection(0);
                         aboutParticipant.add(new ParticipantItem(name, email , phNo, bg));
                         mAdapter.notifyItemInserted(aboutParticipant.size() - 1);
-                        Toast.makeText(getApplicationContext(), "Participant Added Successfully!!", Toast.LENGTH_SHORT).show();
+                        t.cancel();
+                        t = Toast.makeText(getApplicationContext(), "Participant Added Successfully!!", Toast.LENGTH_SHORT);
+                        t.show();
                     } catch (NumberFormatException e) {
 
                     }
@@ -99,9 +130,21 @@ public class ParticipantsDetail extends AppCompatActivity {
 
             @Override
             public void onDeleteClick(int position) {
-            removeItem(position);
-            if (aboutParticipant.size()==0)
-                Toast.makeText(getApplicationContext(),"Kindly Add Participants!!", Toast.LENGTH_LONG).show();
+
+                if (flag == 0)
+                    removeItem(position);
+
+                if (aboutParticipant.size()==0) {
+                    aboutParticipant.add(new ParticipantItem("NO PARTICIPANT ADDED", "Kindly Add Participant!!", "NA", "NA"));
+                    mAdapter.notifyItemInserted(aboutParticipant.size() - 1);
+                    flag = 1;
+                }
+
+                if (flag==1){
+                    t.cancel();
+                    t = Toast.makeText(getApplicationContext(), "Kindly Add Participants!!", Toast.LENGTH_SHORT);
+                    t.show();
+                }
             }
         });
 
@@ -110,7 +153,36 @@ public class ParticipantsDetail extends AppCompatActivity {
     public void removeItem(int position){
         aboutParticipant.remove(position);
         mAdapter.notifyItemRemoved(position);
-        Toast.makeText(getApplicationContext(), "Participant Removed Successfully!!", Toast.LENGTH_SHORT).show();
+        t.cancel();
+        t = Toast.makeText(getApplicationContext(), "Participant Removed Successfully!!", Toast.LENGTH_SHORT);
+        t.show();
     }
 
+    private boolean isValidMobile(String phone) {
+        String expression = "^([0-9\\+]|\\(\\d{1,3}\\))[0-9\\-\\. ]{3,15}$";
+        CharSequence inputString = phone;
+        Pattern pattern = Pattern.compile(expression);
+        Matcher matcher = pattern.matcher(inputString);
+        if (matcher.matches())
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static boolean isEmailValid(String email) {
+        boolean isValid = false;
+
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            isValid = true;
+        }
+        return isValid;
+    }
 }
