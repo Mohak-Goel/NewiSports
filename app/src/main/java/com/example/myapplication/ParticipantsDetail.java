@@ -159,7 +159,7 @@ public class ParticipantsDetail extends AppCompatActivity {
     }
 
     private boolean isValidMobile(String phone) {
-        String expression = "^([0-9\\+]|\\(\\d{1,3}\\))[0-9\\-\\. ]{3,15}$";
+        String expression = "^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[6789]\\d{9}$";
         CharSequence inputString = phone;
         Pattern pattern = Pattern.compile(expression);
         Matcher matcher = pattern.matcher(inputString);

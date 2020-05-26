@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +18,10 @@ import java.util.regex.Pattern;
 
 public class ParticipationForm extends AppCompatActivity {
 
-    EditText participantUnivName, participantUnivAddress, participantUnivCity, participantUnivState,
-             participantUnivPostalCode, participantUnivPhNo, participantUnivEmail, participantUnivCoachName,
+    EditText participantUnivName, participantUnivAddress, participantUnivCity, participantUnivPostalCode,
+            participantUnivPhNo, participantUnivEmail, participantUnivCoachName,
             participantUnivCoachPhNo, participantUnivCoachEmail;
-
+    Spinner participantUnivState;
     RadioGroup radioGroupTransport, radioGroupFood, radioGroupLodging;
     RadioButton radioButtonTransport, radioButtonFood, radioButtonLodging;
 
@@ -45,7 +46,7 @@ public class ParticipationForm extends AppCompatActivity {
                 String UnivName = participantUnivName.getText().toString(),
                         UnivAddress = participantUnivAddress.getText().toString(),
                         UnivCity = participantUnivCity.getText().toString(),
-                        UnivState = participantUnivState.getText().toString(),
+                        UnivState = participantUnivState.getSelectedItem().toString(),
                         UnivPostalCode = participantUnivPostalCode.getText().toString(),
                         UnivPhNo = participantUnivPhNo.getText().toString(),
                         UnivEmail = participantUnivEmail.getText().toString(),
@@ -69,7 +70,7 @@ public class ParticipationForm extends AppCompatActivity {
                 if (radioButtonTransport.getId()==R.id.transport_radio_no) pTransport = false;
 
                 if (
-                        UnivName.isEmpty()|| UnivAddress.isEmpty() || UnivCity.isEmpty() || UnivState.isEmpty() ||
+                        UnivName.isEmpty()|| UnivAddress.isEmpty() || UnivCity.isEmpty() || participantUnivState.getSelectedItemPosition()==0 ||
                         UnivPostalCode.isEmpty() || UnivPhNo.isEmpty() || UnivEmail.isEmpty() || UnivCoachName.isEmpty() ||
                         UnivCoachPhNo.isEmpty() || UnivCoachEmail.isEmpty()
                    ){
@@ -85,8 +86,8 @@ public class ParticipationForm extends AppCompatActivity {
                     if (UnivCity.isEmpty())
                         error+= "Enter University City\n";
 
-                    if (UnivState.isEmpty())
-                        error+= "Enter University State\n";
+                    if (participantUnivState.getSelectedItemPosition()==0)
+                        error+= "Select University State\n";
 
                     if (UnivAddress.isEmpty())
                         error+= "Enter University Address\n";
@@ -120,10 +121,10 @@ public class ParticipationForm extends AppCompatActivity {
                 {
                     String error = "";
 
-                    if (isValidMobile(UnivPhNo))
+                    if (!isValidMobile(UnivPhNo))
                         error+="Invalid University Phone No.\n";
 
-                    if (isValidMobile(UnivCoachPhNo))
+                    if (!isValidMobile(UnivCoachPhNo))
                         error+="Invalid Coach Phone No.\n";
 
                     error+= ":-( :-( :-(";
@@ -134,14 +135,17 @@ public class ParticipationForm extends AppCompatActivity {
 
                 }
 
-                else if (!isEmailValid(UnivEmail) || !isEmailValid(UnivCoachEmail))
+                else if (!isEmailValid(UnivEmail) || !isEmailValid(UnivCoachEmail) || !isPostalCodeValid(UnivPostalCode))
                 {
                     String error = "";
 
-                    if (!isValidMobile(UnivEmail))
+                    if (!isPostalCodeValid(UnivPostalCode))
+                        error+="Invalid Postal Code\n";
+
+                    if (!isEmailValid(UnivEmail))
                         error+="Invalid University E-mail\n";
 
-                    if (!isValidMobile(UnivCoachPhNo))
+                    if (!isEmailValid(UnivCoachEmail))
                         error+="Invalid Coach E-mail\n";
 
                     error+= ":-( :-( :-(";
@@ -186,7 +190,7 @@ public class ParticipationForm extends AppCompatActivity {
     }
 
     private boolean isValidMobile(String phone) {
-        String expression = "^([0-9\\+]|\\(\\d{1,3}\\))[0-9\\-\\. ]{3,15}$";
+        String expression = "^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[6789]\\d{9}$";
         CharSequence inputString = phone;
         Pattern pattern = Pattern.compile(expression);
         Matcher matcher = pattern.matcher(inputString);
@@ -204,6 +208,20 @@ public class ParticipationForm extends AppCompatActivity {
 
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    public static boolean isPostalCodeValid(String pcode) {
+        boolean isValid = false;
+
+        String expression = "^[1-9][0-9]{5}$";
+        CharSequence inputStr = pcode;
 
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(inputStr);

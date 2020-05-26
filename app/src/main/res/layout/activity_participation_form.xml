@@ -97,17 +97,14 @@
                 android:text="University State"
                 android:textColor="@android:color/holo_green_dark"/>
 
-            <EditText
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="10dp"
-                android:hint="Enter University State"
-                android:inputType="text"
-                android:importantForAutofill="no"
-                android:maxLines="1"
                 android:textSize="20sp"
-                android:background="@drawable/editbackgound"
+                android:entries="@array/state_list"
+                android:background="@drawable/spinner_background"
                 android:id="@+id/participant_university_state"/>
 
             <TextView
