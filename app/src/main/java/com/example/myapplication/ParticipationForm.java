@@ -46,9 +46,31 @@ public class ParticipationForm extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (flag==0){
+                String UnivName = participantUnivName.getText().toString(),
+                        UnivAddress = participantUnivAddress.getText().toString(),
+                        UnivCity = participantUnivCity.getText().toString(),
+                        UnivPostalCode = participantUnivPostalCode.getText().toString(),
+                        UnivPhNo = participantUnivPhNo.getText().toString(),
+                        UnivEmail = participantUnivEmail.getText().toString(),
+                        UnivCoachName = participantUnivCoachName.getText().toString(),
+                        UnivCoachPhNo = participantUnivCoachPhNo.getText().toString(),
+                        UnivCoachEmail = participantUnivCoachEmail.getText().toString();
+
+                if (
+                        UnivName.isEmpty() && UnivAddress.isEmpty() && UnivCity.isEmpty() && participantUnivState.getSelectedItemPosition()==0 &&
+                                UnivPostalCode.isEmpty() && UnivPhNo.isEmpty() && UnivEmail.isEmpty() && UnivCoachName.isEmpty() &&
+                                UnivCoachPhNo.isEmpty() && UnivCoachEmail.isEmpty()
+                ){
+
                     t.cancel();
-                    t = Toast.makeText(getApplicationContext(), "Press Reset Button Once again\nto Reset the fields of the form !!", Toast.LENGTH_LONG);
+                    t = Toast.makeText(getApplicationContext(), "Fields are already empty !!", Toast.LENGTH_SHORT);
+                    t.show();
+
+                }
+
+                else if (flag==0){
+                    t.cancel();
+                    t = Toast.makeText(getApplicationContext(), "Press Reset button once again\nto Reset the fields of the form !!", Toast.LENGTH_LONG);
                     t.show();
                     flag=1;
                 }
@@ -69,7 +91,7 @@ public class ParticipationForm extends AppCompatActivity {
                     radioGroupFood.check(R.id.food_radio_yes);
 
                     t.cancel();
-                    t = Toast.makeText(getApplicationContext(), "Reset Successfull !!", Toast.LENGTH_SHORT);
+                    t = Toast.makeText(getApplicationContext(), "Reset Successful !!", Toast.LENGTH_SHORT);
                     t.show();
 
                     flag=0;
