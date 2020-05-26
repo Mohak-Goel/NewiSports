@@ -84,18 +84,24 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="List Of Sports"
+        android:text="Sports Name"
         android:textSize="16sp"
         android:layout_margin="10dp" />
 
-        <Spinner
-            android:id="@+id/sportsName"
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:verticalScrollbarPosition="right"
-            android:dropDownWidth="wrap_content"
-            android:isScrollContainer="true"
-            android:entries="@array/sportsGame" />
+            android:hint="Enter the name of sports here"
+            android:id="@+id/editText"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/button_addData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Input Game"
+            android:layout_margin="10dp"/>
+
 
     <Button
         android:id="@+id/button"
@@ -106,5 +112,7 @@
         android:onClick="intentCall"/>
 
 
-</LinearLayout>
+
+
+    </LinearLayout>
 </ScrollView>
