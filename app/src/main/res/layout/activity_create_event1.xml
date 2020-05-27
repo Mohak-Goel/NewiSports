@@ -103,12 +103,6 @@
             android:id="@+id/editText"
             android:layout_margin="10dp"/>
 
-        <Button
-            android:id="@+id/button_addData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Input Game"
-            android:layout_margin="10dp"/>
 
     <Button
         android:id="@+id/button"

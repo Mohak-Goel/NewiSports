@@ -94,12 +94,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
-        android:hint="Description"
+        android:id="@+id/editText6"
+        android:hint="Enter Event Description"
         android:layout_margin="10dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Poster"
+        android:text="Add Event Poster"
         android:layout_margin="10dp"
         android:textSize="20sp"/>
 
@@ -124,7 +125,6 @@
             android:layout_marginHorizontal="24dp"
             android:textSize="24sp"
             android:text="Create Event" />
-
 
     </LinearLayout>
 </ScrollView>
