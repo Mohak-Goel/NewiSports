@@ -99,7 +99,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Media"
+        android:text="Add Poster"
         android:layout_margin="10dp"
         android:textSize="20sp"/>
 
@@ -107,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/pickImages"
-            android:text="Pick Images"/>
+            android:text="Browse"/>
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"

@@ -94,6 +94,4 @@ public class CreateEvent2 extends AppCompatActivity {
 
         }
     }
-
-
 }

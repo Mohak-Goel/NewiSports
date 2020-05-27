@@ -33,11 +33,11 @@ public class CreateEvent1 extends AppCompatActivity {
     String amPm;
     DatePickerDialog.OnDateSetListener setListener;
 
-    EditText et;
-    Button bt;
-    ListView lv;
-    ArrayList<String> arrayList;
-    ArrayAdapter<String> adapter;
+    //EditText et;
+    //Button bt;
+    //ListView lv;
+    //ArrayList<String> arrayList;
+    //ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
