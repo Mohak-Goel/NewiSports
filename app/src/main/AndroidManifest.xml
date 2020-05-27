@@ -25,8 +25,10 @@
         <activity android:name=".Select" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".CreateEvent1" />
-        <activity android:name=".CreateEvent2" />
+        <activity android:name=".CreateEvent1"
+                  android:label="Fill Event Creation Form"/>
+        <activity android:name=".CreateEvent2"
+                  android:label="Fill Event Creation Form"/>
         <activity
             android:name=".ParticipantsDetail"
             android:label="Fill Participant Detail" />

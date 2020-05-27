@@ -84,7 +84,7 @@ public class ParticipationForm extends AppCompatActivity {
                     participantUnivPhNo.getText().clear();
                     participantUnivEmail.getText().clear();
                     participantUnivCoachName.getText().clear();
-                    participantUnivPhNo.getText().clear();
+                    participantUnivCoachPhNo.getText().clear();
                     participantUnivCoachEmail.getText().clear();
                     radioGroupTransport.check(R.id.transport_radio_yes);
                     radioGroupLodging.check(R.id.lodging_radio_yes);
