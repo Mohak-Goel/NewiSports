@@ -8,26 +8,125 @@
     tools:context=".Register">
 
 
-    <EditText
-        android:layout_marginTop="350dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:id="@+id/Remail"
-        android:hint="Email"
-        android:textColor="#CFCFCF"
-        android:textColorHint="#CFCFCF"
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Registration Form"
+        android:textAlignment="center"
+        android:textColor="@color/borderColor"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:hint="Enter Full Name"
+        android:inputType="text"
+        android:textColor="@color/borderColor"
+        android:textColorHint="#CFCFCF" />
+    <EditText
+        android:id="@+id/uname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:hint="Enter University Name"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColorHint="#CFCFCF" />
+    <EditText
+        android:id="@+id/rollno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:hint="Enter University Roll No."
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColorHint="#CFCFCF" />
+
+    <EditText
+        android:id="@+id/dob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:hint="Enter Date Of Birth"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColorHint="#CFCFCF" />
+
+    <EditText
+        android:id="@+id/pno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:hint="Enter Phone Number"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColorHint="#CFCFCF" />
+    <EditText
+        android:id="@+id/pno2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:hint="Enter Alternative Phone Number"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColorHint="#CFCFCF" />
+    <EditText
+        android:id="@+id/usertype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:hint="You are(eg.Host/participant/tech.Manager)"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColorHint="#CFCFCF" />
+
+    <EditText
+        android:id="@+id/Remail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:hint="Enter Email Address"
+        android:textColor="@color/borderColor"
+        android:textColorHint="#CFCFCF" />
+
     <EditText
         android:id="@+id/Rpass"
-        android:hint="Password"
-        android:textColor="#CFCFCF"
-        android:textColorHint="#CFCFCF"
-        android:inputType="textPassword"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:textColor="@color/borderColor"
+        android:textColorHint="#CFCFCF" />
+
     <Button
 
         android:layout_marginTop="32dp"
@@ -35,6 +134,8 @@
         android:text="Register"
         android:layout_marginRight="120dp"
         android:layout_marginLeft="120dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 </LinearLayout>

@@ -8,4 +8,73 @@
     <string name="log_out">Log Out</string>
     <string name="user_s_e_mail_address">User\'s e-mail address</string>
     <string name="user_s_name">User\'s Name</string>
+
+    <string-array name="blood">
+        <item>Blood Group</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>Unknown</item>
+    </string-array>
+
+    <string-array name="sportsGame">
+        <item>Select Sport</item>
+        <item>Cricket</item>
+        <item>Football</item>
+        <item>Tennis</item>
+        <item>Chess</item>
+        <item>Badminton</item>
+        <item>Hockey</item>
+        <item>Table Tennis</item>
+        <item>Shooting</item>
+        <item>Swimming</item>
+        <item>Wrestling</item>
+        <item>Boxing</item>
+    </string-array>
+
+    <string-array name="state_list">
+        <item>Select State</item>
+        <item>Andhra Pradesh</item>
+        <item>Andaman &amp; Nicobar</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chandigarh</item>
+        <item>Chhattisgarh</item>
+        <item>Dadra &amp; Nagar Haveli &amp; Daman &amp; Diu</item>
+        <item>Delhi</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Ladakh</item>
+        <item>Lakshadweep</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharastra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Odisha</item>
+        <item>Puducherry</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttar Pradesh</item>
+        <item>Uttarakhand</item>
+        <item>West Bengal</item>
+    </string-array>
+
 </resources>
