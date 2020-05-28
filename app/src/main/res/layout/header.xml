@@ -7,21 +7,10 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:src="@drawable/profile_icon" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/user_s_name"
         android:textSize="24sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/user_s_e_mail_address"
-        android:textSize="14sp" />
 
 </LinearLayout>

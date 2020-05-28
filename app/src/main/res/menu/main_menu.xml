@@ -4,13 +4,25 @@
     android:layout_width="175dp">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_account"
             android:title="@string/my_account"
             android:icon="@drawable/home_icon"/>
         <item
             android:id="@+id/nav_events"
             android:title="@string/my_events"
             android:icon="@drawable/events_list_icon"/>
+        <item
+            android:id="@+id/nav_rquery"
+            android:title="Raise Query"
+            android:icon="@drawable/raise_query_icon"/>
+        <item
+            android:id="@+id/nav_notice"
+            android:title="Notice"
+            android:icon="@drawable/notice_icon"/>
+        <item
+            android:id="@+id/nav_unotice"
+            android:title="Upload Notice"
+            android:icon="@drawable/upload_notice_icon"/>
         <item
             android:id="@+id/nav_contact"
             android:title="@string/contact_us"
