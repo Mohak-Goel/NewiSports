@@ -42,8 +42,8 @@ public class MyAccount extends AppCompatActivity {
                 String university_na=dataSnapshot.child("UniversityName").getValue().toString();
                 String phone_no=dataSnapshot.child("PhoneNumber").getValue().toString();
                 String Alt_phone_no=dataSnapshot.child("AlternativeNumber").getValue().toString();
-                String email_address=dataSnapshot.child("UserType").getValue().toString();
-                String user_type=dataSnapshot.child("EmailAddress").getValue().toString();
+                String email_address=dataSnapshot.child("EmailAddress").getValue().toString();
+                String user_type=dataSnapshot.child("UserType").getValue().toString();
                 un.setText(university_na);
                 ph.setText(phone_no);
                 altph.setText(Alt_phone_no);
