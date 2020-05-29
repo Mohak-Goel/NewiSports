@@ -23,25 +23,29 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="63dp"
                 android:background="#00009688"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
-                app:navigationIcon="@drawable/menu_foreground"/>
+                app:layout_constraintBottom_toTopOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@drawable/menu_foreground" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="81dp"
-                android:layout_marginLeft="81dp"
-                android:layout_marginTop="143dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="52dp"
-                android:layout_marginRight="52dp"
-                android:layout_marginBottom="27dp"
+                android:layout_marginBottom="16dp"
                 android:text="EVENT"
                 android:textSize="24sp"
                 app:fontFamily="sans-serif-black"
@@ -54,12 +58,11 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="81dp"
-                android:layout_marginLeft="81dp"
-                android:layout_marginTop="27dp"
-                android:layout_marginEnd="27dp"
-                android:layout_marginRight="27dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="Details of Event"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -68,13 +71,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="175dp"
                 android:layout_height="175dp"
-                android:layout_marginStart="27dp"
-                android:layout_marginLeft="27dp"
-                android:layout_marginTop="63dp"
-                android:layout_marginEnd="29dp"
-                android:layout_marginRight="29dp"
-                android:layout_marginBottom="437dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar"
@@ -220,6 +217,5 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 </androidx.drawerlayout.widget.DrawerLayout>
 
