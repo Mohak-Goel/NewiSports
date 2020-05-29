@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,11 +25,19 @@ public class ParticipantsDetail extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
 
     ArrayList<ParticipantItem> aboutParticipant;
-    Button addParticipantButton;
+
+    participantFormItem participantUnivDetail;
+
+    Button addParticipantButton, submitButton;
+
     EditText pName, pEmail, pPhNo;
     Spinner spinnerBG;
-    int flag=0;
+
+    int flag=0, flag2 = 0;
+
     Toast t;
+
+    DatabaseReference databaseParticipant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +50,8 @@ public class ParticipantsDetail extends AppCompatActivity {
         pEmail = (EditText)findViewById(R.id.participant_email);
         pPhNo = (EditText)findViewById(R.id.participant_phoneNo);
         spinnerBG = (Spinner)findViewById(R.id.bloodGroupSpinner_1);
+        submitButton = (Button)findViewById(R.id.participant_detail_submit_button);
+        databaseParticipant = FirebaseDatabase.getInstance().getReference("Participant Details");
 
         participantList = findViewById(R.id.participantList);
         participantList.setHasFixedSize(true);
@@ -48,10 +61,13 @@ public class ParticipantsDetail extends AppCompatActivity {
         participantList.setLayoutManager(mLayoutManager);
         participantList.setAdapter(mAdapter);
 
+        participantUnivDetail = (participantFormItem) getIntent().getSerializableExtra("com.example.myapplication.ParticipationForm");
+
         if (aboutParticipant.size()==0) {
             aboutParticipant.add(new ParticipantItem("NO PARTICIPANT ADDED", "Kindly Add Participant!!", "NA", "NA"));
             mAdapter.notifyItemInserted(aboutParticipant.size()-1);
             flag = 1;
+            flag2=1;
             t = Toast.makeText(getApplicationContext(), "Kindly Add Participants!!", Toast.LENGTH_SHORT);
             t.show();
         }
@@ -67,6 +83,7 @@ public class ParticipantsDetail extends AppCompatActivity {
 
                 if (name.isEmpty() || phNo.isEmpty() || email.isEmpty() || spinnerBG.getSelectedItemPosition()==0){
 
+                    flag2=1;
                     String error = "";
                     if (name.isEmpty())
                         error = "Enter Participant Name\n";
@@ -85,12 +102,14 @@ public class ParticipantsDetail extends AppCompatActivity {
                 }
 
                 else if (!isValidMobile(phNo)){
+                    flag2=1;
                     t.cancel();
                     t = Toast.makeText(getApplicationContext(), "Invalid Participant Phone No.!!", Toast.LENGTH_LONG);
                     t.show();
                 }
 
                 else if(!isEmailValid(email)){
+                    flag2=1;
                     t.cancel();
                     t = Toast.makeText(getApplicationContext(), "Invalid Participant E-mail!!", Toast.LENGTH_LONG);
                     t.show();
@@ -104,7 +123,7 @@ public class ParticipantsDetail extends AppCompatActivity {
                             aboutParticipant.remove(0);
                             mAdapter.notifyItemRemoved(aboutParticipant.size()-1);
                         }
-
+                        flag2 = 0;
                         pName.setText("");
                         pEmail.setText("");
                         pPhNo.setText("");
@@ -125,7 +144,6 @@ public class ParticipantsDetail extends AppCompatActivity {
         mAdapter.setOnClickListener(new ParticipantsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-
             }
 
             @Override
@@ -138,12 +156,39 @@ public class ParticipantsDetail extends AppCompatActivity {
                     aboutParticipant.add(new ParticipantItem("NO PARTICIPANT ADDED", "Kindly Add Participant!!", "NA", "NA"));
                     mAdapter.notifyItemInserted(aboutParticipant.size() - 1);
                     flag = 1;
+                    flag2=1;
                 }
 
                 if (flag==1){
+                    flag2=1;
                     t.cancel();
                     t = Toast.makeText(getApplicationContext(), "Kindly Add Participants!!", Toast.LENGTH_SHORT);
                     t.show();
+                }
+            }
+        });
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (aboutParticipant.size()==0||flag2==1) {
+                    t.cancel();
+                    t = Toast.makeText(getApplicationContext(), "Kindly Add Participants!!", Toast.LENGTH_SHORT);
+                    t.show();
+                }
+
+                else {
+                    String id = databaseParticipant.push().getKey();
+
+                    participantUnivDetail.setParticipantList(aboutParticipant);
+
+                    databaseParticipant.child(id).setValue(participantUnivDetail);
+
+                    t.cancel();
+                    t = Toast.makeText(getApplicationContext(), "Congratulations!! You have successfully Participated in this event", Toast.LENGTH_LONG);
+                    t.show();
+
                 }
             }
         });

@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,7 +28,7 @@ public class ParticipationForm extends AppCompatActivity {
     Button buttonReset;
     Toast t;
 
-    ArrayList<participantFormItem> participantFormItemArrayList;
+    public static final String PARTICIPANT_UNIVERSITY_DETAIL = "com.example.myapplication.ParticipationForm";
     int flag=0;
 
     @Override
@@ -217,9 +216,12 @@ public class ParticipationForm extends AppCompatActivity {
 
                 else {
 
-                    participantFormItemArrayList.add(new participantFormItem(UnivName, UnivAddress, UnivCity, UnivState,
-                            UnivPostalCode, UnivPhNo, UnivEmail, UnivCoachName, UnivCoachPhNo, UnivCoachEmail, pTransport, pfood, pLodging));
+                    participantFormItem participantFormItemObj = new participantFormItem(UnivName, UnivAddress, UnivCity, UnivState,
+                            UnivPostalCode, UnivPhNo, UnivEmail, UnivCoachName, UnivCoachPhNo, UnivCoachEmail, pTransport, pfood, pLodging);
+
+
                     Intent i1 = new Intent(ParticipationForm.this, ParticipantsDetail.class);
+                    i1.putExtra(PARTICIPANT_UNIVERSITY_DETAIL, participantFormItemObj);
                     startActivity(i1);
                 }
             }
@@ -245,7 +247,6 @@ public class ParticipationForm extends AppCompatActivity {
         buttonNext = findViewById(R.id.participant_next_button);
         buttonReset = findViewById(R.id.reset_button);
 
-        participantFormItemArrayList = new ArrayList<>();
 
     }
 

@@ -1,10 +1,15 @@
 package com.example.myapplication;
 
-public class participantFormItem {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class participantFormItem implements Serializable {
 
     private String participantUnivName, participantUnivAddress, participantUnivCity, participantUnivState,
             participantUnivPostalCode, participantUnivPhNo, participantUnivEmail, participantUnivCoachName,
             participantUnivCoachPhNo, participantUnivCoachEmail;
+
+    private ArrayList<ParticipantItem> participantList;
 
     private boolean ptransport, pfood, plodging;
 
@@ -124,4 +129,13 @@ public class participantFormItem {
     public void setPlodging(boolean plodging) {
         this.plodging = plodging;
     }
+
+    public ArrayList<ParticipantItem> getParticipantList() {
+        return participantList;
+    }
+
+    public void setParticipantList(ArrayList<ParticipantItem> participantList) {
+        this.participantList = participantList;
+    }
+
 }
