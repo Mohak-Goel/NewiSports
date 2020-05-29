@@ -19,17 +19,6 @@
         android:textStyle="bold|italic" />
 
     <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="30dp"
-        android:hint="Enter Full Name"
-        android:inputType="text"
-        android:textColor="@color/borderColor"
-        android:textColorHint="#CFCFCF" />
-    <EditText
         android:id="@+id/uname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,31 +27,6 @@
         android:layout_marginRight="30dp"
         android:ems="10"
         android:hint="Enter University Name"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColorHint="#CFCFCF" />
-    <EditText
-        android:id="@+id/rollno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="Enter University Roll No."
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColorHint="#CFCFCF" />
-
-    <EditText
-        android:id="@+id/dob"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="Enter Date Of Birth"
         android:inputType="textPersonName"
         android:text=""
         android:textColorHint="#CFCFCF" />

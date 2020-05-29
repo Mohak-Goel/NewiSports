@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MainActivity.this, Select.class));
+                                startActivity(new Intent(MainActivity.this, MyAccount.class));
                                 finish();
                             } else {
                                 Toast.makeText(MainActivity.this, "Sigh in error", Toast.LENGTH_SHORT).show();

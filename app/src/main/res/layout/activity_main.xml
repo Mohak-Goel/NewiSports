@@ -8,25 +8,26 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:layout_marginTop="250sp"
-        android:layout_marginLeft="30sp"
-        android:layout_marginRight="30sp"
         android:id="@+id/email"
-        android:hint="Email"
-        android:textColor="#CFCFCF"
-        android:textColorHint="#CFCFCF"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30sp"
+        android:layout_marginTop="250sp"
+        android:layout_marginRight="30sp"
+        android:hint="Email"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textColorHint="#CFCFCF" />
+
     <EditText
         android:id="@+id/pass"
-        android:hint="Password"
-        android:textColor="#CFCFCF"
-        android:textColorHint="#CFCFCF"
-        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="30sp"
         android:layout_marginRight="30sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textColorHint="#CFCFCF" />
     <Button
 
         android:layout_marginTop="32sp"
