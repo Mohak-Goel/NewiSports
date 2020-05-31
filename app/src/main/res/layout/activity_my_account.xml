@@ -1,9 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MyAccount">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Account"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="8dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/univview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="University Name-: "
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/univdisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/phoview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Phone Number-: "
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/phondisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/altphview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alternative Phone Number-: "
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/altphodisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/usertype"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="User Type-: "
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/userdisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/emailview"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="Email Address-: "
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/emaildisp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/oooo"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="Want to Change Password? "
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="280dp"
+                android:onClick="change_password"
+                android:text="Click here!" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

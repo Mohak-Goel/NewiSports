@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,8 @@ public class Forgotpass extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             Toast.makeText(Forgotpass.this,"Password sent to your Email",Toast.LENGTH_LONG).show();
+                            Intent I=new Intent(Forgotpass.this,MainActivity.class);
+                            startActivity(I);
                         }
                         else
                         {
