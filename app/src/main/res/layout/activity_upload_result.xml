@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0E0E0"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".UploadResult">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="120dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="8dp"
+            android:text="Winner University Name"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"
+            android:hint="Enter Winner University Name"
+            android:importantForAutofill="no"
+            android:textSize="20sp"
+            android:inputType="textPersonName"
+            android:background="@drawable/editbackgound"
+            android:id="@+id/winner_university_name"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="First Runner-up University Name"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"
+            android:hint="Enter First Runner-up University"
+            android:importantForAutofill="no"
+            android:textSize="20sp"
+            android:inputType="textPersonName"
+            android:background="@drawable/editbackgound"
+            android:id="@+id/first_runner_up_university_name"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Second Runner-up University Name"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"
+            android:hint="Enter Second Runner-up University"
+            android:importantForAutofill="no"
+            android:textSize="20sp"
+            android:inputType="textPersonName"
+            android:background="@drawable/editbackgound"
+            android:id="@+id/second_runner_up_university_name"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/upload_result_button"
+        android:layout_width="338dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/submit_button_style"
+        android:text="UPLOAD RESULT"
+        android:textColor="@color/common_google_signin_btn_text_light_default"
+        android:textSize="24sp" />
+
+</RelativeLayout>

@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Contact"></activity>
+        <activity android:name=".UploadFixture" android:label="Fill Fixture Details"></activity>
+        <activity
+            android:name=".UploadResult"
+            android:label="Fill Result Details" />
+        <activity android:name=".Contact" />
         <activity android:name=".UploadNotice" />
         <activity android:name=".Notice" />
         <activity android:name=".RaiseQuery" />
@@ -31,10 +35,12 @@
         <activity android:name=".Select" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".CreateEvent1"
-                  android:label="Fill Event Creation Form"/>
-        <activity android:name=".CreateEvent2"
-                  android:label="Fill Event Creation Form"/>
+        <activity
+            android:name=".CreateEvent1"
+            android:label="Fill Event Creation Form" />
+        <activity
+            android:name=".CreateEvent2"
+            android:label="Fill Event Creation Form" />
         <activity
             android:name=".ParticipantsDetail"
             android:label="Fill Participant Detail" />

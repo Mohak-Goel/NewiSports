@@ -28,8 +28,10 @@ public class ParticipationForm extends AppCompatActivity {
     Button buttonReset;
     Toast t;
 
+    private long backPressedTime;
+
     public static final String PARTICIPANT_UNIVERSITY_DETAIL = "com.example.myapplication.ParticipationForm";
-    int flag=0;
+    int flag = 0, count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,7 +168,7 @@ public class ParticipationForm extends AppCompatActivity {
                         error+= "Enter Coach Phone No.\n";
 
                     if (UnivCoachEmail.isEmpty())
-                        error+= "Enter University Email\n";
+                        error+= "Enter Coach Email\n";
 
                     error+= ":-( :-( :-(";
 
@@ -215,14 +217,23 @@ public class ParticipationForm extends AppCompatActivity {
                 }
 
                 else {
+                    if (count==0) {
+                        t.cancel();
+                        t = Toast.makeText(getApplicationContext(), "Tap next button once again if you are sure that \nyou have entered the details correctly !!", Toast.LENGTH_LONG);
+                        t.show();
+                        count++;
+                    }
 
-                    participantFormItem participantFormItemObj = new participantFormItem(UnivName, UnivAddress, UnivCity, UnivState,
-                            UnivPostalCode, UnivPhNo, UnivEmail, UnivCoachName, UnivCoachPhNo, UnivCoachEmail, pTransport, pfood, pLodging);
+                    else {
+                        count=0;
+                        participantFormItem participantFormItemObj = new participantFormItem(UnivName, UnivAddress, UnivCity, UnivState,
+                                UnivPostalCode, UnivPhNo, UnivEmail, UnivCoachName, UnivCoachPhNo, UnivCoachEmail, pTransport, pfood, pLodging);
 
 
-                    Intent i1 = new Intent(ParticipationForm.this, ParticipantsDetail.class);
-                    i1.putExtra(PARTICIPANT_UNIVERSITY_DETAIL, participantFormItemObj);
-                    startActivity(i1);
+                        Intent i1 = new Intent(ParticipationForm.this, ParticipantsDetail.class);
+                        i1.putExtra(PARTICIPANT_UNIVERSITY_DETAIL, participantFormItemObj);
+                        startActivity(i1);
+                    }
                 }
             }
         });
@@ -292,4 +303,17 @@ public class ParticipationForm extends AppCompatActivity {
         return isValid;
     }
 
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 4000 > System.currentTimeMillis()) {
+            t.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            t.cancel();
+            t = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            t.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
 }

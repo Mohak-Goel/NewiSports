@@ -26,16 +26,18 @@ public class ParticipantsDetail extends AppCompatActivity {
 
     ArrayList<ParticipantItem> aboutParticipant;
 
-    participantFormItem participantUnivDetail;
+    ParticipantUniversity participantUnivDetail;
+    participantFormItem participantFormItemClass;
 
     Button addParticipantButton, submitButton;
 
     EditText pName, pEmail, pPhNo;
     Spinner spinnerBG;
 
-    int flag=0, flag2 = 0;
+    int flag=0, flag2 = 0, count1=0, count2=0;
 
     Toast t;
+    private long backPressedTime;
 
     DatabaseReference databaseParticipant;
 
@@ -61,7 +63,7 @@ public class ParticipantsDetail extends AppCompatActivity {
         participantList.setLayoutManager(mLayoutManager);
         participantList.setAdapter(mAdapter);
 
-        participantUnivDetail = (participantFormItem) getIntent().getSerializableExtra("com.example.myapplication.ParticipationForm");
+        participantFormItemClass = (participantFormItem) getIntent().getSerializableExtra("com.example.myapplication.ParticipationForm");
 
         if (aboutParticipant.size()==0) {
             aboutParticipant.add(new ParticipantItem("NO PARTICIPANT ADDED", "Kindly Add Participant!!", "NA", "NA"));
@@ -179,16 +181,25 @@ public class ParticipantsDetail extends AppCompatActivity {
                 }
 
                 else {
-                    String id = databaseParticipant.push().getKey();
 
-                    participantUnivDetail.setParticipantList(aboutParticipant);
+                    if (count1==0) {
+                        t.cancel();
+                        t = Toast.makeText(getApplicationContext(), "Tap submit button once again if you are sure that \nyou have entered the details correctly !!", Toast.LENGTH_LONG);
+                        t.show();
+                        count1++;
+                    }
+                    else {
+                        count1=0;
 
-                    databaseParticipant.child(id).setValue(participantUnivDetail);
+                        participantUnivDetail = new ParticipantUniversity(participantFormItemClass.getParticipantUnivName(),participantFormItemClass.getParticipantUnivAddress(),participantFormItemClass.getParticipantUnivCity(),participantFormItemClass.getParticipantUnivState(), participantFormItemClass.getParticipantUnivPostalCode(), participantFormItemClass.getParticipantUnivPhNo(), participantFormItemClass.getParticipantUnivEmail(), participantFormItemClass.getParticipantUnivCoachName(), participantFormItemClass.getParticipantUnivCoachPhNo(), participantFormItemClass.getParticipantUnivCoachEmail(), aboutParticipant, participantFormItemClass.isPtransport(), participantFormItemClass.isPfood(), participantFormItemClass.isPlodging());
 
-                    t.cancel();
-                    t = Toast.makeText(getApplicationContext(), "Congratulations!! You have successfully Participated in this event", Toast.LENGTH_LONG);
-                    t.show();
+                        databaseParticipant.child(participantUnivDetail.getParticipantUnivCoachPhNo()).setValue(participantUnivDetail);
 
+                        t.cancel();
+                        t = Toast.makeText(getApplicationContext(), "Congratulations!! You have successfully Participated in this event", Toast.LENGTH_LONG);
+                        t.show();
+
+                    }
                 }
             }
         });
@@ -229,5 +240,19 @@ public class ParticipantsDetail extends AppCompatActivity {
             isValid = true;
         }
         return isValid;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 4000 > System.currentTimeMillis()) {
+            t.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            t.cancel();
+            t = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            t.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 }
