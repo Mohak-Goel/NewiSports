@@ -16,6 +16,10 @@
             android:title="Raise Query"
             android:icon="@drawable/raise_query_icon"/>
         <item
+            android:id="@+id/nav_gquery"
+            android:title="Get Query"
+            android:icon="@drawable/get_query"/>
+        <item
             android:id="@+id/nav_notice"
             android:title="Notice"
             android:icon="@drawable/notice_icon"/>
