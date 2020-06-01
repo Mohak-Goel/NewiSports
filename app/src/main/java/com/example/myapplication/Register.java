@@ -32,6 +32,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
 
@@ -120,7 +122,8 @@ public class Register extends AppCompatActivity {
             if (st7.length() > 0 &&st6.length() > 0 && st5.length() > 0 && st2.length() > 0 ) {
                 dbref = FirebaseDatabase.getInstance().getReference().child("Registration Details").child(uid);
                 HashMap<String, String> user_details = new HashMap<>();
-                user_details.put("LocalAddress", st1);
+                if(isEmailValid(record_email)&&isPostalCodeValid(st8)&&isValidMobile(st5)&&isValidMobile(st6))
+                {user_details.put("LocalAddress", st1);
                 user_details.put("UniversityName", st2);
                 user_details.put("City", st3);
                 user_details.put("State", st4);
@@ -129,7 +132,10 @@ public class Register extends AppCompatActivity {
                 user_details.put("UserType", st7);
                 user_details.put("PinCode", st8);
                 user_details.put("EmailAddress",record_email);
-                dbref.setValue(user_details);
+                dbref.setValue(user_details);}
+                else{
+                    Toast.makeText(Register.this,"Invalid Email!\nor Invalid PinCode!\nor Invalid Number!",Toast.LENGTH_LONG).show();
+                }
 
             } else {
                 Toast.makeText(this, "Please Enter All your details", Toast.LENGTH_LONG).show();
@@ -142,4 +148,47 @@ public class Register extends AppCompatActivity {
 
         }
     }
+
+    private boolean isValidMobile(String phone) {
+        String expression = "^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[6789]\\d{9}$";
+        CharSequence inputString = phone;
+        Pattern pattern = Pattern.compile(expression);
+        Matcher matcher = pattern.matcher(inputString);
+        if (matcher.matches())
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static boolean isEmailValid(String email) {
+        boolean isValid = false;
+
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    public static boolean isPostalCodeValid(String pcode) {
+        boolean isValid = false;
+
+        String expression = "^[1-9][0-9]{5}$";
+        CharSequence inputStr = pcode;
+
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            isValid = true;
+        }
+        return isValid;
+    }
+
 }
