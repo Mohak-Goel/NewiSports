@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Contact"></activity>
+        <activity android:name=".GetQuery"></activity>
+        <activity android:name=".Contact" />
         <activity android:name=".UploadNotice" />
         <activity android:name=".Notice" />
         <activity android:name=".RaiseQuery" />
@@ -17,7 +20,7 @@
         <activity android:name=".MyAccount" />
         <activity android:name=".Forgotpass" />
         <activity
-            android:name=".ParticipationForm"
+            android:name=".ParticipantForm"
             android:label="Fill Participation Form" />
         <activity
             android:name=".Splash"
@@ -31,16 +34,16 @@
         <activity android:name=".Select" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".CreateEvent1"
-                  android:label="Fill Event Creation Form"/>
-        <activity android:name=".CreateEvent2"
-                  android:label="Fill Event Creation Form"/>
+        <activity
+            android:name=".CreateEvent1"
+            android:label="Fill Event Creation Form" />
+        <activity
+            android:name=".CreateEvent2"
+            android:label="Fill Event Creation Form" />
         <activity
             android:name=".ParticipantsDetail"
             android:label="Fill Participant Detail" />
         <activity android:name=".HomePage" />
     </application>
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
