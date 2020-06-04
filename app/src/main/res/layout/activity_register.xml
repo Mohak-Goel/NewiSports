@@ -123,7 +123,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
                 android:ems="10"
-                android:hint="You are(eg.Host/participant/tech.Manager)"
+                android:hint="You are(eg.Host/participant/Manager)"
                 android:inputType="textPersonName"
                 android:text=""
                 android:textColorHint="#CFCFCF" />

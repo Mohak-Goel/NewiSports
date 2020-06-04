@@ -118,7 +118,7 @@ public class Register extends AppCompatActivity {
             String st5 = E5.getText().toString().trim();
             String st6 = E6.getText().toString().trim();
             String st7 = E7.getText().toString().trim();
-            String st8 = E7.getText().toString().trim();
+            String st8 = E8.getText().toString().trim();
             if (st7.length() > 0 &&st6.length() > 0 && st5.length() > 0 && st2.length() > 0 ) {
                 dbref = FirebaseDatabase.getInstance().getReference().child("Registration Details").child(uid);
                 HashMap<String, String> user_details = new HashMap<>();
