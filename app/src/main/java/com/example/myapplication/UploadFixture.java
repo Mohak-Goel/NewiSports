@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -34,7 +35,7 @@ public class UploadFixture extends AppCompatActivity {
 
     private EditText fixtureDate, fixtureTime;
     private AutoCompleteTextView participant1, participant2;
-    private Button buttonAddFixture;
+    private Button buttonAddFixture, uploadFixture;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     private RecyclerView fixtureList;
@@ -44,7 +45,10 @@ public class UploadFixture extends AppCompatActivity {
     ArrayList<FixtureDetail> fixtureDetails;
 
     private DatabaseReference participantDatabase;
+    private DatabaseReference fixtureDatabase;
+    private long mLastClickTime= 0;
     List<String> suggestion;
+    int flag1=1, flag2 = 0;
 
     Toast toast;
 
@@ -66,6 +70,8 @@ public class UploadFixture extends AppCompatActivity {
         fixtureList.setAdapter(mAdapter);
 
         extractView();
+
+
 
         fixtureDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,51 +201,80 @@ public class UploadFixture extends AppCompatActivity {
                 String date = fixtureDate.getText().toString();
                 String time = fixtureTime.getText().toString();
 
-                if (p1 == p2)
+                if (p1.equalsIgnoreCase(p2) && !p1.isEmpty())
                 {
                     toast.cancel();
                     toast = Toast.makeText(getApplicationContext(), "Both the opponents are same\n" +
-                            "Try Again !! :-( :-(", Toast.LENGTH_SHORT);
+                            "Try Again :-(", Toast.LENGTH_SHORT);
                     toast.show();
                 }
 
                 else if (p1.isEmpty())
                 {
                     toast.cancel();
-                    toast = Toast.makeText(getApplicationContext(), "First Participant University Field Empty!!\n" +
-                            "Kindly Fill it !! :-( :-(", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(getApplicationContext(), "First Participant University Name Field Empty\n" +
+                            "Kindly Fill it !! :-(", Toast.LENGTH_SHORT);
                     toast.show();
                 }
 
                 else if (p2.isEmpty())
                 {
                     toast.cancel();
-                    toast = Toast.makeText(getApplicationContext(), "Second Participant University Field Empty!!\n" +
-                            "Kindly Fill it !! :-( :-(", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(getApplicationContext(), "Second Participant University Name Field Empty!!\n" +
+                            "Kindly Fill it !! :-(", Toast.LENGTH_SHORT);
                     toast.show();
                 }
 
                 else if (date.isEmpty())
                 {
                     toast.cancel();
-                    toast = Toast.makeText(getApplicationContext(), "Fixture Date Empty!!\n" +
-                            "Kindly Fill it !! :-( :-(", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(getApplicationContext(), "Fixture Date Empty\n" +
+                            "Kindly Fill it !! :-(", Toast.LENGTH_SHORT);
                     toast.show();
                 }
 
                 else if (time.isEmpty())
                 {
                     toast.cancel();
-                    toast = Toast.makeText(getApplicationContext(), "Fixture Time Empty!!\n" +
-                            "Kindly Fill it !! :-( :-(", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(getApplicationContext(), "Fixture Time Empty\n" +
+                            "Kindly Fill it !! :-(", Toast.LENGTH_SHORT);
                     toast.show();
                 }
 
+                else if(!isParticipantValid(p1)){
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Incorrect first participant name\n" +
+                            "Select correct name !! :-(", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
+                else if(!isParticipantValid(p2)){
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Incorrect second participant name\n" +
+                            "Select correct name !! :-(", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
+                else if (fixtureDetails.contains(new FixtureDetail(p1,p2,date,time)))
+                {
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Fixture Already Exist!! :-(", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
 
                 else {
                     try {
+                        if (flag1==1)
+                        {
+                            fixtureDetails.remove(0);
+                            mAdapter.notifyItemRemoved(fixtureDetails.size()-1);
+                            flag1 = 0;
+                        }
                         fixtureDetails.add(new FixtureDetail(p1, p2, date, time));
                         mAdapter.notifyItemInserted(fixtureDetails.size() - 1);
+                        toast.cancel();
+                        toast = Toast.makeText(getApplicationContext(), "Fixture Added Successfully!!", Toast.LENGTH_SHORT);
+                        toast.show();
                     } catch (NumberFormatException e) {
                     }
                 }
@@ -254,18 +289,79 @@ public class UploadFixture extends AppCompatActivity {
 
             @Override
             public void onDeleteClick(int position) {
-                removeItem(position);
+                if (flag1==1)
+                {
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Kindly Add Fixture!!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                else
+                    removeItem(position);
             }
         });
 
+        if (fixtureDetails.size()==0){
+            flag1 = 1;
+            fixtureDetails.add(new FixtureDetail("Kindly Add Fixture", "No Fixture added !!", "NA", "NA"));
+            mAdapter.notifyItemInserted(fixtureDetails.size()-1);
+            toast.cancel();
+            toast = Toast.makeText(getApplicationContext(), "Kindly Add Fixture !!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+        uploadFixture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(flag1==1)
+                {
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "No Fixture Added. Kindly add fixture", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                else {
+                    if (SystemClock.elapsedRealtime() - mLastClickTime > 5000) {
+                        toast.cancel();
+                        toast = Toast.makeText(getApplicationContext(), "Tap this button once again if you are sure that you have filled the details correctly!! !!", Toast.LENGTH_LONG);
+                        toast.show();
+                    } else {
+
+                        FixtureDetail fixtureDetail = new FixtureDetail(participant1.getText().toString(), participant2.getText().toString(), fixtureDate.getText().toString(), fixtureTime.getText().toString());
+                        String key = fixtureDatabase.push().getKey();
+                        assert key != null;
+                        fixtureDatabase.child(key).setValue(fixtureDetail);
+                        toast.cancel();
+                        toast = Toast.makeText(getApplicationContext(), "Fixture Uploaded Successfully !! :-)", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                    mLastClickTime = SystemClock.elapsedRealtime();
+                }
+            }
+        });
 
     }
 
 
 
     public void removeItem(int position) {
-        fixtureDetails.remove(position);
-        mAdapter.notifyItemRemoved(position);
+
+
+            fixtureDetails.remove(position);
+            mAdapter.notifyItemRemoved(position);
+
+            toast.cancel();
+            toast = Toast.makeText(getApplicationContext(), "Fixture Removed Successfully !!", Toast.LENGTH_SHORT);
+            toast.show();
+
+            if (fixtureDetails.size()==0){
+                flag1 = 1;
+                fixtureDetails.add(new FixtureDetail("Kindly Add Fixture", "No Fixture added !!", "NA", "NA"));
+                mAdapter.notifyItemInserted(fixtureDetails.size()-1);
+                toast.cancel();
+                toast = Toast.makeText(getApplicationContext(), "Kindly Add Fixture !!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
     }
 
     private void extractView() {
@@ -275,7 +371,17 @@ public class UploadFixture extends AppCompatActivity {
         participant1 = (AutoCompleteTextView) findViewById(R.id.participant_university_1);
         participant2 = (AutoCompleteTextView) findViewById(R.id.participant_university_2);
         buttonAddFixture = (Button)findViewById(R.id.addFixtureButton);
+        uploadFixture = (Button)findViewById(R.id.submit_button_fixture);
         participantDatabase = FirebaseDatabase.getInstance().getReference("Participant Details");
+        fixtureDatabase = FirebaseDatabase.getInstance().getReference("Fixture Details");
+    }
+
+    private boolean isParticipantValid(String participant){
+
+        if (suggestion.contains(participant))
+            return true;
+
+        return false;
     }
 
 }

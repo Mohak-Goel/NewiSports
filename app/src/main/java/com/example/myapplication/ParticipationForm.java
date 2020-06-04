@@ -116,6 +116,7 @@ public class ParticipationForm extends AppCompatActivity {
 
                 int selectedId = radioGroupFood.getCheckedRadioButtonId();
                 radioButtonFood = (RadioButton)findViewById(selectedId);
+
                 boolean pfood = true;
                 if (radioButtonFood.getId()==R.id.food_radio_no)    pfood = false;
 

@@ -16,7 +16,7 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent homeIntent = new Intent(Splash.this, UploadFixture.class);
+                Intent homeIntent = new Intent(Splash.this, GetFixture.class);
                 startActivity(homeIntent);
                 finish();
             }

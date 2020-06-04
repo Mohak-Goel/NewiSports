@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import java.util.Objects;
+
 public class FixtureDetail {
     String participant1, participant2, fixtureDate, fixtureTime;
 
@@ -43,5 +45,21 @@ public class FixtureDetail {
         this.participant2 = participant2;
         this.fixtureDate = fixtureDate;
         this.fixtureTime = fixtureTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FixtureDetail)) return false;
+        FixtureDetail that = (FixtureDetail) o;
+        return Objects.equals(participant1, that.participant1) &&
+                Objects.equals(participant2, that.participant2) &&
+                Objects.equals(fixtureDate, that.fixtureDate) &&
+                Objects.equals(fixtureTime, that.fixtureTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(participant1, participant2, fixtureDate, fixtureTime);
     }
 }

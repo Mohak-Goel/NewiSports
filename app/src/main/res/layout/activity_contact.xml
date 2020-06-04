@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CONTACT-NO"
+        android:text="CONTACT NO"
         android:layout_gravity="center"
         android:textSize="20dp"/>
 
@@ -27,28 +27,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="MOHAK GOEL - +91-7328877034"
+        android:text="MOHAK GOEL"
         android:textFontWeight="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="NEERAD RANJAN - +91-8340615894"
+        android:text="NEERAD RANJAN"
         android:textFontWeight="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="NISCHAY KARN GUPTA - +91-7979944709"
+        android:text="NISCHAY KARN GUPTA "
         android:textFontWeight="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="PAYEL SEN - +91-6294258658"
+        android:text="PAYEL SEN "
         android:textFontWeight="20dp"/>
 
     <TextView
@@ -56,34 +56,34 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_gravity="center"
-        android:text="E-MAIL ID:"
+        android:text="EMAIL ID"
         android:textFontWeight="20dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="MOHAK GOEL - <1705417@kiit.ac.in>"
-        android:textFontWeight="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:text="NEERAD RANJAN - <1705420@kiit.ac.in>"
+        android:text="MOHAK GOEL  "
         android:textFontWeight="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="NISCHAY KARN GUPTA - <1705421@kiit.ac.in>"
+        android:text="NEERAD RANJAN  "
         android:textFontWeight="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="PAYEL SEN - <1705422@kiit.ac.in>"
+        android:text="NISCHAY KARN GUPTA  "
+        android:textFontWeight="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="PAYEL SEN  "
         android:textFontWeight="20dp"/>
 
 </LinearLayout>
