@@ -36,13 +36,90 @@
                 android:id="@+id/univview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="University Name-: "
                 android:layout_marginLeft="10dp"
+                android:text="University Name-: "
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/univdisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/univdisp"
+                android:id="@+id/LocalAddr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Local Address-: "
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Laddrdisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/cityview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="City-: "
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/citydisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/stateview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="State-: "
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/statedisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/pincodeview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Pin Code-: "
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pincodedisp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -57,7 +134,8 @@
                 android:layout_marginLeft="10dp"
                 android:text="Phone Number-: "
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/phondisp"
@@ -67,14 +145,16 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/altphview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Alternative Phone Number-: "
                 android:layout_marginLeft="10dp"
+                android:text="Alternative Phone Number-: "
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/altphodisp"
@@ -84,14 +164,16 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/usertype"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="User Type-: "
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/userdisp"
@@ -101,14 +183,16 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/emailview"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="Email Address-: "
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/emaildisp"
@@ -122,11 +206,12 @@
             <TextView
                 android:id="@+id/oooo"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="Want to Change Password? "
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button3"
