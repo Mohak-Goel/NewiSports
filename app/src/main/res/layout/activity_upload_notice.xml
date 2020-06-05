@@ -8,18 +8,18 @@
     tools:context=".UploadNotice">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Write the content you want to upload as notice here"
+        android:hint="Write the notice here"
         android:textSize="20dp"
         android:layout_gravity="center"
-        />
+        android:id="@+id/uploadnoticetext"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="UPLOAD NOTICE"
         android:textSize="15dp"
         android:layout_gravity="center"
-        android:id="@+id/Unotice_button"/>
+        android:id="@+id/unotice_button"/>
 
 </LinearLayout>

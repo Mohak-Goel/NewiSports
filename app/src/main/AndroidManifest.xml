@@ -11,12 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GetQuery"></activity>
+        <activity android:name=".EventsHosted"></activity>
+        <activity android:name=".ParticipatedEvents" />
+        <activity android:name=".GetQuery" />
         <activity android:name=".Contact" />
         <activity android:name=".UploadNotice" />
         <activity android:name=".Notice" />
         <activity android:name=".RaiseQuery" />
-        <activity android:name=".MyEvents" />
         <activity android:name=".MyAccount" />
         <activity android:name=".Forgotpass" />
         <activity

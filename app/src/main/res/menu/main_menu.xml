@@ -8,9 +8,13 @@
             android:title="@string/my_account"
             android:icon="@drawable/home_icon"/>
         <item
-            android:id="@+id/nav_events"
-            android:title="@string/my_events"
-            android:icon="@drawable/events_list_icon"/>
+            android:id="@+id/nav_participatedevents"
+            android:title="Events Participated"
+            android:icon="@drawable/events_list_icon" />
+        <item
+            android:id="@+id/nav_hostedevents"
+            android:title="Events Hosted"
+            android:icon="@drawable/events_hosted_icon"/>
         <item
             android:id="@+id/nav_rquery"
             android:title="Raise Query"

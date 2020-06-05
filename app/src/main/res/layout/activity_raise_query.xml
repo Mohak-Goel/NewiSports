@@ -7,17 +7,18 @@
     android:orientation="vertical"
     tools:context=".RaiseQuery">
 <EditText
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="Enter your Query"
     android:textSize="20dp"
+    android:id="@+id/rquery"
     android:layout_gravity="center"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="RAISE QUERY"
         android:textSize="15dp"
         android:textFontWeight="20dp"
         android:layout_gravity="center"
-        android:id="@+id/raise_query_button"/>
+        android:id="@+id/raisequerybutton"/>
 </LinearLayout>
