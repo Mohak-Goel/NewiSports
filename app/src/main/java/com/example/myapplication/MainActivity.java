@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(new Intent(MainActivity.this, MyAccount.class));
                                 finish();
                             } else {
-                                Toast.makeText(MainActivity.this, "Sigh in error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Sign in error", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

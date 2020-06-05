@@ -83,7 +83,7 @@ public class Register extends AppCompatActivity {
 
                                 startActivity(new Intent(Register.this, MainActivity.class));
                             } else {
-                                Toast.makeText(Register.this, "Sigh up error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Register.this, "Sign up error", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -110,7 +110,7 @@ public class Register extends AppCompatActivity {
             if (st7.length() > 0 &&st6.length() > 0 && st5.length() > 0 && st2.length() > 0 ) {
                 dbref = FirebaseDatabase.getInstance().getReference().child("Registration Details").child(uid);
                 HashMap<String, String> user_details = new HashMap<>();
-                if(/*isEmailValid(record_email)&&isPostalCodeValid(st8)&&isValidMobile(st5)&&isValidMobile(st6)*/ true)
+                if(isEmailValid(record_email)&&isPostalCodeValid(st8)&&isValidMobile(st5)&&isValidMobile(st6))
                 {user_details.put("LocalAddress", st1);
                 user_details.put("UniversityName", st2);
                 user_details.put("City", st3);
@@ -137,7 +137,7 @@ public class Register extends AppCompatActivity {
         }
     }
 
-  /*  private boolean isValidMobile(String phone) {
+    private boolean isValidMobile(String phone) {
         String expression = "^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[6789]\\d{9}$";
         CharSequence inputString = phone;
         Pattern pattern = Pattern.compile(expression);
@@ -177,6 +177,6 @@ public class Register extends AppCompatActivity {
             isValid = true;
         }
         return isValid;
-    } */
+    }
 
 }

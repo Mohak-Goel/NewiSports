@@ -59,9 +59,14 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                 startActivity(intent);
                 break;
 
-            case R.id.nav_events:
-                Intent intent1 = new Intent(HomePage.this, MyEvents.class);
+            case R.id.nav_participatedevents:
+                Intent intent1 = new Intent(HomePage.this, ParticipatedEvents.class);
                 startActivity(intent1);
+                break;
+
+            case R.id.nav_hostedevents:
+                Intent intent14 = new Intent(HomePage.this, EventsHosted.class);
+                startActivity(intent14);
                 break;
 
             case R.id.nav_rquery:
