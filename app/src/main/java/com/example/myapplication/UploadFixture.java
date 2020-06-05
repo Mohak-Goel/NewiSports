@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.MotionEvent;
@@ -26,7 +27,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -84,6 +84,7 @@ public class UploadFixture extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(UploadFixture.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        calendar.set(year, month, dayOfMonth);
                         fixtureDate.setText(SimpleDateFormat.getDateInstance().format(calendar.getTime()));
                     }
                 }, year, month, day);
@@ -326,10 +327,10 @@ public class UploadFixture extends AppCompatActivity {
                         toast.show();
                     } else {
 
-                        FixtureDetail fixtureDetail = new FixtureDetail(participant1.getText().toString(), participant2.getText().toString(), fixtureDate.getText().toString(), fixtureTime.getText().toString());
+                        //FixtureDetail fixtureDetail = new FixtureDetail(participant1.getText().toString(), participant2.getText().toString(), fixtureDate.getText().toString(), fixtureTime.getText().toString());
                         String key = fixtureDatabase.push().getKey();
                         assert key != null;
-                        fixtureDatabase.child(key).setValue(fixtureDetail);
+                        fixtureDatabase.setValue(fixtureDetails);
                         toast.cancel();
                         toast = Toast.makeText(getApplicationContext(), "Fixture Uploaded Successfully !! :-)", Toast.LENGTH_SHORT);
                         toast.show();

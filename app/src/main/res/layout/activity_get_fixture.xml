@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginVertical="24dp"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="8dp"
         android:id="@+id/get_fixture_list"
         android:paddingHorizontal="4dp"
         android:background="@android:color/white"/>

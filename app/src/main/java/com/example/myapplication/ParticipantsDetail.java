@@ -7,12 +7,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -33,6 +37,7 @@ public class ParticipantsDetail extends AppCompatActivity {
 
     EditText pName, pEmail, pPhNo;
     Spinner spinnerBG;
+    long id;
 
     int flag=0, flag2 = 0, count1=0, count2=0;
 
@@ -170,6 +175,19 @@ public class ParticipantsDetail extends AppCompatActivity {
             }
         });
 
+        databaseParticipant.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                    id = dataSnapshot.getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -193,7 +211,7 @@ public class ParticipantsDetail extends AppCompatActivity {
 
                         participantUnivDetail = new ParticipantUniversity(participantFormItemClass.getParticipantUnivName(),participantFormItemClass.getParticipantUnivAddress(),participantFormItemClass.getParticipantUnivCity(),participantFormItemClass.getParticipantUnivState(), participantFormItemClass.getParticipantUnivPostalCode(), participantFormItemClass.getParticipantUnivPhNo(), participantFormItemClass.getParticipantUnivEmail(), participantFormItemClass.getParticipantUnivCoachName(), participantFormItemClass.getParticipantUnivCoachPhNo(), participantFormItemClass.getParticipantUnivCoachEmail(), aboutParticipant, participantFormItemClass.isPtransport(), participantFormItemClass.isPfood(), participantFormItemClass.isPlodging());
 
-                        databaseParticipant.child(participantUnivDetail.getParticipantUnivCoachPhNo()).setValue(participantUnivDetail);
+                        databaseParticipant.child(String.valueOf(id+1)).setValue(participantUnivDetail);
 
                         t.cancel();
                         t = Toast.makeText(getApplicationContext(), "Congratulations!! You have successfully Participated in this event", Toast.LENGTH_LONG);
@@ -203,7 +221,6 @@ public class ParticipantsDetail extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     public void removeItem(int position){

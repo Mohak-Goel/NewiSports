@@ -3,13 +3,13 @@ package com.example.myapplication;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class UploadResult extends AppCompatActivity {
 
-    EditText WinnerUniversity, FirstRunnerUp, SecondRunnerUp;
+    RecyclerView resultList;
     Button uploadResult;
 
     @Override
@@ -29,10 +29,8 @@ public class UploadResult extends AppCompatActivity {
     }
 
     private void extractView(){
-        WinnerUniversity = (EditText) findViewById(R.id.winner_university_name);
-        FirstRunnerUp = (EditText) findViewById(R.id.first_runner_up_university_name);
-        SecondRunnerUp = (EditText) findViewById(R.id.second_runner_up_university_name);
         uploadResult = (Button) findViewById(R.id.upload_result_button);
+        resultList = (RecyclerView) findViewById(R.id.result_list);
     }
 
 }

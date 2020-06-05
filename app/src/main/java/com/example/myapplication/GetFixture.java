@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,11 +40,14 @@ public class GetFixture extends AppCompatActivity {
         getFixtureList.setAdapter(mAdapter);
         fixtureDatabase = FirebaseDatabase.getInstance().getReference("Fixture Details");
 
+        Toast.makeText(getApplicationContext(), "Please Wait for few Seconds while we fetch data. :-)", Toast.LENGTH_LONG).show();
+
         fixtureDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot fixtureSnapshot: dataSnapshot.getChildren()){
-                    FixtureDetail fixtureDetail = fixtureSnapshot.getValue(FixtureDetail.class);
+                    FixtureDetail fixtureDetail =fixtureSnapshot.getValue(FixtureDetail.class);
+                    assert fixtureDetail != null;
                     fixtureDetailList.add(new FixtureDetail(fixtureDetail.getParticipant1(), fixtureDetail.getParticipant2(), fixtureDetail.getFixtureDate(), fixtureDetail.getFixtureTime()));
                     mAdapter.notifyItemInserted(fixtureDetailList.size()-1);
                 }
