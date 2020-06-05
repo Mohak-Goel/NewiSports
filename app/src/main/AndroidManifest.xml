@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".HomePage"></activity>
         <activity
             android:name=".GetFixture"
             android:label="Fixture List" />
@@ -25,7 +26,6 @@
         <activity android:name=".UploadNotice" />
         <activity android:name=".Notice" />
         <activity android:name=".RaiseQuery" />
-        <activity android:name=".MyEvents" />
         <activity android:name=".MyAccount" />
         <activity android:name=".Forgotpass" />
         <activity
@@ -52,7 +52,6 @@
         <activity
             android:name=".ParticipantsDetail"
             android:label="Fill Participant Detail" />
-        <activity android:name=".HomePage" />
     </application>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
