@@ -50,7 +50,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        navigationView.setCheckedItem(R.id.nav_home);
     }
 
     @Override
@@ -68,9 +68,16 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
+
             case R.id.nav_home:
                 break;
+
+            case R.id.nav_account:
+                startActivity(new Intent(HomePage.this, MyAccount.class));
+                break;
+
         }
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 }
