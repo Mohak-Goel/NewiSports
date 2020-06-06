@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UploadFixture"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#E0E0E0">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="vertical"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="8dp"
+            android:text="Participant University"
+            android:textColor="@android:color/holo_green_dark" />
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter University Name, City, Pin Code"
+            android:layout_marginBottom="8dp"
+            android:verticalScrollbarPosition="right"
+            android:isScrollContainer="true"
+            android:completionThreshold="1"
+            android:background="@drawable/spinner_background"
+            android:id="@+id/participant_university_1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="VS"
+            android:textStyle="italic|bold"
+            android:fontFamily="cursive"
+            android:textSize="18dp"
+            android:textColor="@android:color/holo_orange_dark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="8dp"
+            android:text="Participant University"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter University Name, City, Pin Code"
+            android:layout_marginBottom="8dp"
+            android:verticalScrollbarPosition="right"
+            android:isScrollContainer="true"
+            android:completionThreshold="1"
+            android:background="@drawable/spinner_background"
+            android:id="@+id/participant_university_2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="7dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Date"
+                    android:textColor="@android:color/holo_green_dark"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="DD-MONTH-YYYY"
+                    android:inputType="date"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:importantForAutofill="no"
+                    android:layout_marginBottom="6dp"
+                    android:background="@drawable/editbackgound"
+                    android:id="@+id/fixturedate" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="7dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Start Time"
+                    android:textColor="@android:color/holo_green_dark"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="HH:MM AM/PM"
+                    android:inputType="time"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:importantForAutofill="no"
+                    android:layout_marginBottom="6dp"
+                    android:background="@drawable/editbackgound"
+                    android:id="@+id/fixturetime"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <Button
+                android:id="@+id/addFixtureButton"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/button_shape"
+                android:text="Add Fixture"
+                android:textColor="@color/common_google_signin_btn_text_light_default"/>
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/fixture_list"
+        android:paddingHorizontal="4dp"
+        android:scrollbars="vertical"
+        android:layout_marginTop="4dp"
+        android:background="@color/cardview_light_background"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="UPLOAD FIXTURE"
+        android:textSize="20sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="2dp"
+        android:id="@+id/submit_button_fixture"
+        android:textColor="@color/common_google_signin_btn_text_light_default"
+        android:background="@drawable/submit_button_style"/>
+
+</LinearLayout>
