@@ -63,18 +63,22 @@
                 android:inputType="textPersonName"
                 android:text=""
                 android:textColorHint="#CFCFCF" />
-            <EditText
-                android:id="@+id/state"
+
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
-                android:ems="10"
-                android:hint="Enter state"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textColorHint="#CFCFCF" />
+
+
+                android:textSize="20sp"
+                android:entries="@array/state_list"
+                android:background="@drawable/spinner_background"
+                android:id="@+id/university_state"/>
+
+
+
 
             <EditText
                 android:id="@+id/pincode"
