@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +10,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EventsHosted"></activity>
-        <activity android:name=".ParticipatedEvents" />
-        <activity android:name=".GetQuery" />
+        <activity android:name=".HomePageSecondActivity"></activity>
+        <activity
+            android:name=".HomePage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GetFixture"
+            android:label="Fixture List" />
+        <activity
+            android:name=".UploadFixture"
+            android:label="Fill Fixture Details"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UploadResult"
+            android:label="Fill Result Details" />
         <activity android:name=".Contact" />
         <activity android:name=".UploadNotice" />
         <activity android:name=".Notice" />
@@ -44,7 +55,8 @@
         <activity
             android:name=".ParticipantsDetail"
             android:label="Fill Participant Detail" />
-        <activity android:name=".HomePage" />
     </application>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
