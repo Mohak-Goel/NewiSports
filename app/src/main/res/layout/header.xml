@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:gravity="bottom"
-    android:background="#fcf876"
-    android:orientation="vertical"
-    android:padding="20dp">
-
-    <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:src="@drawable/profile_icon" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/user_s_name"
-        android:textSize="24sp" />
+        android:paddingTop="56dp"
+        android:text="iSports Managements System"
+        android:textSize="24dp"
+        android:textColor="@color/common_google_signin_btn_text_light_default" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/user_s_e_mail_address"
-        android:textSize="14sp" />
 
 </LinearLayout>

@@ -3,6 +3,8 @@ package com.example.myapplication;
 public class ParticipantItem {
     private String participantName, participantEmail, participantPhNo ,bloodGroup;
 
+    public ParticipantItem() {
+    }
 
     public ParticipantItem(String pName, String email, String phNo, String blg)
     {

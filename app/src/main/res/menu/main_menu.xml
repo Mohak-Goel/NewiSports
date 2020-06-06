@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="175dp">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:title="@string/my_account"
+        <item android:id="@+id/nav_home"
+            android:title="Home"
             android:icon="@drawable/home_icon"/>
         <item
-            android:id="@+id/nav_events"
-            android:title="@string/my_events"
-            android:icon="@drawable/events_list_icon"/>
+            android:id="@+id/nav_account"
+            android:title="@string/my_account"
+            android:icon="@drawable/get_query"/>
+        <item
+            android:id="@+id/nav_participatedevents"
+            android:title="Events Participated"
+            android:icon="@drawable/events_list_icon" />
+        <item
+            android:id="@+id/nav_hostedevents"
+            android:title="Events Hosted"
+            android:icon="@drawable/events_hosted_icon"/>
+        <item
+            android:id="@+id/nav_gquery"
+            android:title="Get Query"
+            android:icon="@drawable/ic_query"/>
+        <item
+            android:id="@+id/nav_notice"
+            android:title="Notice"
+            android:icon="@drawable/notice_icon"/>
+        <item
+            android:id="@+id/nav_unotice"
+            android:title="Upload Notice"
+            android:icon="@drawable/upload_notice_icon"/>
         <item
             android:id="@+id/nav_contact"
             android:title="@string/contact_us"

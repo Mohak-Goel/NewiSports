@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Forgotpass">
+    android:orientation="vertical"
+    tools:context=".UploadNotice">
 
     <EditText
-        android:id="@+id/etUserEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Email"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
-
+        android:hint="Write the notice here"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:id="@+id/uploadnoticetext"/>
     <Button
-        android:id="@+id/btnforgotpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send recovery email" />
+        android:text="UPLOAD NOTICE"
+        android:textSize="15dp"
+        android:layout_gravity="center"
+        android:id="@+id/unotice_button"/>
 
 </LinearLayout>

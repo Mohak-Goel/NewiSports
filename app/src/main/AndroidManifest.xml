@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
     <application
@@ -9,9 +10,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyEventsCreatedTotal"></activity>
-        <activity android:name=".MyEventsCreated" />
-        <activity android:name=".FetchDetails" />
+        <activity android:name=".HomePageSecondActivity"></activity>
+        <activity
+            android:name=".HomePage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GetFixture"
+            android:label="Fixture List" />
+        <activity
+            android:name=".UploadFixture"
+            android:label="Fill Fixture Details"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UploadResult"
+            android:label="Fill Result Details" />
+        <activity android:name=".Contact" />
+        <activity android:name=".UploadNotice" />
+        <activity android:name=".Notice" />
+        <activity android:name=".RaiseQuery" />
+        <activity android:name=".MyAccount" />
         <activity android:name=".Forgotpass" />
         <activity
             android:name=".ParticipationForm"
@@ -37,10 +55,7 @@
         <activity
             android:name=".ParticipantsDetail"
             android:label="Fill Participant Detail" />
-        <activity android:name=".HomePage" />
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 

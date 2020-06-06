@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,8 +28,10 @@ public class ParticipationForm extends AppCompatActivity {
     Button buttonReset;
     Toast t;
 
-    ArrayList<participantFormItem> participantFormItemArrayList;
-    int flag=0;
+    private long backPressedTime;
+
+    public static final String PARTICIPANT_UNIVERSITY_DETAIL = "com.example.myapplication.ParticipationForm";
+    int flag = 0, count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +116,7 @@ public class ParticipationForm extends AppCompatActivity {
 
                 int selectedId = radioGroupFood.getCheckedRadioButtonId();
                 radioButtonFood = (RadioButton)findViewById(selectedId);
+
                 boolean pfood = true;
                 if (radioButtonFood.getId()==R.id.food_radio_no)    pfood = false;
 
@@ -167,7 +169,7 @@ public class ParticipationForm extends AppCompatActivity {
                         error+= "Enter Coach Phone No.\n";
 
                     if (UnivCoachEmail.isEmpty())
-                        error+= "Enter University Email\n";
+                        error+= "Enter Coach Email\n";
 
                     error+= ":-( :-( :-(";
 
@@ -216,11 +218,23 @@ public class ParticipationForm extends AppCompatActivity {
                 }
 
                 else {
+                    if (count==0) {
+                        t.cancel();
+                        t = Toast.makeText(getApplicationContext(), "Tap next button once again if you are sure that \nyou have entered the details correctly !!", Toast.LENGTH_LONG);
+                        t.show();
+                        count++;
+                    }
 
-                    participantFormItemArrayList.add(new participantFormItem(UnivName, UnivAddress, UnivCity, UnivState,
-                            UnivPostalCode, UnivPhNo, UnivEmail, UnivCoachName, UnivCoachPhNo, UnivCoachEmail, pTransport, pfood, pLodging));
-                    Intent i1 = new Intent(ParticipationForm.this, ParticipantsDetail.class);
-                    startActivity(i1);
+                    else {
+                        count=0;
+                        participantFormItem participantFormItemObj = new participantFormItem(UnivName, UnivAddress, UnivCity, UnivState,
+                                UnivPostalCode, UnivPhNo, UnivEmail, UnivCoachName, UnivCoachPhNo, UnivCoachEmail, pTransport, pfood, pLodging);
+
+
+                        Intent i1 = new Intent(ParticipationForm.this, ParticipantsDetail.class);
+                        i1.putExtra(PARTICIPANT_UNIVERSITY_DETAIL, participantFormItemObj);
+                        startActivity(i1);
+                    }
                 }
             }
         });
@@ -245,7 +259,6 @@ public class ParticipationForm extends AppCompatActivity {
         buttonNext = findViewById(R.id.participant_next_button);
         buttonReset = findViewById(R.id.reset_button);
 
-        participantFormItemArrayList = new ArrayList<>();
 
     }
 
@@ -291,4 +304,17 @@ public class ParticipationForm extends AppCompatActivity {
         return isValid;
     }
 
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 4000 > System.currentTimeMillis()) {
+            t.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            t.cancel();
+            t = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            t.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
 }

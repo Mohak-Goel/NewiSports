@@ -7,9 +7,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -22,11 +29,22 @@ public class ParticipantsDetail extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
 
     ArrayList<ParticipantItem> aboutParticipant;
-    Button addParticipantButton;
+
+    ParticipantUniversity participantUnivDetail;
+    participantFormItem participantFormItemClass;
+
+    Button addParticipantButton, submitButton;
+
     EditText pName, pEmail, pPhNo;
     Spinner spinnerBG;
-    int flag=0;
+    long id;
+
+    int flag=0, flag2 = 0, count1=0, count2=0;
+
     Toast t;
+    private long backPressedTime;
+
+    DatabaseReference databaseParticipant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +57,8 @@ public class ParticipantsDetail extends AppCompatActivity {
         pEmail = (EditText)findViewById(R.id.participant_email);
         pPhNo = (EditText)findViewById(R.id.participant_phoneNo);
         spinnerBG = (Spinner)findViewById(R.id.bloodGroupSpinner_1);
+        submitButton = (Button)findViewById(R.id.participant_detail_submit_button);
+        databaseParticipant = FirebaseDatabase.getInstance().getReference("Participant Details");
 
         participantList = findViewById(R.id.participantList);
         participantList.setHasFixedSize(true);
@@ -48,10 +68,13 @@ public class ParticipantsDetail extends AppCompatActivity {
         participantList.setLayoutManager(mLayoutManager);
         participantList.setAdapter(mAdapter);
 
+        participantFormItemClass = (participantFormItem) getIntent().getSerializableExtra("com.example.myapplication.ParticipationForm");
+
         if (aboutParticipant.size()==0) {
             aboutParticipant.add(new ParticipantItem("NO PARTICIPANT ADDED", "Kindly Add Participant!!", "NA", "NA"));
             mAdapter.notifyItemInserted(aboutParticipant.size()-1);
             flag = 1;
+            flag2=1;
             t = Toast.makeText(getApplicationContext(), "Kindly Add Participants!!", Toast.LENGTH_SHORT);
             t.show();
         }
@@ -67,6 +90,7 @@ public class ParticipantsDetail extends AppCompatActivity {
 
                 if (name.isEmpty() || phNo.isEmpty() || email.isEmpty() || spinnerBG.getSelectedItemPosition()==0){
 
+                    flag2=1;
                     String error = "";
                     if (name.isEmpty())
                         error = "Enter Participant Name\n";
@@ -85,12 +109,14 @@ public class ParticipantsDetail extends AppCompatActivity {
                 }
 
                 else if (!isValidMobile(phNo)){
+                    flag2=1;
                     t.cancel();
                     t = Toast.makeText(getApplicationContext(), "Invalid Participant Phone No.!!", Toast.LENGTH_LONG);
                     t.show();
                 }
 
                 else if(!isEmailValid(email)){
+                    flag2=1;
                     t.cancel();
                     t = Toast.makeText(getApplicationContext(), "Invalid Participant E-mail!!", Toast.LENGTH_LONG);
                     t.show();
@@ -104,7 +130,7 @@ public class ParticipantsDetail extends AppCompatActivity {
                             aboutParticipant.remove(0);
                             mAdapter.notifyItemRemoved(aboutParticipant.size()-1);
                         }
-
+                        flag2 = 0;
                         pName.setText("");
                         pEmail.setText("");
                         pPhNo.setText("");
@@ -125,7 +151,6 @@ public class ParticipantsDetail extends AppCompatActivity {
         mAdapter.setOnClickListener(new ParticipantsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-
             }
 
             @Override
@@ -138,9 +163,11 @@ public class ParticipantsDetail extends AppCompatActivity {
                     aboutParticipant.add(new ParticipantItem("NO PARTICIPANT ADDED", "Kindly Add Participant!!", "NA", "NA"));
                     mAdapter.notifyItemInserted(aboutParticipant.size() - 1);
                     flag = 1;
+                    flag2=1;
                 }
 
                 if (flag==1){
+                    flag2=1;
                     t.cancel();
                     t = Toast.makeText(getApplicationContext(), "Kindly Add Participants!!", Toast.LENGTH_SHORT);
                     t.show();
@@ -148,6 +175,52 @@ public class ParticipantsDetail extends AppCompatActivity {
             }
         });
 
+        databaseParticipant.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                    id = dataSnapshot.getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (aboutParticipant.size()==0||flag2==1) {
+                    t.cancel();
+                    t = Toast.makeText(getApplicationContext(), "Kindly Add Participants!!", Toast.LENGTH_SHORT);
+                    t.show();
+                }
+
+                else {
+
+                    if (count1==0) {
+                        t.cancel();
+                        t = Toast.makeText(getApplicationContext(), "Tap submit button once again if you are sure that \nyou have entered the details correctly !!", Toast.LENGTH_LONG);
+                        t.show();
+                        count1++;
+                    }
+                    else {
+                        count1=0;
+
+                        participantUnivDetail = new ParticipantUniversity(participantFormItemClass.getParticipantUnivName(),participantFormItemClass.getParticipantUnivAddress(),participantFormItemClass.getParticipantUnivCity(),participantFormItemClass.getParticipantUnivState(), participantFormItemClass.getParticipantUnivPostalCode(), participantFormItemClass.getParticipantUnivPhNo(), participantFormItemClass.getParticipantUnivEmail(), participantFormItemClass.getParticipantUnivCoachName(), participantFormItemClass.getParticipantUnivCoachPhNo(), participantFormItemClass.getParticipantUnivCoachEmail(), aboutParticipant, participantFormItemClass.isPtransport(), participantFormItemClass.isPfood(), participantFormItemClass.isPlodging());
+
+                        databaseParticipant.child(String.valueOf(id+1)).setValue(participantUnivDetail);
+
+                        t.cancel();
+                        t = Toast.makeText(getApplicationContext(), "Congratulations!! You have successfully Participated in this event", Toast.LENGTH_LONG);
+                        t.show();
+
+                    }
+                }
+            }
+        });
     }
 
     public void removeItem(int position){
@@ -184,5 +257,19 @@ public class ParticipantsDetail extends AppCompatActivity {
             isValid = true;
         }
         return isValid;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 4000 > System.currentTimeMillis()) {
+            t.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            t.cancel();
+            t = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            t.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 }

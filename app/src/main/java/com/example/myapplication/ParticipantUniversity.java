@@ -1,9 +1,8 @@
 package com.example.myapplication;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class participantFormItem implements Serializable {
+public class ParticipantUniversity {
 
     private String participantUnivName, participantUnivAddress, participantUnivCity, participantUnivState,
             participantUnivPostalCode, participantUnivPhNo, participantUnivEmail, participantUnivCoachName,
@@ -12,19 +11,6 @@ public class participantFormItem implements Serializable {
     private ArrayList<ParticipantItem> participantList;
 
     private boolean ptransport, pfood, plodging;
-
-    public participantFormItem
-            (String UnivName, String UnivAddress, String UnivCity, String UnivState,
-             String UnivPostalCode, String UnivPhNo, String UnivEmail, String UnivCoachName,
-             String UnivCoachPhNo, String UnivCoachEmail, boolean transport, boolean food, boolean lodging){
-
-        participantUnivName = UnivName; participantUnivAddress = UnivAddress;   participantUnivCity = UnivCity;
-        participantUnivState = UnivState;participantUnivPostalCode = UnivPostalCode;participantUnivPhNo = UnivPhNo;
-        participantUnivEmail = UnivEmail; participantUnivCoachName = UnivCoachName; participantUnivCoachPhNo = UnivCoachPhNo;
-        participantUnivCoachEmail = UnivCoachEmail; ptransport = transport; pfood = food; plodging = lodging;
-
-    }
-
 
     public String getParticipantUnivName() {
         return participantUnivName;
@@ -106,6 +92,14 @@ public class participantFormItem implements Serializable {
         this.participantUnivCoachEmail = participantUnivCoachEmail;
     }
 
+    public ArrayList<ParticipantItem> getParticipantList() {
+        return participantList;
+    }
+
+    public void setParticipantList(ArrayList<ParticipantItem> participantList) {
+        this.participantList = participantList;
+    }
+
     public boolean isPtransport() {
         return ptransport;
     }
@@ -130,12 +124,23 @@ public class participantFormItem implements Serializable {
         this.plodging = plodging;
     }
 
-    public ArrayList<ParticipantItem> getParticipantList() {
-        return participantList;
-    }
-
-    public void setParticipantList(ArrayList<ParticipantItem> participantList) {
+    public ParticipantUniversity(String participantUnivName, String participantUnivAddress, String participantUnivCity, String participantUnivState, String participantUnivPostalCode, String participantUnivPhNo, String participantUnivEmail, String participantUnivCoachName, String participantUnivCoachPhNo, String participantUnivCoachEmail, ArrayList<ParticipantItem> participantList, boolean ptransport, boolean pfood, boolean plodging) {
+        this.participantUnivName = participantUnivName;
+        this.participantUnivAddress = participantUnivAddress;
+        this.participantUnivCity = participantUnivCity;
+        this.participantUnivState = participantUnivState;
+        this.participantUnivPostalCode = participantUnivPostalCode;
+        this.participantUnivPhNo = participantUnivPhNo;
+        this.participantUnivEmail = participantUnivEmail;
+        this.participantUnivCoachName = participantUnivCoachName;
+        this.participantUnivCoachPhNo = participantUnivCoachPhNo;
+        this.participantUnivCoachEmail = participantUnivCoachEmail;
         this.participantList = participantList;
+        this.ptransport = ptransport;
+        this.pfood = pfood;
+        this.plodging = plodging;
     }
 
+    public ParticipantUniversity() {
+    }
 }
