@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_home"
+            android:title="Home"
+            android:icon="@drawable/home_icon"/>
         <item
             android:id="@+id/nav_account"
             android:title="@string/my_account"
-            android:icon="@drawable/home_icon"/>
+            android:icon="@drawable/get_query"/>
         <item
             android:id="@+id/nav_participatedevents"
             android:title="Events Participated"
@@ -16,7 +19,7 @@
         <item
             android:id="@+id/nav_gquery"
             android:title="Get Query"
-            android:icon="@drawable/get_query"/>
+            android:icon="@drawable/ic_query"/>
         <item
             android:id="@+id/nav_notice"
             android:title="Notice"

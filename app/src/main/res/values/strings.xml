@@ -33,20 +33,7 @@
         <item>O-</item>
         <item>Unknown</item>
     </string-array>
-    <string-array name="sportsGame">
-        <item>Select Sport</item>
-        <item>Cricket</item>
-        <item>Football</item>
-        <item>Tennis</item>
-        <item>Chess</item>
-        <item>Badminton</item>
-        <item>Hockey</item>
-        <item>Table Tennis</item>
-        <item>Shooting</item>
-        <item>Swimming</item>
-        <item>Wrestling</item>
-        <item>Boxing</item>
-    </string-array>
+
 
     <string-array name="state_list">
         <item>Select State</item>
