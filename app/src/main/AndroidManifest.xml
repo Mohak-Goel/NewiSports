@@ -33,7 +33,7 @@
         <activity android:name=".Forgotpass" />
         <activity
             android:name=".ParticipationForm"
-            android:label="Fill Participation Form" />
+            android:label="Fill Participation Form"/>
         <activity
             android:name=".Splash"
             android:theme="@style/hmStyle">

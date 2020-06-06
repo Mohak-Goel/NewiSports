@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,6 +45,8 @@ public class Register extends AppCompatActivity {
     private DatabaseReference dbref;
     FirebaseUser user;
     String uid;
+    Spinner UnivState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +55,7 @@ public class Register extends AppCompatActivity {
         E1=findViewById(R.id.Laddress);
         E2=findViewById(R.id.uname);
         E3=findViewById(R.id.city);
-        E4=findViewById(R.id.state);
+       // E4=findViewById(R.id.state);
         E5=findViewById(R.id.pno);
         E6=findViewById(R.id.pno2);
         E7=findViewById(R.id.usertype);
@@ -61,7 +64,8 @@ public class Register extends AppCompatActivity {
         Email=findViewById(R.id.Remail);
         Password=findViewById(R.id.Rpass);
         firebaseAuth=FirebaseAuth.getInstance();
-
+        UnivState = findViewById(R.id.university_state);
+        UnivState.setSelection(0);
 
 
 
@@ -114,7 +118,8 @@ public class Register extends AppCompatActivity {
             String st1 = E1.getText().toString().trim();
             String st2 = E2.getText().toString().trim();
             String st3 = E3.getText().toString().trim();
-            String st4 = E4.getText().toString().trim();
+         //   String st4 = E4.getText().toString().trim();
+            String st4  = UnivState.getSelectedItem().toString();
             String st5 = E5.getText().toString().trim();
             String st6 = E6.getText().toString().trim();
             String st7 = E7.getText().toString().trim();
