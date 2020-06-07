@@ -23,15 +23,17 @@
         android:layout_marginBottom="20dp"/>
 <RadioGroup
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/provideFood">
     <RadioButton
-        android:id="@+id/radioButton1"
+        android:id="@+id/food_yes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Yes" />
+        android:text="Yes"
+        android:checked="true"/>
     <RadioButton
-        android:id="@+id/radioButton2"
+        android:id="@+id/food_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No"
@@ -46,15 +48,17 @@
         android:layout_margin="10dp" />
         <RadioGroup
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/provideLodging">
     <RadioButton
-        android:id="@+id/radioButton3"
+        android:id="@+id/lodging_yes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Yes" />
+        android:text="Yes"
+        android:checked="true"/>
     <RadioButton
-        android:id="@+id/radioButton4"
+        android:id="@+id/lodging_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No"
@@ -69,15 +73,17 @@
         android:layout_margin="10dp" />
     <RadioGroup
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/provideTransport">
     <RadioButton
-        android:id="@+id/radioButton5"
+        android:id="@+id/transport_yes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Yes" />
+        android:text="Yes"
+        android:checked="true"/>
     <RadioButton
-        android:id="@+id/radioButton6"
+        android:id="@+id/transport_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -94,29 +100,57 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
-        android:id="@+id/editText6"
+        android:id="@+id/eventdescrip"
         android:hint="Enter Event Description"
         android:layout_margin="10dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Event Poster"
-        android:layout_margin="10dp"
-        android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Our Contact"
+            android:textSize="20dp"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ourContact"
+            android:layout_margin="10dp"
+            android:hint="Enter your institute's contact number"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Event Poster"
+            android:layout_margin="10dp"
+            android:textSize="20sp"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/pickImages"
+            android:id="@+id/btnChoose"
             android:text="Browse"/>
+
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp" />
 
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/url_text"/>
+
         <Button
-            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnUpload"
+            android:text="Upload"/>
+
+
+
+        <Button
+            android:id="@+id/create_Event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

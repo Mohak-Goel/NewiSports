@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MyEventsCreated">
+
+    <LinearLayout
+        android:layout_width="388dp"
+        android:layout_height="616dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Event Title"
+                android:textAlignment="center"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="50dp"
+                android:text="Event Poster"
+                android:textAlignment="center"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Description"
+                android:textAlignment="center"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="81dp"
+                android:padding="20dp"
+                android:text="Contact"
+                android:textAlignment="center"
+                android:textSize="20dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/get_participants"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_alignParentLeft="true"
+                android:text="Get Participants"
+                android:padding="2dp"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/get_fixture"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_alignParentRight="true"
+                android:text="Get Fixture"
+                android:padding="2dp"
+                android:layout_toRightOf="@+id/get_participants"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/upload_fixture"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_alignParentLeft="true"
+                android:text="Upload Fixture"
+                android:padding="2dp"
+                android:layout_below="@+id/get_participants"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/upload_result"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_alignParentRight="true"
+                android:text="Upload Result"
+                android:layout_below="@+id/get_participants"
+                android:layout_toRightOf="@+id/upload_fixture"
+                android:padding="2dp"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/get_result"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_alignParentLeft="true"
+                android:text="Get Result"
+                android:layout_below="@+id/upload_fixture"
+                android:textAlignment="center"
+                android:padding="2dp" />
+
+            <Button
+                android:id="@+id/raise_queries"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/upload_result"
+                android:layout_toRightOf="@+id/get_result"
+                android:text="Raise Queries"
+                android:textAlignment="center" />
+
+            </RelativeLayout>
+        </LinearLayout>
+</ScrollView>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:padding="10dp"
+        android:layout_margin="8dp"
+        android:text="FINISH"
+        android:textSize="25dp"
+        android:textAlignment="center" />
+</LinearLayout>
