@@ -1,11 +1,9 @@
 package com.example.myapplication;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,13 +37,13 @@ public class EventCreatedTotalAdapter extends FirebaseRecyclerAdapter<CreateEven
     @NonNull
     @Override
     public EventCreatedTotalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_page_event_card, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_event_created_card, parent, false);
         EventCreatedTotalViewHolder evctVH = new  EventCreatedTotalViewHolder(v, mListener);
         return evctVH;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull  EventCreatedTotalViewHolder holder, int position, @org.jetbrains.annotations.NotNull CreateEvent createEvent) {
+    public void onBindViewHolder(@NonNull  EventCreatedTotalViewHolder holder, int position, CreateEvent createEvent) {
 
         holder.eventTitle.setText(createEvent.getEventName());
         holder.eventTime.setText(createEvent.getChoose_Time());
