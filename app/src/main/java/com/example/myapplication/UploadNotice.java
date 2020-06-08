@@ -68,10 +68,12 @@ public class UploadNotice extends AppCompatActivity {
             user_details.put("UniversityName", st1);
             user_details.put("Notice", st2);
             ref.setValue(user_details);
+
         }
         else
         {
             Toast.makeText(this, "Please Enter All Details", Toast.LENGTH_LONG).show();
         }
+        startActivity(new Intent(UploadNotice.this, GetNotice.class));
     }
 }
