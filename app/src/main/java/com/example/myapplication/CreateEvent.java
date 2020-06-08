@@ -18,8 +18,6 @@ public class CreateEvent {
 
     public CreateEvent() {
     }
-    public CreateEvent() {
-    }
 
 
     public void setOurContact(String ourContact) {
