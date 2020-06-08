@@ -70,10 +70,11 @@ public class UploadNotice extends AppCompatActivity {
             ref.setValue(user_details);
 
         }
+
         else
         {
             Toast.makeText(this, "Please Enter All Details", Toast.LENGTH_LONG).show();
         }
-        startActivity(new Intent(UploadNotice.this, GetNotice.class));
+        startActivity(new Intent(UploadNotice.this, HomePage.class));
     }
 }

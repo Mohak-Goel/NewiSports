@@ -12,8 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -21,6 +26,9 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     NavigationView navigationView;
     Toolbar toolbar;
     Button createEvent;
+
+    private HomePageAdapter homePageAdapter;
+    private RecyclerView recyclerView;
 
 
 
@@ -33,6 +41,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
         createEvent = findViewById(R.id.create_event);
+        recyclerView = findViewById(R.id.home_page_event_list);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         setSupportActionBar(toolbar);
 
@@ -51,6 +61,23 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_home);
+
+        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Event Details");
+
+        FirebaseRecyclerOptions<CreateEvent> options = new FirebaseRecyclerOptions.Builder<CreateEvent>().setQuery(ref.orderByChild("food").equalTo(true), CreateEvent.class).build();
+
+        homePageAdapter = new HomePageAdapter(HomePage.this, options);
+
+        recyclerView.setAdapter(homePageAdapter);
+
+        homePageAdapter.setOnClickListener(new HomePageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -79,5 +106,17 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        homePageAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        homePageAdapter.stopListening();
     }
 }

@@ -1,10 +1,6 @@
 package com.example.myapplication;
 
-import android.widget.RadioGroup;
-
-import java.io.Serializable;
-
-public class CreateEvent implements Serializable {
+public class CreateEvent {
 
     String EventName;
     String FieldName;
@@ -14,14 +10,13 @@ public class CreateEvent implements Serializable {
     String chooseTime;
     String etDate;
     String EventDescription;
-    String mImageUrl;
     String urlLink;
     String OurContact;
     boolean food;
     boolean lodging;
     boolean transport;
 
-    public CreateEvent(String eventName, String fieldName, String cityName, String postalCode, String sportsName, String chooseTime, String etDate, RadioGroup food, RadioGroup lodging, RadioGroup transport, String eventdescrip, String ourContact, String imageURL) {
+    public CreateEvent() {
     }
     public CreateEvent() {
     }
@@ -44,10 +39,6 @@ public class CreateEvent implements Serializable {
     }
 
 
-    public void setmImageUrl(String mImageUrl) {
-        this.mImageUrl = mImageUrl;
-    }
-
     public void setUrlLink(String urlLink) {
         this.urlLink = urlLink;
     }
@@ -56,9 +47,6 @@ public class CreateEvent implements Serializable {
         return EventName;
     }
 
-    public String getmImageUrl() {
-        return mImageUrl;
-    }
 
     public String getUrlLink() {
         return urlLink;
@@ -88,8 +76,8 @@ public class CreateEvent implements Serializable {
         return transport;
     }
 
-    public void setEvent_Name(String event_Name) {
-        EventName = event_Name;
+    public void setEventName(String EventName) {
+        this.EventName = EventName;
     }
 
     public void setField_Name(String field_Name) {
@@ -148,9 +136,9 @@ public class CreateEvent implements Serializable {
                        String eventdescrip,String ourContact,String imageURL) {
 
 
-        EventName = eventName;
         FieldName = fieldLocation;
         CityName = cityName;
+        EventName = eventName;
         PostalCode = postalCode;
         SportsName = sportsName;
         this.chooseTime = chooseTime;
