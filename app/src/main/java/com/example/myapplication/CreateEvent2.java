@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -80,7 +79,7 @@ public class CreateEvent2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event2);
-        mstorageRef = FirebaseStorage.getInstance().getReference("My Events");
+        mstorageRef = FirebaseStorage.getInstance().getReference("Event Details");
 
 
         EventName = findViewById(R.id.eventName);
@@ -239,24 +238,20 @@ public class CreateEvent2 extends AppCompatActivity {
 
     private void Fileuploader ()
     {
-        StorageReference Ref = mstorageRef.child(OurContact.getText().toString());
+        final StorageReference Ref = mstorageRef.child(String.valueOf(ev_details+1));
 
-        Ref.child(OurContact.getText().toString()).putFile(imguri)
+        Ref.putFile(imguri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Get a URL to the uploaded content
-                        //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                       //Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl();
-
-                        //if(downloadUri.isSuccessful()){
-                          //  generatedFilePath = downloadUri.getResult().toString();
-                           // System.out.println("## Stored path is "+generatedFilePath);
-                        //}
-                        Toast.makeText(CreateEvent2.this, "Image uploaded successfully!!!", Toast.LENGTH_SHORT).show();
-                        Task<Uri> downloadUrl=taskSnapshot.getMetadata().getReference().getDownloadUrl();
-                        String ImageURL=downloadUrl.toString();
-                        tvUrl.setText(ImageURL);
+                        Ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Toast.makeText(CreateEvent2.this, "Image uploaded successfully!!!", Toast.LENGTH_SHORT).show();
+                                String ImageURL= String.valueOf(uri);
+                                tvUrl.setText(ImageURL);
+                            }
+                        });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
