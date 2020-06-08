@@ -1,19 +1,16 @@
 package com.example.myapplication;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
 
 public class MyEventsCreatedTotal extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -24,7 +21,7 @@ public class MyEventsCreatedTotal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_events_created_total);
 
-        mRecyclerView=findViewById(R.id.recyclerView);
+        mRecyclerView=findViewById(R.id.my_event_created_list);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         FirebaseUser user_id= FirebaseAuth.getInstance().getCurrentUser();
@@ -44,5 +41,18 @@ public class MyEventsCreatedTotal extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mAdapter.stopListening();
     }
 }
