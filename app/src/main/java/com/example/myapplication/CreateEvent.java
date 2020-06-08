@@ -23,6 +23,8 @@ public class CreateEvent implements Serializable {
 
     public CreateEvent(String eventName, String fieldName, String cityName, String postalCode, String sportsName, String chooseTime, String etDate, RadioGroup food, RadioGroup lodging, RadioGroup transport, String eventdescrip, String ourContact, String imageURL) {
     }
+    public CreateEvent() {
+    }
 
 
     public void setOurContact(String ourContact) {
