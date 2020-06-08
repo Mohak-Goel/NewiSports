@@ -55,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Participate now"
+            android:id="@+id/home_page_participate_button"
             android:background="@android:color/holo_green_light"
             android:layout_marginHorizontal="20dp"
             android:layout_below="@id/home_page_event_time"

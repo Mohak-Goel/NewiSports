@@ -1,26 +1,12 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import android.Manifest;
-import android.app.Dialog;
-import android.content.ClipData;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -28,30 +14,22 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.annotations.Nullable;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CreateEvent2 extends AppCompatActivity {
 
@@ -78,7 +56,11 @@ public class CreateEvent2 extends AppCompatActivity {
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
-
+    DatabaseReference reference2;
+    FirebaseUser user_id;
+    String uid_user;
+    long id_user;
+    long ev_details;
 
     RadioGroup Food, Lodging, Transport;
     RadioButton ProvideTransport, ProvideFood, ProvideLodging;
@@ -120,6 +102,12 @@ public class CreateEvent2 extends AppCompatActivity {
         buttonCreate = findViewById(R.id.create_Event);
         createEvent1Form = (CreateEvent1Form) getIntent().getSerializableExtra("CreateEvent1 Data");
 
+
+        user_id= FirebaseAuth.getInstance().getCurrentUser();
+        assert user_id != null;
+        uid_user=user_id.getUid();
+        reference= FirebaseDatabase.getInstance().getReference().child("My Events Created").child(uid_user);
+        reference2=FirebaseDatabase.getInstance().getReference().child("Event Details");
         //mstorageRef = FirebaseStorage.getInstance().getReference("Event Created");
         //mdatabaseRef = FirebaseDatabase.getInstance().getReference("Event Created");
 
@@ -168,13 +156,38 @@ public class CreateEvent2 extends AppCompatActivity {
         //}
         //}
         //});
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                    id_user = dataSnapshot.getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        reference2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                    ev_details = dataSnapshot.getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("My Events");
+             //   rootNode = FirebaseDatabase.getInstance();
+             //   reference = rootNode.getReference("My Events");
 
                 int select = Food.getCheckedRadioButtonId();
                 ProvideFood = (RadioButton) findViewById(select);
@@ -194,7 +207,8 @@ public class CreateEvent2 extends AppCompatActivity {
                 createEvent = new CreateEvent(createEvent1Form.getEventName(), createEvent1Form.getFieldName(), createEvent1Form.getCityName(),
                         createEvent1Form.getPostalCode(), createEvent1Form.getSportsName(), createEvent1Form.getChooseTime(), createEvent1Form.getEtDate(),
                         food, lodging, transport, EventDescription.getText().toString(), OurContact.getText().toString(),tvUrl.getText().toString());
-                reference.child(createEvent.OurContact).setValue(createEvent);
+                reference.child(String.valueOf(id_user+1)).setValue(createEvent);
+                reference2.child(String.valueOf(ev_details+1)).setValue(createEvent);
                 //uploadFile();
 
             }
