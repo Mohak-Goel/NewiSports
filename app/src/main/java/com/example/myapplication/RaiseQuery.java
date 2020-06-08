@@ -2,59 +2,36 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.Toast;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class RaiseQuery extends AppCompatActivity {
-
-    EditText rquery;
-    Button raisequerybutton;
-    DatabaseReference reference;
-
+    EditText E1,E2,E3;
+    Button send;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_raise_query);
-
-        reference = FirebaseDatabase.getInstance().getReference("Query Details");
-
-        rquery = (EditText)findViewById(R.id.rquery);
-        raisequerybutton=(Button)findViewById(R.id.raisequerybutton);
-
-        raisequerybutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              addQuery();
-            }
-        });
+        E1=findViewById(R.id.e1);
+        E2=findViewById(R.id.e2);
+        E3=findViewById(R.id.e3);
+        send=findViewById(R.id.b1);
     }
 
-    private void addQuery()
+    public void sendgmail(View v)
     {
-        String text = rquery.getText().toString().trim();
+        String to=E1.getText().toString();
+        String subject=E2.getText().toString();
+        String message=E3.getText().toString();
+        Intent mailIntent=new Intent(Intent.ACTION_SEND);
+        mailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{to});
+        mailIntent.putExtra(Intent.EXTRA_SUBJECT,subject);
+        mailIntent.putExtra(Intent.EXTRA_TEXT,message);
+        mailIntent.setType("message/plain");
+        startActivity(Intent.createChooser(mailIntent,"chose the mail clint"));
 
-        if(!TextUtils.isEmpty(text)){
-          String id = reference.push().getKey();
-
-          Query query = new Query(id, text);
-
-          reference.child(id).setValue(query);
-          Toast.makeText(this,"Raised Query Successfully",Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(this, "Please enter a query",Toast.LENGTH_SHORT).show();
-        }
     }
 }

@@ -22,7 +22,6 @@ public class Splash extends AppCompatActivity {
             }
         },SPLASH_TIME_OUT);
 
-
         setContentView(R.layout.activity_splash);
     }
 }
