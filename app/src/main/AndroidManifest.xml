@@ -26,8 +26,10 @@
             android:name=".UploadResult"
             android:label="Fill Result Details" />
         <activity android:name=".Contact" />
-        <activity android:name=".UploadNotice" />
-        <activity android:name=".Notice" />
+        <activity android:name=".UploadNotice"
+            android:label="Upload Notice"/>
+        <activity android:name=".GetNotice"
+            android:label="Notice"/>
         <activity android:name=".RaiseQuery" />
         <activity android:name=".MyAccount" />
         <activity android:name=".Forgotpass" />
