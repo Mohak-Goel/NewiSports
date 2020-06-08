@@ -177,6 +177,7 @@ public class ParticipantsDetail extends AppCompatActivity {
 
         databaseParticipant.addValueEventListener(new ValueEventListener() {
             @Override
+
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                     id = dataSnapshot.getChildrenCount();
