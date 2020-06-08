@@ -30,7 +30,8 @@
             android:label="Upload Notice"/>
         <activity android:name=".GetNotice"
             android:label="Notice"/>
-        <activity android:name=".RaiseQuery" />
+        <activity android:name=".RaiseQuery"
+            android:label="Mail Your Query To Host"/>
         <activity android:name=".MyAccount" />
         <activity android:name=".Forgotpass" />
         <activity
