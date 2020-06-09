@@ -26,6 +26,7 @@ public class MyAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
+        Toast.makeText(MyAccount.this, "Please Wait...", Toast.LENGTH_LONG).show();
         un=findViewById(R.id.univdisp);
         Laddr=findViewById(R.id.Laddrdisp);
         cityad=findViewById(R.id.citydisp);
