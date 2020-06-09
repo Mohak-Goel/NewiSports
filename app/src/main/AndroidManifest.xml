@@ -43,6 +43,9 @@
         <activity
             android:name=".ParticipationForm"
             android:label="Fill Participation Form" />
+
+        <activity android:name=".EventsParticipatedTotal"/>
+
         <activity
             android:name=".Splash"
             android:theme="@style/hmStyle">
