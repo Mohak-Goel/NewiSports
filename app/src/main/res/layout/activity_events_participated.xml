@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EventsParticipated">
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Event Title"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="50dp"
+                    android:text="Event Poster"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:layout_marginBottom="200dp"
+                    android:text="Description"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+
+                    <Button
+                        android:id="@+id/participants_list"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:text="Get Participants"
+                        android:padding="2dp"
+                        android:textAlignment="center" />
+
+
+
+                    <Button
+                        android:id="@+id/fixture_details"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_toRightOf="@id/participants_list"
+                        android:layout_alignParentRight="true"
+                        android:text="Get Fixture"
+                        android:textAlignment="center"
+                        android:padding="2dp" />
+
+                    <Button
+                        android:id="@+id/result_published"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_alignParentLeft="true"
+                        android:text="Get Result"
+                        android:layout_below="@id/participants_list"
+                        android:padding="2dp"
+                        android:textAlignment="center"/>
+
+                    <Button
+                        android:id="@+id/any_queries"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:padding="2dp"
+                        android:layout_below="@id/participants_list"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@id/participants_list"
+                        android:text="Raise Queries"
+                        android:textAlignment="center" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>

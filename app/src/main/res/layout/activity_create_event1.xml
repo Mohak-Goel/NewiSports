@@ -5,92 +5,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="2dp"
     android:orientation="vertical"
     tools:context=".CreateEvent1">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/cardview_shadow_start_color"
+        android:padding="30dp"
         android:layout_gravity="center"
-        android:layout_margin="24dp">
+        android:layout_margin="2dp">
 
 
        <TextView
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"
+           android:layout_height="match_parent"
            android:text="Event Title"
-           android:layout_margin="10dp"
-           android:textSize="25dp" />
+           android:padding="8dp"
+           android:textSize="20dp" />
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="match_parent"
             android:id="@+id/eventName"
+            android:layout_marginBottom="10dp"
             android:hint="Enter name of the event" />
 
        <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
            android:id="@+id/tv_date"
            android:text="Event Starting Date"
-           android:layout_margin="10dp"
-           android:textSize="25dp"/>
+           android:padding="8dp"
+           android:textSize="20dp"/>
 
         <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/et_date"
             android:hint="dd/mm/yyyy"
             android:focusable="false"
             android:clickable="true"
-            android:layout_margin="10dp"
-            android:textSize="20sp" />
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="Event Reporting Time"
-            android:layout_margin="10dp"
-            android:textSize="25dp"/>
+            android:padding="8dp"
+            android:textSize="20dp"/>
 
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/etChooseTime"
             android:focusable="false"
             android:clickable="true"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
             android:hint="HH:MM:AM/PM"
-            android:textSize="20sp" />
+            android:textSize="20dp" />
 
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="Location"
-        android:textSize="25dp"
-        android:layout_margin="10dp" />
+        android:textSize="20dp"
+        android:padding="8dp" />
 
     <EditText
         android:id="@+id/fieldLoc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_height="match_parent"
         android:hint="Enter Event Location"
         android:layout_margin="10dp"
         android:inputType="textPostalAddress" />
+
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/cityName"
             android:hint="Enter Event City Name"
             android:layout_margin="10dp" />
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:hint="Enter Postal Code"
             android:id="@+id/postalCode"
@@ -99,23 +103,24 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="Sports Name"
-        android:textSize="25dp"
-        android:layout_margin="10dp" />
+        android:textSize="20dp"
+        android:padding="8dp" />
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:hint="Enter the name of sports here"
             android:id="@+id/sportsName"
-            android:layout_margin="10dp"/>
+            android:layout_marginBottom="10dp"/>
 
 
     <Button
         android:id="@+id/clickNext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/submit_button_style"
         android:text="Next"
         android:layout_margin="24dp" />
 
