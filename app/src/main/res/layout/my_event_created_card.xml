@@ -15,52 +15,42 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
-            android:id="@+id/home_page_event_poster" />
+            android:id="@+id/event_created_poster" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/home_page_event_poster"
+            android:layout_below="@id/event_created_poster"
             android:text="Event Title"
             android:textColor="@android:color/black"
             android:gravity="center_horizontal"
             android:textSize="20dp"
             android:paddingVertical="2dp"
             android:paddingHorizontal="4dp"
-            android:id="@+id/home_page_event_title"/>
+            android:id="@+id/event_created_title"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/home_page_event_title"
+            android:layout_below="@id/event_created_title"
             android:text="dd-mmm-yyyy"
             android:textColor="@android:color/holo_red_light"
             android:textSize="16dp"
             android:paddingLeft="12dp"
             android:paddingBottom="2dp"
-            android:id="@+id/home_page_event_date"/>
+            android:id="@+id/event_created_date"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/home_page_event_title"
+            android:layout_below="@id/event_created_title"
             android:layout_alignParentRight="true"
             android:text="hh:mm am/pm"
             android:paddingRight="12dp"
             android:textColor="@android:color/holo_red_light"
             android:textSize="16dp"
-            android:id="@+id/home_page_event_time"/>
+            android:id="@+id/event_created_time"/>
 
-        <Button
-            android:id="@+id/home_page_participate_button"
-            android:layout_width="368dp"
-            android:layout_height="31dp"
-            android:layout_below="@id/home_page_event_time"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_shape"
-            android:text="Participate now" />
 
 
     </RelativeLayout>

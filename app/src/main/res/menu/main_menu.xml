@@ -16,10 +16,7 @@
             android:id="@+id/nav_hostedevents"
             android:title="Events Hosted"
             android:icon="@drawable/events_hosted_icon"/>
-        <item
-            android:id="@+id/nav_gquery"
-            android:title="Get Query"
-            android:icon="@drawable/ic_query"/>
+
         <item
             android:id="@+id/nav_notice"
             android:title="Notice"
