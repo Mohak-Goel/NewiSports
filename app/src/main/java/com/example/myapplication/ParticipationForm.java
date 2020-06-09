@@ -57,7 +57,7 @@ public class ParticipationForm extends AppCompatActivity {
 
         extractView();
 
-        final String id = (String)getIntent().getStringExtra("Event Detail Key");
+        final String id = (String)getIntent().getStringExtra("Event Detail Key").trim();
 
         t = Toast.makeText(getApplicationContext(), "Kindly Fill Participation Form", Toast.LENGTH_SHORT);
         t.show();
@@ -106,7 +106,7 @@ public class ParticipationForm extends AppCompatActivity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String  UnivCoachName = participantUnivCoachName.getText().toString(),
+                final String  UnivCoachName = participantUnivCoachName.getText().toString(),
                         UnivCoachPhNo = participantUnivCoachPhNo.getText().toString(),
                         UnivCoachEmail = participantUnivCoachEmail.getText().toString();
 
@@ -184,24 +184,28 @@ public class ParticipationForm extends AppCompatActivity {
 
                     else {
                         count=0;
-                        final String[] uname = new String[1];
-                        final String[] address = new String[1];
-                        final String[] email = new String[1];
-                        final String[] state = new String[1];
-                        final String[] pincode = new String[1];
-                        final String[] city = new String[1];
-                        final String[] phno = new String[1];
+                        final boolean transport=pTransport, food=pfood, lodging=pLodging;
                         firebaseDatabase.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 try {
-                                    uname[0] = Objects.requireNonNull(dataSnapshot.child("UniversityName").getValue()).toString();
-                                    address[0] = Objects.requireNonNull(dataSnapshot.child("LocalAddress").getValue()).toString();
-                                    city[0] = Objects.requireNonNull(dataSnapshot.child("City").getValue()).toString();
-                                    state[0] = Objects.requireNonNull(dataSnapshot.child("State").getValue()).toString();
-                                    pincode[0] = Objects.requireNonNull(dataSnapshot.child("PinCode").getValue()).toString();
-                                    phno[0] = Objects.requireNonNull(dataSnapshot.child("PhoneNumber").getValue()).toString();
-                                    email[0] = Objects.requireNonNull(dataSnapshot.child("EmailAddress").getValue()).toString();
+
+                                    participantFormItem participantFormItemObj =new participantFormItem(Objects.requireNonNull(dataSnapshot.child("UniversityName").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("LocalAddress").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("City").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("State").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("PinCode").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("PhoneNumber").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("EmailAddress").getValue()).toString().trim()
+                                    , UnivCoachName, UnivCoachPhNo, UnivCoachEmail, transport, food, lodging, id);
+
+                                    t=Toast.makeText(ParticipationForm.this, participantFormItemObj.getEid(), Toast.LENGTH_LONG);
+                                    t.show();
+
+                                    Intent i1 = new Intent(ParticipationForm.this, ParticipantsDetail.class);
+                                    i1.putExtra(PARTICIPANT_UNIVERSITY_DETAIL, participantFormItemObj);
+                                    startActivity(i1);
+
                                 }catch (Exception e){
                                     t.cancel();
                                     t=Toast.makeText(ParticipationForm.this, "Something went wrong", Toast.LENGTH_LONG);
@@ -215,12 +219,8 @@ public class ParticipationForm extends AppCompatActivity {
                             }
                         });
 
-                        participantFormItem participantFormItemObj = new participantFormItem(uname[0], address[0], city[0], state[0], pincode[0], phno[0], email[0], UnivCoachName,UnivCoachPhNo, UnivCoachEmail, pTransport, pfood, pLodging, id);
 
 
-                        Intent i1 = new Intent(ParticipationForm.this, ParticipantsDetail.class);
-                        i1.putExtra(PARTICIPANT_UNIVERSITY_DETAIL, participantFormItemObj);
-                        startActivity(i1);
                     }
                 }
             }
