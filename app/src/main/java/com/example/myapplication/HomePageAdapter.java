@@ -16,15 +16,19 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class HomePageAdapter extends FirebaseRecyclerAdapter<CreateEvent, HomePageAdapter.homePageViewHolder> {
 
     private OnItemClickListener mListener;
+    private ArrayList<CreateEvent> eventArrayList;
     private Context context;
 
     public HomePageAdapter (Context context, FirebaseRecyclerOptions<CreateEvent> options){
 
         super(options);
         this.context = context;
+        eventArrayList = new ArrayList<>();
 
     }
 
@@ -45,7 +49,7 @@ public class HomePageAdapter extends FirebaseRecyclerAdapter<CreateEvent, HomePa
     }
 
     @Override
-    public void onBindViewHolder(@NonNull homePageViewHolder holder, int position, @org.jetbrains.annotations.NotNull CreateEvent createEvent) {
+    public void onBindViewHolder(@NonNull homePageViewHolder holder, final int position, @org.jetbrains.annotations.NotNull final CreateEvent createEvent) {
 
         holder.eventTitle.setText(createEvent.getEventName()+", "+ createEvent.getCity_Name());
         holder.eventTime.setText(createEvent.getChoose_Time());
@@ -53,12 +57,17 @@ public class HomePageAdapter extends FirebaseRecyclerAdapter<CreateEvent, HomePa
 
         Picasso.with(context).load(createEvent.getUrlLink()).into(holder.eventPoster);
 
+        eventArrayList.add(new CreateEvent(createEvent.getEventName(), createEvent.getField_Name(), createEvent.getCity_Name(), createEvent.getPostal_Code(), createEvent.getSports_Name(), createEvent.getChoose_Time(), createEvent.getEt_Date(), createEvent.isFood(), createEvent.isLodging(), createEvent.isTransport(), createEvent.getEventDescription(), createEvent.getOurContact(), createEvent.getUrlLink()));
+
         holder.participateNowButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, ParticipationForm.class);
+                Intent intent = new Intent(context, HomeEventDetail.class);
+
+                intent.putExtra("event detail", eventArrayList.get(position));
+
                 context.startActivity(intent);
 
             }

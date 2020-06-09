@@ -64,7 +64,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Event Details");
 
-        FirebaseRecyclerOptions<CreateEvent> options = new FirebaseRecyclerOptions.Builder<CreateEvent>().setQuery(ref.orderByChild("food").equalTo(true), CreateEvent.class).build();
+        FirebaseRecyclerOptions<CreateEvent> options = new FirebaseRecyclerOptions.Builder<CreateEvent>().setQuery(ref, CreateEvent.class).build();
 
         homePageAdapter = new HomePageAdapter(HomePage.this, options);
 
