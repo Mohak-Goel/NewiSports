@@ -6,7 +6,7 @@ public class ParticipantUniversity {
 
     private String participantUnivName, participantUnivAddress, participantUnivCity, participantUnivState,
             participantUnivPostalCode, participantUnivPhNo, participantUnivEmail, participantUnivCoachName,
-            participantUnivCoachPhNo, participantUnivCoachEmail;
+            participantUnivCoachPhNo, participantUnivCoachEmail, eventid;
 
     private ArrayList<ParticipantItem> participantList;
 
@@ -124,7 +124,7 @@ public class ParticipantUniversity {
         this.plodging = plodging;
     }
 
-    public ParticipantUniversity(String participantUnivName, String participantUnivAddress, String participantUnivCity, String participantUnivState, String participantUnivPostalCode, String participantUnivPhNo, String participantUnivEmail, String participantUnivCoachName, String participantUnivCoachPhNo, String participantUnivCoachEmail, ArrayList<ParticipantItem> participantList, boolean ptransport, boolean pfood, boolean plodging) {
+    public ParticipantUniversity(String participantUnivName, String participantUnivAddress, String participantUnivCity, String participantUnivState, String participantUnivPostalCode, String participantUnivPhNo, String participantUnivEmail, String participantUnivCoachName, String participantUnivCoachPhNo, String participantUnivCoachEmail, boolean plodging, ArrayList<ParticipantItem> participantList, boolean ptransport, boolean pfood, String eventid) {
         this.participantUnivName = participantUnivName;
         this.participantUnivAddress = participantUnivAddress;
         this.participantUnivCity = participantUnivCity;
@@ -139,8 +139,17 @@ public class ParticipantUniversity {
         this.ptransport = ptransport;
         this.pfood = pfood;
         this.plodging = plodging;
+        this.eventid = eventid;
     }
 
     public ParticipantUniversity() {
+    }
+
+    public String getEventid() {
+        return eventid;
+    }
+
+    public void setEventid(String eventid) {
+        this.eventid = eventid;
     }
 }

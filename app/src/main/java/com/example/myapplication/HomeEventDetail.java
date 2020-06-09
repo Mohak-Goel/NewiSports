@@ -8,8 +8,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class HomeEventDetail extends AppCompatActivity {
@@ -31,18 +37,35 @@ public class HomeEventDetail extends AppCompatActivity {
         eventVenue=findViewById(R.id.event_venue);
         participate = findViewById(R.id.event_participation_button);
 
-        CreateEvent createEvent = (CreateEvent) getIntent().getSerializableExtra("event detail");
+        final CreateEvent createEvent = (CreateEvent) getIntent().getSerializableExtra("event detail");
 
         Picasso.with(this).load(createEvent.getUrlLink()).into(eventPoster);
         eventTitle.setText(createEvent.getEventName());
         eventDescription.setText(createEvent.getEventDescription());
-        eventLocation.setText(createEvent.getField_Name()+", "+createEvent.getCity_Name()+", "+createEvent.getPostal_Code());
-        eventVenue.setText(createEvent.getEt_Date()+"\t"+createEvent.getChoose_Time());
+        eventLocation.setText("Location : "+createEvent.getField_Name()+", "+createEvent.getCity_Name()+", "+createEvent.getPostal_Code());
+        eventVenue.setText("Venue : "+createEvent.getEt_Date()+"    "+createEvent.getChoose_Time());
+
 
         participate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeEventDetail.this, ParticipationForm.class));
+
+                final Intent intent = new Intent(HomeEventDetail.this, ParticipationForm.class);
+
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Event Details");
+
+                ref.orderByChild("ourContact").equalTo(createEvent.getOurContact()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        intent.putExtra("Event Detail Key", dataSnapshot.getKey());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                startActivity(intent);
             }
         });
 
