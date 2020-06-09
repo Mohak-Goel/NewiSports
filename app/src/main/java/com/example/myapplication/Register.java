@@ -51,6 +51,7 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Toast.makeText(Register.this, "Please Wait...", Toast.LENGTH_LONG).show();
 
         E1=findViewById(R.id.Laddress);
         E2=findViewById(R.id.uname);

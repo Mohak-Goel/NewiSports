@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RaiseQuery extends AppCompatActivity {
     EditText E1,E2,E3;
@@ -15,6 +16,7 @@ public class RaiseQuery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_raise_query);
+        Toast.makeText(RaiseQuery.this, "Please Wait...", Toast.LENGTH_LONG).show();
         E1=findViewById(R.id.e1);
         E2=findViewById(R.id.e2);
         E3=findViewById(R.id.e3);

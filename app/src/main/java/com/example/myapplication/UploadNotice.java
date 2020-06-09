@@ -51,6 +51,7 @@ public class UploadNotice extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_notice);
+        Toast.makeText(UploadNotice.this, "Please Wait...", Toast.LENGTH_LONG).show();
         E1 = findViewById(R.id.e1);
         E2 = findViewById(R.id.e2);
         firebaseAuth = FirebaseAuth.getInstance();

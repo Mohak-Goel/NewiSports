@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(new Intent(MainActivity.this, HomePage.class));
                                 finish();
                             } else {
-                                Toast.makeText(MainActivity.this, "Sign in error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Sign in error", Toast.LENGTH_LONG).show();
                             }
                         }
                     });
