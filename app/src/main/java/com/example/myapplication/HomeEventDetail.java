@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 public class HomeEventDetail extends AppCompatActivity {
 
     ImageView eventPoster;
@@ -50,14 +52,18 @@ public class HomeEventDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final Intent intent = new Intent(HomeEventDetail.this, ParticipationForm.class);
-
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Event Details");
 
                 ref.orderByChild("ourContact").equalTo(createEvent.getOurContact()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        intent.putExtra("Event Detail Key", dataSnapshot.getKey());
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                            Intent intent = new Intent(HomeEventDetail.this, ParticipationForm.class);
+
+                            intent.putExtra("Event Detail Key", Objects.requireNonNull(childSnapshot.getKey()).trim());
+
+                            startActivity(intent);
+                        }
                     }
 
                     @Override
@@ -65,7 +71,6 @@ public class HomeEventDetail extends AppCompatActivity {
 
                     }
                 });
-                startActivity(intent);
             }
         });
 
