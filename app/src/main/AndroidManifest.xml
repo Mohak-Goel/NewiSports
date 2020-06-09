@@ -25,14 +25,16 @@
         <activity
             android:name=".UploadResult"
             android:label="Fill Result Details" />
-        <activity android:name=".Contact" />
+        <activity android:name=".Contact"
+            android:label="Technical Team"/>
         <activity android:name=".UploadNotice"
             android:label="Upload Notice"/>
         <activity android:name=".GetNotice"
             android:label="Notice"/>
         <activity android:name=".RaiseQuery"
             android:label="Mail Your Query To Host"/>
-        <activity android:name=".MyAccount" />
+        <activity android:name=".MyAccount"
+            android:label="My Account"/>
         <activity android:name=".Forgotpass" />
         <activity
             android:name=".ParticipationForm"
