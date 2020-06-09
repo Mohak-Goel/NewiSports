@@ -7,7 +7,7 @@ public class participantFormItem implements Serializable {
 
     private String participantUnivName, participantUnivAddress, participantUnivCity, participantUnivState,
             participantUnivPostalCode, participantUnivPhNo, participantUnivEmail, participantUnivCoachName,
-            participantUnivCoachPhNo, participantUnivCoachEmail;
+            participantUnivCoachPhNo, participantUnivCoachEmail, eid;
 
     private ArrayList<ParticipantItem> participantList;
 
@@ -16,12 +16,12 @@ public class participantFormItem implements Serializable {
     public participantFormItem
             (String UnivName, String UnivAddress, String UnivCity, String UnivState,
              String UnivPostalCode, String UnivPhNo, String UnivEmail, String UnivCoachName,
-             String UnivCoachPhNo, String UnivCoachEmail, boolean transport, boolean food, boolean lodging){
+             String UnivCoachPhNo, String UnivCoachEmail, boolean transport, boolean food, boolean lodging, String id){
 
         participantUnivName = UnivName; participantUnivAddress = UnivAddress;   participantUnivCity = UnivCity;
         participantUnivState = UnivState;participantUnivPostalCode = UnivPostalCode;participantUnivPhNo = UnivPhNo;
         participantUnivEmail = UnivEmail; participantUnivCoachName = UnivCoachName; participantUnivCoachPhNo = UnivCoachPhNo;
-        participantUnivCoachEmail = UnivCoachEmail; ptransport = transport; pfood = food; plodging = lodging;
+        participantUnivCoachEmail = UnivCoachEmail; ptransport = transport; pfood = food; plodging = lodging; eid=id;
 
     }
 
@@ -138,4 +138,11 @@ public class participantFormItem implements Serializable {
         this.participantList = participantList;
     }
 
+    public String getEid() {
+        return eid;
+    }
+
+    public void setEid(String eid) {
+        this.eid = eid;
+    }
 }

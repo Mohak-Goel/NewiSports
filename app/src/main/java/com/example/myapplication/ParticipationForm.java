@@ -7,21 +7,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ParticipationForm extends AppCompatActivity {
 
-    EditText participantUnivName, participantUnivAddress, participantUnivCity, participantUnivPostalCode,
-            participantUnivPhNo, participantUnivEmail, participantUnivCoachName,
+    EditText participantUnivCoachName,
             participantUnivCoachPhNo, participantUnivCoachEmail;
-    Spinner participantUnivState;
+
     RadioGroup radioGroupTransport, radioGroupFood, radioGroupLodging;
+
     RadioButton radioButtonTransport, radioButtonFood, radioButtonLodging;
 
     Button buttonNext;
@@ -29,6 +38,9 @@ public class ParticipationForm extends AppCompatActivity {
     Toast t;
 
     private long backPressedTime;
+
+    FirebaseUser user_id;
+    DatabaseReference firebaseDatabase;
 
     public static final String PARTICIPANT_UNIVERSITY_DETAIL = "com.example.myapplication.ParticipationForm";
     int flag = 0, count = 0;
@@ -38,7 +50,14 @@ public class ParticipationForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participation_form);
 
+        user_id= FirebaseAuth.getInstance().getCurrentUser();
+        assert user_id != null;
+        String uid = user_id.getUid();
+        firebaseDatabase = FirebaseDatabase.getInstance().getReference("Registration Details").child(uid);
+
         extractView();
+
+        final String id = (String)getIntent().getStringExtra("Event Detail Key").trim();
 
         t = Toast.makeText(getApplicationContext(), "Kindly Fill Participation Form", Toast.LENGTH_SHORT);
         t.show();
@@ -47,21 +66,12 @@ public class ParticipationForm extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String UnivName = participantUnivName.getText().toString(),
-                        UnivAddress = participantUnivAddress.getText().toString(),
-                        UnivCity = participantUnivCity.getText().toString(),
-                        UnivPostalCode = participantUnivPostalCode.getText().toString(),
-                        UnivPhNo = participantUnivPhNo.getText().toString(),
-                        UnivEmail = participantUnivEmail.getText().toString(),
+                String
                         UnivCoachName = participantUnivCoachName.getText().toString(),
                         UnivCoachPhNo = participantUnivCoachPhNo.getText().toString(),
                         UnivCoachEmail = participantUnivCoachEmail.getText().toString();
 
-                if (
-                        UnivName.isEmpty() && UnivAddress.isEmpty() && UnivCity.isEmpty() && participantUnivState.getSelectedItemPosition()==0 &&
-                                UnivPostalCode.isEmpty() && UnivPhNo.isEmpty() && UnivEmail.isEmpty() && UnivCoachName.isEmpty() &&
-                                UnivCoachPhNo.isEmpty() && UnivCoachEmail.isEmpty()
-                ){
+                if (UnivCoachName.isEmpty() && UnivCoachPhNo.isEmpty() && UnivCoachEmail.isEmpty()){
 
                     t.cancel();
                     t = Toast.makeText(getApplicationContext(), "Fields are already empty !!", Toast.LENGTH_SHORT);
@@ -77,13 +87,6 @@ public class ParticipationForm extends AppCompatActivity {
                 }
 
                 else {
-                    participantUnivName.getText().clear();
-                    participantUnivAddress.getText().clear();
-                    participantUnivCity.getText().clear();
-                    participantUnivState.setSelection(0);
-                    participantUnivPostalCode.getText().clear();
-                    participantUnivPhNo.getText().clear();
-                    participantUnivEmail.getText().clear();
                     participantUnivCoachName.getText().clear();
                     participantUnivCoachPhNo.getText().clear();
                     participantUnivCoachEmail.getText().clear();
@@ -103,14 +106,7 @@ public class ParticipationForm extends AppCompatActivity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String UnivName = participantUnivName.getText().toString(),
-                        UnivAddress = participantUnivAddress.getText().toString(),
-                        UnivCity = participantUnivCity.getText().toString(),
-                        UnivState = participantUnivState.getSelectedItem().toString(),
-                        UnivPostalCode = participantUnivPostalCode.getText().toString(),
-                        UnivPhNo = participantUnivPhNo.getText().toString(),
-                        UnivEmail = participantUnivEmail.getText().toString(),
-                        UnivCoachName = participantUnivCoachName.getText().toString(),
+                final String  UnivCoachName = participantUnivCoachName.getText().toString(),
                         UnivCoachPhNo = participantUnivCoachPhNo.getText().toString(),
                         UnivCoachEmail = participantUnivCoachEmail.getText().toString();
 
@@ -130,37 +126,9 @@ public class ParticipationForm extends AppCompatActivity {
                 boolean pTransport = true;
                 if (radioButtonTransport.getId()==R.id.transport_radio_no) pTransport = false;
 
-                if (
-                        UnivName.isEmpty()|| UnivAddress.isEmpty() || UnivCity.isEmpty() || participantUnivState.getSelectedItemPosition()==0 ||
-                        UnivPostalCode.isEmpty() || UnivPhNo.isEmpty() || UnivEmail.isEmpty() || UnivCoachName.isEmpty() ||
-                        UnivCoachPhNo.isEmpty() || UnivCoachEmail.isEmpty()
-                   ){
+                if (UnivCoachName.isEmpty() || UnivCoachPhNo.isEmpty() || UnivCoachEmail.isEmpty() ){
 
                     String error = "";
-
-                    if (UnivName.isEmpty())
-                        error+= "Enter University Name\n";
-
-                    if (UnivAddress.isEmpty())
-                        error+= "Enter University Address\n";
-
-                    if (UnivCity.isEmpty())
-                        error+= "Enter University City\n";
-
-                    if (participantUnivState.getSelectedItemPosition()==0)
-                        error+= "Select University State\n";
-
-                    if (UnivAddress.isEmpty())
-                        error+= "Enter University Address\n";
-
-                    if (UnivPostalCode.isEmpty())
-                        error+= "Enter University Postal Code\n";
-
-                    if (UnivPhNo.isEmpty())
-                        error+= "Enter University Phone No.\n";
-
-                    if (UnivEmail.isEmpty())
-                        error+= "Enter University Email\n";
 
                     if (UnivCoachName.isEmpty())
                         error+= "Enter Coach Name\n";
@@ -178,15 +146,11 @@ public class ParticipationForm extends AppCompatActivity {
                     t.show();
                 }
 
-                else if (!isValidMobile(UnivCoachPhNo) || !isValidMobile(UnivPhNo))
+                else if (!isValidMobile(UnivCoachPhNo))
                 {
                     String error = "";
 
-                    if (!isValidMobile(UnivPhNo))
-                        error+="Invalid University Phone No.\n";
-
-                    if (!isValidMobile(UnivCoachPhNo))
-                        error+="Invalid Coach Phone No.\n";
+                    error+="Invalid Coach Phone No.\n";
 
                     error+= ":-( :-( :-(";
 
@@ -196,18 +160,11 @@ public class ParticipationForm extends AppCompatActivity {
 
                 }
 
-                else if (!isEmailValid(UnivEmail) || !isEmailValid(UnivCoachEmail) || !isPostalCodeValid(UnivPostalCode))
+                else if (!isEmailValid(UnivCoachEmail))
                 {
                     String error = "";
 
-                    if (!isPostalCodeValid(UnivPostalCode))
-                        error+="Invalid Postal Code\n";
-
-                    if (!isEmailValid(UnivEmail))
-                        error+="Invalid University E-mail\n";
-
-                    if (!isEmailValid(UnivCoachEmail))
-                        error+="Invalid Coach E-mail\n";
+                    error+="Invalid Coach E-mail\n";
 
                     error+= ":-( :-( :-(";
 
@@ -227,13 +184,43 @@ public class ParticipationForm extends AppCompatActivity {
 
                     else {
                         count=0;
-                        participantFormItem participantFormItemObj = new participantFormItem(UnivName, UnivAddress, UnivCity, UnivState,
-                                UnivPostalCode, UnivPhNo, UnivEmail, UnivCoachName, UnivCoachPhNo, UnivCoachEmail, pTransport, pfood, pLodging);
+                        final boolean transport=pTransport, food=pfood, lodging=pLodging;
+                        firebaseDatabase.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                try {
+
+                                    participantFormItem participantFormItemObj =new participantFormItem(Objects.requireNonNull(dataSnapshot.child("UniversityName").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("LocalAddress").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("City").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("State").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("PinCode").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("PhoneNumber").getValue()).toString().trim()
+                                    , Objects.requireNonNull(dataSnapshot.child("EmailAddress").getValue()).toString().trim()
+                                    , UnivCoachName, UnivCoachPhNo, UnivCoachEmail, transport, food, lodging, id);
+
+                                    t=Toast.makeText(ParticipationForm.this, participantFormItemObj.getEid(), Toast.LENGTH_LONG);
+                                    t.show();
+
+                                    Intent i1 = new Intent(ParticipationForm.this, ParticipantsDetail.class);
+                                    i1.putExtra(PARTICIPANT_UNIVERSITY_DETAIL, participantFormItemObj);
+                                    startActivity(i1);
+
+                                }catch (Exception e){
+                                    t.cancel();
+                                    t=Toast.makeText(ParticipationForm.this, "Something went wrong", Toast.LENGTH_LONG);
+                                    t.show();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
 
 
-                        Intent i1 = new Intent(ParticipationForm.this, ParticipantsDetail.class);
-                        i1.putExtra(PARTICIPANT_UNIVERSITY_DETAIL, participantFormItemObj);
-                        startActivity(i1);
+
                     }
                 }
             }
@@ -243,13 +230,6 @@ public class ParticipationForm extends AppCompatActivity {
 
     private void extractView(){
 
-        participantUnivName = findViewById(R.id.participant_university_name);
-        participantUnivAddress = findViewById(R.id.participant_university_address);
-        participantUnivCity = findViewById(R.id.participant_university_city);
-        participantUnivState = findViewById(R.id.participant_university_state);
-        participantUnivPostalCode = findViewById(R.id.participant_university_post_code);
-        participantUnivPhNo = findViewById(R.id.participant_university_phone_number);
-        participantUnivEmail = findViewById(R.id.participant_university_email);
         participantUnivCoachName = findViewById(R.id.participant_coach_name);
         participantUnivCoachEmail = findViewById(R.id.participant_coach_email);
         participantUnivCoachPhNo = findViewById(R.id.participant_coach_phone_no);

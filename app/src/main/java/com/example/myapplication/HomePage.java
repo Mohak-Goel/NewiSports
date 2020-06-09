@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -64,7 +65,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Event Details");
 
-        FirebaseRecyclerOptions<CreateEvent> options = new FirebaseRecyclerOptions.Builder<CreateEvent>().setQuery(ref.orderByChild("food").equalTo(true), CreateEvent.class).build();
+        FirebaseRecyclerOptions<CreateEvent> options = new FirebaseRecyclerOptions.Builder<CreateEvent>().setQuery(ref, CreateEvent.class).build();
 
         homePageAdapter = new HomePageAdapter(HomePage.this, options);
 
@@ -103,9 +104,22 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                 startActivity(new Intent(HomePage.this, MyAccount.class));
                 break;
 
-            case R.id.nav_participatedevents:
-                startActivity(new Intent(HomePage.this,EventsParticipatedTotal.class));
+            case R.id.nav_unotice:
+                startActivity(new Intent(HomePage.this, UploadNotice.class));
                 break;
+
+            case R.id.nav_notice: startActivity(new Intent(HomePage.this, GetNotice.class));
+                break;
+
+            case R.id.nav_contact:
+                startActivity(new Intent(HomePage.this, Contact.class)); break;
+
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(HomePage.this, MainActivity.class));
+                break;
+
 
             case R.id.nav_hostedevents: startActivity(new Intent(HomePage.this, MyEventsCreatedTotal.class)); break;
 

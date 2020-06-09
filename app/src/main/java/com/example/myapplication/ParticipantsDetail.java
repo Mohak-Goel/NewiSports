@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,14 +39,16 @@ public class ParticipantsDetail extends AppCompatActivity {
 
     EditText pName, pEmail, pPhNo;
     Spinner spinnerBG;
-    long id;
+    long id, pid;
 
     int flag=0, flag2 = 0, count1=0, count2=0;
 
     Toast t;
     private long backPressedTime;
 
-    DatabaseReference databaseParticipant;
+    DatabaseReference databaseParticipant, reference;
+    FirebaseUser user_id;
+    String uid_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,11 @@ public class ParticipantsDetail extends AppCompatActivity {
         pPhNo = (EditText)findViewById(R.id.participant_phoneNo);
         spinnerBG = (Spinner)findViewById(R.id.bloodGroupSpinner_1);
         submitButton = (Button)findViewById(R.id.participant_detail_submit_button);
+        user_id= FirebaseAuth.getInstance().getCurrentUser();
+        assert user_id != null;
+        uid_user=user_id.getUid();
         databaseParticipant = FirebaseDatabase.getInstance().getReference("Participant Details");
+        reference = FirebaseDatabase.getInstance().getReference("My Events Participated").child(uid_user);
 
         participantList = findViewById(R.id.participantList);
         participantList.setHasFixedSize(true);
@@ -189,6 +197,19 @@ public class ParticipantsDetail extends AppCompatActivity {
             }
         });
 
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                    pid = dataSnapshot.getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,9 +231,10 @@ public class ParticipantsDetail extends AppCompatActivity {
                     else {
                         count1=0;
 
-                        participantUnivDetail = new ParticipantUniversity(participantFormItemClass.getParticipantUnivName(),participantFormItemClass.getParticipantUnivAddress(),participantFormItemClass.getParticipantUnivCity(),participantFormItemClass.getParticipantUnivState(), participantFormItemClass.getParticipantUnivPostalCode(), participantFormItemClass.getParticipantUnivPhNo(), participantFormItemClass.getParticipantUnivEmail(), participantFormItemClass.getParticipantUnivCoachName(), participantFormItemClass.getParticipantUnivCoachPhNo(), participantFormItemClass.getParticipantUnivCoachEmail(), aboutParticipant, participantFormItemClass.isPtransport(), participantFormItemClass.isPfood(), participantFormItemClass.isPlodging());
+                        participantUnivDetail = new ParticipantUniversity(participantFormItemClass.getParticipantUnivName(),participantFormItemClass.getParticipantUnivAddress(),participantFormItemClass.getParticipantUnivCity(),participantFormItemClass.getParticipantUnivState(), participantFormItemClass.getParticipantUnivPostalCode(), participantFormItemClass.getParticipantUnivPhNo(), participantFormItemClass.getParticipantUnivEmail(), participantFormItemClass.getParticipantUnivCoachName(), participantFormItemClass.getParticipantUnivCoachPhNo(), participantFormItemClass.getParticipantUnivCoachEmail(), participantFormItemClass.isPlodging(), aboutParticipant, participantFormItemClass.isPtransport(), participantFormItemClass.isPfood(), participantFormItemClass.getEid());
 
                         databaseParticipant.child(String.valueOf(id+1)).setValue(participantUnivDetail);
+                        reference.child(String.valueOf(pid+1)).setValue(participantUnivDetail);
 
                         t.cancel();
                         t = Toast.makeText(getApplicationContext(), "Congratulations!! You have successfully Participated in this event", Toast.LENGTH_LONG);

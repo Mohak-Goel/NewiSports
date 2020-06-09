@@ -10,8 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EventsParticipated"></activity>
-        <activity android:name=".EventsParticipatedTotal" />
+        <activity android:name=".HomeEventDetail"></activity>
         <activity android:name=".HomePageSecondActivity" />
         <activity android:name=".MyEventsCreatedTotal" />
         <activity android:name=".MyEventsCreated" />

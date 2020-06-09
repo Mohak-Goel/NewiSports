@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
-public class CreateEvent {
+import java.io.Serializable;
+
+public class CreateEvent implements Serializable {
 
     String EventName;
     String FieldName;
