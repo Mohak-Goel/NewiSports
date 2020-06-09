@@ -8,32 +8,67 @@
     tools:context=".Contact">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TECHNICAL TEAM"
-        android:textAllCaps="true"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:layout_gravity="center"
-        android:textColor="#000000" />
+        android:text="Team Members Are As Follows-: "
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CONTACT NO"
-        android:layout_gravity="center"
-        android:textSize="20dp"/>
+        android:textSize="8sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="MOHAK GOEL"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textFontWeight="20dp"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="15dp"
+        android:text="Contact No. :9521788760"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textFontWeight="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="15dp"
+        android:text="Email :1705417@kiit.ac.in "
+        android:textFontWeight="20dp"/>
+    <TextView
+        android:id="@+id/textVi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="8sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:text="NEERAD RANJAN"
         android:textFontWeight="20dp"/>
 
@@ -41,49 +76,93 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="NISCHAY KARN GUPTA "
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:text="Contact No. :8340615894"
         android:textFontWeight="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="PAYEL SEN "
-        android:textFontWeight="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_gravity="center"
-        android:text="EMAIL ID"
+        android:text="Email :1705420@kiit.ac.in "
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textFontWeight="20dp"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/texti"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:text="MOHAK GOEL  "
-        android:textFontWeight="20dp"/>
+        android:textSize="8sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="NEERAD RANJAN  "
-        android:textFontWeight="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:text="NISCHAY KARN GUPTA  "
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="NISCHAY KARN GUPTA"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textFontWeight="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:text="PAYEL SEN  "
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:text="Contact No. :7979944709"
         android:textFontWeight="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="Email :1705421@kiit.ac.in "
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textFontWeight="20dp"/>
+
+    <TextView
+        android:id="@+id/teti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="8sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:text="PAYEL SEN"
+        android:textFontWeight="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="Contact No. :8609990315"
+        android:textFontWeight="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:text="Email :1705422@kiit.ac.in "
+        android:textFontWeight="20dp"/>
+
+
 
 </LinearLayout>
