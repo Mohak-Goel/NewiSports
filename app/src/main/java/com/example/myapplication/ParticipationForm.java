@@ -37,10 +37,13 @@ public class ParticipationForm extends AppCompatActivity {
     Button buttonReset;
     Toast t;
 
+    CreateEvent createEvent;
+
     private long backPressedTime;
 
     FirebaseUser user_id;
     DatabaseReference firebaseDatabase;
+
 
     public static final String PARTICIPANT_UNIVERSITY_DETAIL = "com.example.myapplication.ParticipationForm";
     int flag = 0, count = 0;
@@ -49,6 +52,8 @@ public class ParticipationForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participation_form);
+
+        createEvent = (CreateEvent)getIntent().getSerializableExtra("Home Event Detail");
 
         user_id= FirebaseAuth.getInstance().getCurrentUser();
         assert user_id != null;
@@ -199,11 +204,9 @@ public class ParticipationForm extends AppCompatActivity {
                                     , Objects.requireNonNull(dataSnapshot.child("EmailAddress").getValue()).toString().trim()
                                     , UnivCoachName, UnivCoachPhNo, UnivCoachEmail, transport, food, lodging, id);
 
-                                    t=Toast.makeText(ParticipationForm.this, participantFormItemObj.getEid(), Toast.LENGTH_LONG);
-                                    t.show();
-
                                     Intent i1 = new Intent(ParticipationForm.this, ParticipantsDetail.class);
                                     i1.putExtra(PARTICIPANT_UNIVERSITY_DETAIL, participantFormItemObj);
+                                    i1.putExtra("Event Participated Detail", createEvent);
                                     startActivity(i1);
 
                                 }catch (Exception e){

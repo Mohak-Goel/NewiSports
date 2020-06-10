@@ -34,6 +34,7 @@ public class ParticipantsDetail extends AppCompatActivity {
 
     ParticipantUniversity participantUnivDetail;
     participantFormItem participantFormItemClass;
+    CreateEvent createEvent;
 
     Button addParticipantButton, submitButton;
 
@@ -62,6 +63,7 @@ public class ParticipantsDetail extends AppCompatActivity {
         pPhNo = (EditText)findViewById(R.id.participant_phoneNo);
         spinnerBG = (Spinner)findViewById(R.id.bloodGroupSpinner_1);
         submitButton = (Button)findViewById(R.id.participant_detail_submit_button);
+        createEvent = (CreateEvent)getIntent().getSerializableExtra("Event Participated Detail");
         user_id= FirebaseAuth.getInstance().getCurrentUser();
         assert user_id != null;
         uid_user=user_id.getUid();
@@ -234,7 +236,7 @@ public class ParticipantsDetail extends AppCompatActivity {
                         participantUnivDetail = new ParticipantUniversity(participantFormItemClass.getParticipantUnivName(),participantFormItemClass.getParticipantUnivAddress(),participantFormItemClass.getParticipantUnivCity(),participantFormItemClass.getParticipantUnivState(), participantFormItemClass.getParticipantUnivPostalCode(), participantFormItemClass.getParticipantUnivPhNo(), participantFormItemClass.getParticipantUnivEmail(), participantFormItemClass.getParticipantUnivCoachName(), participantFormItemClass.getParticipantUnivCoachPhNo(), participantFormItemClass.getParticipantUnivCoachEmail(), participantFormItemClass.isPlodging(), aboutParticipant, participantFormItemClass.isPtransport(), participantFormItemClass.isPfood(), participantFormItemClass.getEid());
 
                         databaseParticipant.child(String.valueOf(id+1)).setValue(participantUnivDetail);
-                        reference.child(String.valueOf(pid+1)).setValue(participantUnivDetail);
+                        reference.child(String.valueOf(pid+1)).setValue(createEvent);
 
                         t.cancel();
                         t = Toast.makeText(getApplicationContext(), "Congratulations!! You have successfully Participated in this event", Toast.LENGTH_LONG);
