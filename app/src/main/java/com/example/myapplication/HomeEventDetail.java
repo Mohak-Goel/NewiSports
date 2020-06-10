@@ -18,8 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.util.Objects;
-
 public class HomeEventDetail extends AppCompatActivity {
 
     ImageView eventPoster;
@@ -58,9 +56,13 @@ public class HomeEventDetail extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+
+                            CreateEvent createEvent1 = childSnapshot.getValue(CreateEvent.class);
+
                             Intent intent = new Intent(HomeEventDetail.this, ParticipationForm.class);
 
-                            intent.putExtra("Event Detail Key", Objects.requireNonNull(childSnapshot.getKey()).trim());
+                            intent.putExtra("Home Event Detail", createEvent1);
+                            intent.putExtra("Event Detail Key", childSnapshot.getKey());
 
                             startActivity(intent);
                         }
