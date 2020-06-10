@@ -10,13 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeEventDetail"></activity>
+        <activity android:name=".HomeEventDetail">
+
+        </activity>
         <activity android:name=".HomePageSecondActivity" />
         <activity android:name=".MyEventsCreatedTotal" />
         <activity android:name=".MyEventsCreated" />
         <activity
             android:name=".HomePage"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".GetFixture"
             android:label="Fixture List" />
@@ -28,7 +31,8 @@
         <activity
             android:name=".UploadResult"
             android:label="Fill Result Details" />
-        <activity android:name=".Contact" />
+        <activity android:name=".Contact"
+            android:label="Technical Team"/>
         <activity
             android:name=".UploadNotice"
             android:label="Upload Notice" />

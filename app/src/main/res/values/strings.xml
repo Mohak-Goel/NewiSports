@@ -21,19 +21,7 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="home_second">Home Second</string>
-    <string name="contact_no_8340615894">Contact No. :8340615894</string>
-    <string name="neerad_ranjan">NEERAD RANJAN</string>
-    <string name="email_1705417_kiit_ac_in">Email :1705417@kiit.ac.in</string>
-    <string name="contact_no_9521788760">Contact No. :9521788760</string>
-    <string name="mohak_goel">MOHAK GOEL</string>
-    <string name="team_members_are_as_follows">Team Members Are As Follows-:</string>
-    <string name="email_1705420_kiit_ac_in">Email :1705420@kiit.ac.in</string>
-    <string name="nischay_karn_gupta">NISCHAY KARN GUPTA</string>
-    <string name="contact_no_7979944709">Contact No. :7979944709</string>
-    <string name="email_1705421_kiit_ac_in">Email :1705421@kiit.ac.in</string>
-    <string name="payel_sen">PAYEL SEN</string>
-    <string name="contact_no_8609990315">Contact No. :8609990315</string>
-    <string name="email_1705422_kiit_ac_in">Email :1705422@kiit.ac.in</string>
+
     <string-array name="blood">
         <item>Blood Group</item>
         <item>A+</item>
