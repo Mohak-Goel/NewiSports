@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0E0E0"
+    android:orientation="vertical"
+    android:padding="18dp"
     tools:context=".GetResult">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Winner University"
+            android:paddingLeft="8dp"
+            android:textSize="18dp"
+            android:paddingBottom="4dp"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:id="@+id/winner"
+            android:background="@drawable/editbackgound"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:text="1st Runner up University"
+            android:paddingLeft="8dp"
+            android:textSize="18dp"
+            android:paddingBottom="4dp"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/first_runner_up"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:background="@drawable/editbackgound"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:text="2nd Runner up University"
+            android:paddingLeft="8dp"
+            android:textSize="18dp"
+            android:paddingBottom="4dp"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sec_runner_up"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:background="@drawable/editbackgound"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/submit_button_style"
+        android:text="back"
+        android:textColor="@color/common_google_signin_btn_text_light_default"
+        android:textSize="24sp"
+        android:layout_weight="0"/>
+
+
+</LinearLayout>

@@ -14,20 +14,74 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Winner University"
+            android:paddingLeft="8dp"
+            android:textSize="18dp"
+            android:paddingBottom="4dp"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <AutoCompleteTextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/result_list"
-            android:background="@android:color/white"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/winner_university"
+            android:verticalScrollbarPosition="right"
+            android:isScrollContainer="true"
+            android:completionThreshold="1"
+            android:importantForAutofill="no"
+            android:background="@drawable/spinner_background"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:text="1st Runner up University"
+            android:paddingLeft="8dp"
+            android:textSize="18dp"
+            android:paddingBottom="4dp"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/first_runner_up_university"
+            android:verticalScrollbarPosition="right"
+            android:isScrollContainer="true"
+            android:completionThreshold="1"
+            android:importantForAutofill="no"
+            android:background="@drawable/spinner_background"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:text="2nd Runner up University"
+            android:paddingLeft="8dp"
+            android:textSize="18dp"
+            android:paddingBottom="4dp"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sec_runner_up_university"
+            android:verticalScrollbarPosition="right"
+            android:isScrollContainer="true"
+            android:completionThreshold="1"
+            android:importantForAutofill="no"
+            android:background="@drawable/spinner_background"/>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/upload_result_button"
-        android:layout_width="338dp"
-        android:layout_height="75dp"
+        android:id="@+id/upload_result"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/submit_button_style"

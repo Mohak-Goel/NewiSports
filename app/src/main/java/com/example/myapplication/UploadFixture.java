@@ -50,6 +50,7 @@ public class UploadFixture extends AppCompatActivity {
     List<String> suggestion;
     int flag1=1;
     String EDkey;
+    long id;
 
     Toast toast;
 
@@ -140,6 +141,22 @@ public class UploadFixture extends AppCompatActivity {
                     String suggest = participant.getParticipantUnivName()+", "+participant.getParticipantUnivCity()+", "+participant.getParticipantUnivPostalCode();
                     suggestion.add(suggest);
                     autoComplete.add(suggest);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        fixtureDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        FixtureDetail fixture = snapshot.getValue(FixtureDetail.class);
+                        fixtureDetails.add(fixture);
+                        mAdapter.notifyItemInserted(fixtureDetails.size()-1);
                 }
             }
 
@@ -266,12 +283,7 @@ public class UploadFixture extends AppCompatActivity {
 
                 else {
                     try {
-                        if (flag1==1)
-                        {
-                            fixtureDetails.remove(0);
-                            mAdapter.notifyItemRemoved(fixtureDetails.size()-1);
-                            flag1 = 0;
-                        }
+                        flag1 = 0;
                         fixtureDetails.add(new FixtureDetail(p1, p2, date, time));
                         mAdapter.notifyItemInserted(fixtureDetails.size() - 1);
                         toast.cancel();
@@ -291,21 +303,12 @@ public class UploadFixture extends AppCompatActivity {
 
             @Override
             public void onDeleteClick(int position) {
-                if (flag1==1)
-                {
-                    toast.cancel();
-                    toast = Toast.makeText(getApplicationContext(), "Kindly Add Fixture!!", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-                else
                     removeItem(position);
             }
         });
 
         if (fixtureDetails.size()==0){
             flag1 = 1;
-            fixtureDetails.add(new FixtureDetail("Kindly Add Fixture", "No Fixture added !!", "NA", "NA"));
-            mAdapter.notifyItemInserted(fixtureDetails.size()-1);
             toast.cancel();
             toast = Toast.makeText(getApplicationContext(), "Kindly Add Fixture !!", Toast.LENGTH_SHORT);
             toast.show();
@@ -329,12 +332,11 @@ public class UploadFixture extends AppCompatActivity {
                     } else {
 
                         //FixtureDetail fixtureDetail = new FixtureDetail(participant1.getText().toString(), participant2.getText().toString(), fixtureDate.getText().toString(), fixtureTime.getText().toString());
-                        String key = fixtureDatabase.push().getKey();
-                        assert key != null;
                         fixtureDatabase.setValue(fixtureDetails);
                         toast.cancel();
                         toast = Toast.makeText(getApplicationContext(), "Fixture Uploaded Successfully !! :-)", Toast.LENGTH_SHORT);
                         toast.show();
+                        finish();
                     }
                     mLastClickTime = SystemClock.elapsedRealtime();
                 }
@@ -357,8 +359,6 @@ public class UploadFixture extends AppCompatActivity {
 
             if (fixtureDetails.size()==0){
                 flag1 = 1;
-                fixtureDetails.add(new FixtureDetail("Kindly Add Fixture", "No Fixture added !!", "NA", "NA"));
-                mAdapter.notifyItemInserted(fixtureDetails.size()-1);
                 toast.cancel();
                 toast = Toast.makeText(getApplicationContext(), "Kindly Add Fixture !!", Toast.LENGTH_SHORT);
                 toast.show();
