@@ -18,7 +18,6 @@ public class model2 {
     public void setParticipantUnivName(String participantUnivName) {
         this.participantUnivName = participantUnivName;
     }
-
     public String getParticipantUnivCoachName() {
         return participantUnivCoachName;
     }
@@ -27,3 +26,7 @@ public class model2 {
         this.participantUnivCoachName = participantUnivCoachName;
     }
 }
+
+
+
+
