@@ -46,7 +46,7 @@ public class ParticipationForm extends AppCompatActivity {
 
 
     public static final String PARTICIPANT_UNIVERSITY_DETAIL = "com.example.myapplication.ParticipationForm";
-    int flag = 0, count = 0;
+    int flag = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,15 +180,8 @@ public class ParticipationForm extends AppCompatActivity {
                 }
 
                 else {
-                    if (count==0) {
-                        t.cancel();
-                        t = Toast.makeText(getApplicationContext(), "Tap next button once again if you are sure that \nyou have entered the details correctly !!", Toast.LENGTH_LONG);
-                        t.show();
-                        count++;
-                    }
 
-                    else {
-                        count=0;
+
                         final boolean transport=pTransport, food=pfood, lodging=pLodging;
                         firebaseDatabase.addValueEventListener(new ValueEventListener() {
                             @Override
@@ -224,7 +217,7 @@ public class ParticipationForm extends AppCompatActivity {
 
 
 
-                    }
+
                 }
             }
         });
