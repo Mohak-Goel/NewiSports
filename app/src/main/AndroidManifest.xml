@@ -13,10 +13,13 @@
         <activity android:name=".ParticipantList"
             android:label="University And Coach Name..."/>
         <activity android:name=".GetResult" />
-        <activity android:name=".HomeEventDetail" />
+        <activity android:name=".HomeEventDetail"
+            android:label="Event Detail"/>
         <activity android:name=".HomePageSecondActivity" />
-        <activity android:name=".MyEventsCreatedTotal" />
-        <activity android:name=".MyEventsCreated" />
+        <activity android:name=".MyEventsCreatedTotal"
+            android:label="Event Created"/>
+        <activity android:name=".MyEventsCreated"
+            android:label="Event Detail"/>
         <activity
             android:name=".HomePage"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -31,7 +34,8 @@
         <activity
             android:name=".UploadResult"
             android:label="Fill Result Details" />
-        <activity android:name=".Contact" />
+        <activity android:name=".Contact"
+            android:label="Contact us"/>
         <activity
             android:name=".UploadNotice"
             android:label="Upload Notice" />
@@ -41,15 +45,18 @@
         <activity
             android:name=".RaiseQuery"
             android:label="Mail Your Query To Host" />
-        <activity android:name=".MyAccount" />
+        <activity android:name=".MyAccount"
+            android:label="My Account"/>
         <activity
             android:name=".Forgotpass"
             android:label="Reset Password page" />
         <activity
             android:name=".ParticipationForm"
             android:label="Fill Participation Form" />
-        <activity android:name=".EventsParticipatedTotal" />
-        <activity android:name=".EventsParticipated" />
+        <activity android:name=".EventsParticipatedTotal"
+            android:label="Events Participated"/>
+        <activity android:name=".EventsParticipated"
+            android:label="Event Detail"/>
         <activity
             android:name=".Splash"
             android:theme="@style/hmStyle">

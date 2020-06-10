@@ -22,7 +22,7 @@ public class MyEventsCreated extends AppCompatActivity {
 
     ImageView eventPoster;
     TextView eventTitle, eventDescription, eventLocation, eventVenue;
-    Button finishButton, participantList, getFixture, uploadFixture, uploadResult, getResult, raiseQuery;
+    Button participantList, getFixture, uploadFixture, uploadResult, getResult, raiseQuery;
     CreateEvent createEvent;
 
     @SuppressLint("SetTextI18n")
@@ -200,12 +200,6 @@ public class MyEventsCreated extends AppCompatActivity {
             }
         });
 
-        finishButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
 
     }
@@ -218,7 +212,6 @@ public class MyEventsCreated extends AppCompatActivity {
         uploadResult=findViewById(R.id.upload_result);
         getResult=findViewById(R.id.get_result);
         raiseQuery=findViewById(R.id.raise_query);
-        finishButton = findViewById(R.id.finish_button);
         eventPoster = findViewById(R.id.my_event_created_poster);
         eventTitle = findViewById(R.id.my_event_created_title);
         eventDescription = findViewById(R.id.my_event_created_detail);

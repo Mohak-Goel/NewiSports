@@ -242,6 +242,8 @@ public class ParticipantsDetail extends AppCompatActivity {
                         t = Toast.makeText(getApplicationContext(), "Congratulations!! You have successfully Participated in this event", Toast.LENGTH_LONG);
                         t.show();
 
+                        finish();
+
                     }
                 }
             }
