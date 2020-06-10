@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,15 +16,19 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class EventCreatedTotalAdapter extends FirebaseRecyclerAdapter<CreateEvent, EventCreatedTotalAdapter.EventCreatedTotalViewHolder> {
 
     private OnItemClickListener mListener;
     private Context context;
+    private ArrayList<CreateEvent> arrayList;
 
     public EventCreatedTotalAdapter (Context context, FirebaseRecyclerOptions<CreateEvent> options){
 
         super(options);
         this.context = context;
+        arrayList = new ArrayList<>();
 
     }
 
@@ -43,7 +49,7 @@ public class EventCreatedTotalAdapter extends FirebaseRecyclerAdapter<CreateEven
     }
 
     @Override
-    public void onBindViewHolder(@NonNull  EventCreatedTotalViewHolder holder, int position, CreateEvent createEvent) {
+    public void onBindViewHolder(@NonNull  EventCreatedTotalViewHolder holder, final int position, CreateEvent createEvent) {
 
         holder.eventTitle.setText(createEvent.getEventName());
         holder.eventTime.setText(createEvent.getChoose_Time());
@@ -51,6 +57,18 @@ public class EventCreatedTotalAdapter extends FirebaseRecyclerAdapter<CreateEven
 
         Picasso.with(context).load(createEvent.getUrlLink()).into(holder.eventPoster);
 
+        arrayList.add(new CreateEvent(createEvent.getEventName(), createEvent.getField_Name(), createEvent.getCity_Name(), createEvent.getPostal_Code(), createEvent.getSports_Name(), createEvent.getChoose_Time(), createEvent.getEt_Date(), createEvent.isFood(), createEvent.isLodging(), createEvent.isTransport(), createEvent.getEventDescription(), createEvent.getOurContact(), createEvent.getUrlLink()));
+
+        holder.viewDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, MyEventsCreated.class);
+                intent.putExtra("Event Created Details Adapter", arrayList.get(position));
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -59,6 +77,7 @@ public class EventCreatedTotalAdapter extends FirebaseRecyclerAdapter<CreateEven
 
         public ImageView eventPoster;
         public TextView eventDate, eventTime, eventTitle;
+        public Button viewDetail;
 
 
         public  EventCreatedTotalViewHolder(@NonNull View itemView, final OnItemClickListener mListener) {
@@ -69,6 +88,7 @@ public class EventCreatedTotalAdapter extends FirebaseRecyclerAdapter<CreateEven
             eventDate = itemView.findViewById(R.id.event_created_date);
             eventTime = itemView.findViewById(R.id.event_created_time);
             eventTitle = itemView.findViewById(R.id.event_created_title);
+            viewDetail = itemView.findViewById(R.id.event_created_view_detail);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
