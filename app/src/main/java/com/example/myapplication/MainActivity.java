@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Toast.makeText(MainActivity.this, "Please Wait...", Toast.LENGTH_SHORT).show();
 
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Please Wait...", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(MainActivity.this, HomePage.class));
                                 finish();
                             } else {
