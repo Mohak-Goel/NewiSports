@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:orientation="vertical"
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="#E0E0E0"
     android:layout_height="wrap_content">
 
     <TextView
@@ -15,6 +17,7 @@
         android:layout_marginBottom="20dp"
         android:textStyle="bold"
         android:textSize="30dp"
+        android:background="@drawable/editbackgound"
         android:id="@+id/textviewUniversityName"/>
 
     <TextView
@@ -23,6 +26,7 @@
         android:layout_height="266dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/editbackgound"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
 
