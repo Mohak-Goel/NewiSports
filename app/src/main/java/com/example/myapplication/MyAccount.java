@@ -82,4 +82,8 @@ public class MyAccount extends AppCompatActivity {
         Intent I=new Intent(MyAccount.this,Forgotpass.class);
         startActivity(I);
     }
+    public void back(View v)
+    {
+        startActivity(new Intent(MyAccount.this,HomePage.class));
+    }
 }

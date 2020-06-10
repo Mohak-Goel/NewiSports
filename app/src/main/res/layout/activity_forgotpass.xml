@@ -5,21 +5,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Forgotpass">
+    tools:context=".Forgotpass"
+    android:background="#E0E0E0">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/etUserEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
         android:hint="Enter Email"
+        android:background="@drawable/editbackgound"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnforgotpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/submit_button_style"
+        android:layout_marginRight="30dp"
         android:text="Send recovery email" />
 
 </LinearLayout>

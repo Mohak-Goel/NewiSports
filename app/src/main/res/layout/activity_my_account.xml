@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0E0E0"
     tools:context=".MyAccount">
 
 
@@ -43,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:background="@drawable/editbackgound"
                 android:text=""
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
@@ -63,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text=""
+                android:background="@drawable/editbackgound"
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
 
@@ -81,6 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:background="@drawable/editbackgound"
                 android:text=""
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
@@ -100,6 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:background="@drawable/editbackgound"
                 android:text=""
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
@@ -119,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:background="@drawable/editbackgound"
                 android:text=""
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
@@ -139,6 +145,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:layout_marginLeft="10dp"
+                android:background="@drawable/editbackgound"
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
 
@@ -157,6 +164,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:background="@drawable/editbackgound"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
@@ -176,6 +184,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:background="@drawable/editbackgound"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
@@ -186,6 +195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="Email Address-: "
+
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -195,6 +205,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/editbackgound"
                 android:text=""
                 android:textColor="@color/common_google_signin_btn_text_light_pressed"
                 android:textSize="18sp" />
@@ -216,7 +227,23 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="280dp"
                 android:onClick="change_password"
+                android:background="@drawable/submit_button_style"
                 android:text="Click here!" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="55dp"
+                android:onClick="back"
+                android:background="@drawable/button_shape"
+                android:text="Back TO Home Page" />
 
 
         </LinearLayout>

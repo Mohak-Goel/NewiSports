@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#E0E0E0">
 
     <EditText
         android:id="@+id/email"
@@ -14,9 +15,15 @@
         android:layout_marginLeft="30sp"
         android:layout_marginTop="250sp"
         android:layout_marginRight="30sp"
+        android:background="@drawable/editbackgound"
         android:hint="Email"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textColorHint="#CFCFCF" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/pass"
@@ -24,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30sp"
         android:layout_marginRight="30sp"
+        android:background="@drawable/editbackgound"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
@@ -35,10 +43,16 @@
         android:text="login"
         android:layout_marginRight="120sp"
         android:layout_marginLeft="120sp"
+        android:background="@drawable/submit_button_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10sp" />
 
     <Button
         android:id="@+id/forgot"
@@ -46,7 +60,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:onClick="fp"
+        android:background="@drawable/button_shape"
         android:text="Forgot Password?" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10sp" />
 
     <TextView
 
@@ -55,8 +76,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="New user? Register Here"
-        android:textColor="@android:color/widget_edittext_dark" />
+        android:background="@drawable/button_shape"
+        android:text=" New user? Register Here..."
+        android:textColor="@android:color/widget_edittext_dark"
+        android:textSize="18sp" />
 
 
 

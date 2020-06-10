@@ -78,4 +78,9 @@ public class UploadNotice extends AppCompatActivity {
         }
         startActivity(new Intent(UploadNotice.this, HomePage.class));
     }
+
+    public void back(View v)
+    {
+        startActivity(new Intent(UploadNotice.this,HomePage.class));
+    }
 }
