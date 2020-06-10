@@ -51,7 +51,6 @@ public class MyEventsCreated extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
 
-                            CreateEvent createEvent1 = childSnapshot.getValue(CreateEvent.class);
 
                             Intent intent = new Intent(MyEventsCreated.this, UploadFixture.class);
 
@@ -73,45 +72,131 @@ public class MyEventsCreated extends AppCompatActivity {
         getFixture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyEventsCreated.this, GetFixture.class);
-                intent.putExtra("ED", createEvent);
-                startActivity(intent);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Event Details");
+
+                ref.orderByChild("ourContact").equalTo(createEvent.getOurContact()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+
+                            Intent intent = new Intent(MyEventsCreated.this, GetFixture.class);
+
+                            intent.putExtra("ED Key", childSnapshot.getKey());
+
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
         uploadResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyEventsCreated.this, UploadResult.class);
-                intent.putExtra("ED", createEvent);
-                startActivity(intent);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Event Details");
+
+                ref.orderByChild("ourContact").equalTo(createEvent.getOurContact()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+
+                            Intent intent = new Intent(MyEventsCreated.this, UploadResult.class);
+
+                            intent.putExtra("ED Key2", childSnapshot.getKey());
+
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
         raiseQuery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyEventsCreated.this, RaiseQuery.class);
-                intent.putExtra("ED", createEvent);
-                startActivity(intent);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Event Details");
+
+                ref.orderByChild("ourContact").equalTo(createEvent.getOurContact()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+
+                            Intent intent = new Intent(MyEventsCreated.this, RaiseQuery.class);
+
+                            intent.putExtra("ED Key", childSnapshot.getKey());
+
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
         getResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyEventsCreated.this, GetResult.class);
-                intent.putExtra("ED", createEvent);
-                startActivity(intent);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Event Details");
+
+                ref.orderByChild("ourContact").equalTo(createEvent.getOurContact()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+
+                            Intent intent = new Intent(MyEventsCreated.this, GetResult.class);
+
+                            intent.putExtra("ED Key3", childSnapshot.getKey());
+
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
         participantList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyEventsCreated.this, ParticipantList.class);
-                intent.putExtra("ED", createEvent);
-                startActivity(intent);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Event Details");
+
+                ref.orderByChild("ourContact").equalTo(createEvent.getOurContact()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+
+
+                            Intent intent = new Intent(MyEventsCreated.this, ParticipantList.class);
+
+                            intent.putExtra("ED Key", childSnapshot.getKey());
+
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
