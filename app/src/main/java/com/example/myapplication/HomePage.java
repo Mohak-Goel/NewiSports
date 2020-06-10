@@ -26,7 +26,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    Button createEvent;
+    Button createEvent, ongoing, upcoming, previous;
 
     private HomePageAdapter homePageAdapter;
     private RecyclerView recyclerView;
@@ -34,11 +34,14 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
         drawerLayout = findViewById(R.id.drawer_layout);
+        ongoing = findViewById(R.id.ongoing);
+        upcoming = findViewById(R.id.upcoming);
+        previous = findViewById(R.id.previous);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
         createEvent = findViewById(R.id.create_event);
@@ -65,7 +68,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Event Details");
 
-        FirebaseRecyclerOptions<CreateEvent> options = new FirebaseRecyclerOptions.Builder<CreateEvent>().setQuery(ref, CreateEvent.class).build();
+        final FirebaseRecyclerOptions<CreateEvent> options = new FirebaseRecyclerOptions.Builder<CreateEvent>().setQuery(ref, CreateEvent.class).build();
 
         homePageAdapter = new HomePageAdapter(HomePage.this, options);
 
@@ -78,6 +81,30 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             }
         });
 
+        upcoming.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                upcoming.setBackground(getDrawable(R.drawable.buttonclick));
+
+            }
+        });
+
+        ongoing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ongoing.setBackground(getDrawable(R.drawable.buttonclick));
+
+            }
+        });
+
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                previous.setBackground(getDrawable(R.drawable.buttonclick));
+
+            }
+        });
 
     }
 

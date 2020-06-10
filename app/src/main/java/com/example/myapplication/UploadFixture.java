@@ -48,7 +48,8 @@ public class UploadFixture extends AppCompatActivity {
     private DatabaseReference fixtureDatabase;
     private long mLastClickTime= 0;
     List<String> suggestion;
-    int flag1=1, flag2 = 0;
+    int flag1=1;
+    String EDkey;
 
     Toast toast;
 
@@ -131,7 +132,7 @@ public class UploadFixture extends AppCompatActivity {
 
         final ArrayAdapter<String> autoComplete = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
 
-        participantDatabase.addValueEventListener(new ValueEventListener() {
+        participantDatabase.orderByChild("eventid").equalTo(EDkey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot suggestionSnapshot: dataSnapshot.getChildren()){
@@ -374,7 +375,8 @@ public class UploadFixture extends AppCompatActivity {
         buttonAddFixture = (Button)findViewById(R.id.addFixtureButton);
         uploadFixture = (Button)findViewById(R.id.submit_button_fixture);
         participantDatabase = FirebaseDatabase.getInstance().getReference("Participant Details");
-        fixtureDatabase = FirebaseDatabase.getInstance().getReference("Fixture Details");
+        EDkey = (String)getIntent().getStringExtra("ED Key").trim();
+        fixtureDatabase = FirebaseDatabase.getInstance().getReference("Fixture Details").child(EDkey);
     }
 
     private boolean isParticipantValid(String participant){

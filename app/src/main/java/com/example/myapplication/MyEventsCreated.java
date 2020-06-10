@@ -1,13 +1,21 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class MyEventsCreated extends AppCompatActivity {
@@ -31,6 +39,88 @@ public class MyEventsCreated extends AppCompatActivity {
         eventDescription.setText(createEvent.getEventDescription());
         eventLocation.setText("Location : "+createEvent.getField_Name()+", "+createEvent.getCity_Name()+", "+createEvent.getPostal_Code());
         eventVenue.setText("Venue : "+createEvent.getEt_Date()+"    "+createEvent.getChoose_Time());
+
+        uploadFixture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Event Details");
+
+                ref.orderByChild("ourContact").equalTo(createEvent.getOurContact()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+
+                            CreateEvent createEvent1 = childSnapshot.getValue(CreateEvent.class);
+
+                            Intent intent = new Intent(MyEventsCreated.this, UploadFixture.class);
+
+                            intent.putExtra("ED Key", childSnapshot.getKey());
+
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
+
+        getFixture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyEventsCreated.this, GetFixture.class);
+                intent.putExtra("ED", createEvent);
+                startActivity(intent);
+            }
+        });
+
+        uploadResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyEventsCreated.this, UploadResult.class);
+                intent.putExtra("ED", createEvent);
+                startActivity(intent);
+            }
+        });
+
+        raiseQuery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyEventsCreated.this, RaiseQuery.class);
+                intent.putExtra("ED", createEvent);
+                startActivity(intent);
+            }
+        });
+
+        getResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyEventsCreated.this, GetResult.class);
+                intent.putExtra("ED", createEvent);
+                startActivity(intent);
+            }
+        });
+
+        participantList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyEventsCreated.this, GetParticipantList.class);
+                intent.putExtra("ED", createEvent);
+                startActivity(intent);
+            }
+        });
+
+        finishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
     }

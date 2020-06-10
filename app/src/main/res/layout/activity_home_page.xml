@@ -53,19 +53,22 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Ongoing"/>
+                    android:text="Ongoing"
+                    android:id="@+id/ongoing"/>
 
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Upcoming"/>
+                    android:text="Upcoming"
+                    android:id="@+id/upcoming"/>
 
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Previous"/>
+                    android:text="Previous"
+                    android:id="@+id/previous"/>
 
             </LinearLayout>
 

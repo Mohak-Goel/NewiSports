@@ -57,7 +57,7 @@ public class EventsParticipatedTotalAdapter extends FirebaseRecyclerAdapter<Crea
 
         Picasso.with(context).load(createEvent.getUrlLink()).into(holder.eventPoster);
 
-        arrayList.add(new CreateEvent(createEvent.getEventName(), createEvent.getField_Name(), createEvent.getCity_Name(), createEvent.getPostal_Code(), createEvent.getSports_Name(), createEvent.getChoose_Time(), createEvent.getEt_Date(), createEvent.isFood(), createEvent.isLodging(), createEvent.isTransport(), createEvent.getEventDescription(), createEvent.getOurContact(), createEvent.getUrlLink()));
+        arrayList.add(new CreateEvent(createEvent.getEventName(), createEvent.getField_Name(), createEvent.getCity_Name(), createEvent.getPostal_Code(), createEvent.getSports_Name(), createEvent.getChoose_Time(), createEvent.getEt_Date(), createEvent.isFood(), createEvent.isLodging(), createEvent.isTransport(), createEvent.getEventDescription(), createEvent.getOurContact(), createEvent.getUrlLink(), createEvent.getStatus()));
 
         holder.viewDetail.setOnClickListener(new View.OnClickListener() {
             @Override

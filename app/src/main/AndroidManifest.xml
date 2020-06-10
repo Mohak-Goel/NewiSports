@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".GetParticipantList"></activity>
+        <activity android:name=".GetResult" />
         <activity android:name=".HomeEventDetail" />
         <activity android:name=".HomePageSecondActivity" />
         <activity android:name=".MyEventsCreatedTotal" />
@@ -39,16 +41,14 @@
             android:name=".RaiseQuery"
             android:label="Mail Your Query To Host" />
         <activity android:name=".MyAccount" />
-        <activity android:name=".Forgotpass"
-            android:label="Reset Password page"/>
+        <activity
+            android:name=".Forgotpass"
+            android:label="Reset Password page" />
         <activity
             android:name=".ParticipationForm"
             android:label="Fill Participation Form" />
-
-        <activity android:name=".EventsParticipatedTotal"/>
-
-        <activity android:name=".EventsParticipated"/>
-
+        <activity android:name=".EventsParticipatedTotal" />
+        <activity android:name=".EventsParticipated" />
         <activity
             android:name=".Splash"
             android:theme="@style/hmStyle">
@@ -60,8 +60,9 @@
         </activity>
         <activity android:name=".Select" />
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity"
-            android:label="Login Page"/>
+        <activity
+            android:name=".MainActivity"
+            android:label="Login Page" />
         <activity
             android:name=".CreateEvent1"
             android:label="Fill Event Creation Form" />

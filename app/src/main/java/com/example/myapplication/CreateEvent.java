@@ -14,12 +14,22 @@ public class CreateEvent implements Serializable {
     String EventDescription;
     String urlLink;
     String OurContact;
+    String status;
     boolean food;
     boolean lodging;
     boolean transport;
 
     public CreateEvent() {
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 
 
     public void setOurContact(String ourContact) {
@@ -133,7 +143,7 @@ public class CreateEvent implements Serializable {
 
     public CreateEvent(String eventName, String fieldLocation, String cityName, String postalCode, String sportsName,
                        String chooseTime, String etDate,boolean food,boolean lodging,boolean transport,
-                       String eventdescrip,String ourContact,String imageURL) {
+                       String eventdescrip,String ourContact,String imageURL, String status) {
 
 
         FieldName = fieldLocation;
@@ -149,6 +159,7 @@ public class CreateEvent implements Serializable {
         urlLink=imageURL;
         EventDescription=eventdescrip;
         OurContact=ourContact;
+        this.status = status;
     }
 
 }

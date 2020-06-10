@@ -205,7 +205,7 @@ public class CreateEvent2 extends AppCompatActivity {
 
                 createEvent = new CreateEvent(createEvent1Form.getEventName(), createEvent1Form.getFieldName(), createEvent1Form.getCityName(),
                         createEvent1Form.getPostalCode(), createEvent1Form.getSportsName(), createEvent1Form.getChooseTime(), createEvent1Form.getEtDate(),
-                        food, lodging, transport, EventDescription.getText().toString(), OurContact.getText().toString(),tvUrl.getText().toString());
+                        food, lodging, transport, EventDescription.getText().toString(), OurContact.getText().toString(),tvUrl.getText().toString(), "Result Not Declared");
                 reference.child(String.valueOf(id_user+1)).setValue(createEvent);
                 reference2.child(String.valueOf(ev_details+1)).setValue(createEvent);
                 //uploadFile();
