@@ -23,6 +23,7 @@ public class Forgotpass extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgotpass);
+        Toast.makeText(Forgotpass.this, "Please Wait...", Toast.LENGTH_SHORT).show();
         userEmail=findViewById(R.id.etUserEmail);
         userPass=findViewById(R.id.btnforgotpass);
         firebaseAuth= FirebaseAuth.getInstance();

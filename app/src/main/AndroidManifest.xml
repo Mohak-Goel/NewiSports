@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GetParticipantList"></activity>
+        <activity android:name=".ParticipantList"></activity>
+        <activity android:name=".GetParticipantList" />
         <activity android:name=".GetResult" />
         <activity android:name=".HomeEventDetail" />
         <activity android:name=".HomePageSecondActivity" />

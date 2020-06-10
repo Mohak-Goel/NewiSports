@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:orientation="vertical"
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:background="#E0E0E0"
-    android:layout_height="wrap_content">
-
-
-
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="University and Coach Name"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,14 +23,14 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:background="@drawable/editbackgound"
-        android:id="@+id/textviewUniversityName"/>
+        android:id="@+id/universityName"/>
 
     <TextView
-        android:id="@+id/textviewNotice"
-        android:layout_width="wrap_content"
-        android:layout_height="177dp"
+        android:id="@+id/universitycoachname"
+        android:layout_width="256dp"
+        android:layout_height="57dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
@@ -36,6 +40,5 @@
         android:inputType="textLongMessage|textMultiLine|textPersonName|textImeMultiLine"
         android:text="This Notice is from KIIT UNIVERSITY that everyone will be given a treat after the final match"
         android:textSize="20dp" />
-
 
 </LinearLayout>

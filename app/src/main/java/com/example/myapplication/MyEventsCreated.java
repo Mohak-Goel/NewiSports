@@ -109,7 +109,7 @@ public class MyEventsCreated extends AppCompatActivity {
         participantList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyEventsCreated.this, GetParticipantList.class);
+                Intent intent = new Intent(MyEventsCreated.this, ParticipantList.class);
                 intent.putExtra("ED", createEvent);
                 startActivity(intent);
             }
