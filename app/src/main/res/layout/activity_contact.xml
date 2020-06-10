@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_light_background"
     android:orientation="vertical"
-    tools:context=".Contact">
+    tools:context=".Contact"
+    android:background="#E0E0E0">
 
     <TextView
         android:id="@+id/textView10"
@@ -19,6 +19,7 @@
         android:text="TEAM MEMBERS ARE AS FOLLOWS :"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="18sp"
+        android:background="@drawable/editbackgound"
         android:textStyle="bold" />
 
     <TextView
@@ -33,21 +34,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="   1. MOHAK GOEL"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="       CONTACT NO. :9521788760"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/textVie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="       EMAIL :1705417@kiit.ac.in"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
 
     <TextView
@@ -62,21 +69,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="   2. NEERAD RANJAN"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/textV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="       CONTACT NO. :8340615894"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/tex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="       EMAIL :1705420@kiit.ac.in"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
 
     <TextView
@@ -91,21 +104,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="   3. NISCHAY KARN GUPTA"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/tetV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="       CONTACT NO. :7979944709"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/tx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="       EMAIL :1705421@kiit.ac.in"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
 
     <TextView
@@ -120,21 +139,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="   4. PAYEL SEN"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/ttV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="       CONTACT NO. :8609990315"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/x"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="       EMAIL :1705422@kiit.ac.in"
-        android:textColor="@android:color/black" />
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="55dp"
+        android:onClick="back"
+        android:background="@drawable/button_shape"
+        android:text="Back TO Home Page" />
 
 
 </LinearLayout>

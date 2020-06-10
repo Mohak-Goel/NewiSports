@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,5 +52,9 @@ public class GetNotice extends AppCompatActivity {
         adapter.startListening();
         recyclerView.setAdapter(adapter);
 
+    }
+    public void back(View v)
+    {
+        startActivity(new Intent(GetNotice.this,HomePage.class));
     }
 }

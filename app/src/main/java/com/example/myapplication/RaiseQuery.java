@@ -36,4 +36,9 @@ public class RaiseQuery extends AppCompatActivity {
         startActivity(Intent.createChooser(mailIntent,"chose the mail clint"));
 
     }
+
+    public void back(View v)
+    {
+        startActivity(new Intent(RaiseQuery.this,HomePage.class));
+    }
 }

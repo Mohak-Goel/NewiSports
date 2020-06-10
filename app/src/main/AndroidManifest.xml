@@ -39,7 +39,8 @@
             android:name=".RaiseQuery"
             android:label="Mail Your Query To Host" />
         <activity android:name=".MyAccount" />
-        <activity android:name=".Forgotpass" />
+        <activity android:name=".Forgotpass"
+            android:label="Reset Password page"/>
         <activity
             android:name=".ParticipationForm"
             android:label="Fill Participation Form" />
@@ -54,7 +55,8 @@
         </activity>
         <activity android:name=".Select" />
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:label="Login Page"/>
         <activity
             android:name=".CreateEvent1"
             android:label="Fill Event Creation Form" />

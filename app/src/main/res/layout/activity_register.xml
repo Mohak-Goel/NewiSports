@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".Register"
+    android:background="#E0E0E0">
 
 
     <TextView
@@ -14,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Registration Form"
         android:textAlignment="center"
-        android:textColor="@color/borderColor"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold|italic" />
 
@@ -38,6 +39,7 @@
                 android:hint="Enter University Name"
                 android:inputType="textPersonName"
                 android:text=""
+                android:background="@drawable/editbackgound"
                 android:textColorHint="#CFCFCF" />
             <EditText
                 android:id="@+id/Laddress"
@@ -50,11 +52,13 @@
                 android:hint="Enter Local Address"
                 android:inputType="textPersonName"
                 android:text=""
+                android:background="@drawable/editbackgound"
                 android:textColorHint="#CFCFCF" />
             <EditText
                 android:id="@+id/city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/editbackgound"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
@@ -84,6 +88,7 @@
                 android:id="@+id/pincode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/editbackgound"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
@@ -103,6 +108,7 @@
                 android:layout_marginRight="30dp"
                 android:ems="10"
                 android:hint="Enter Phone Number"
+                android:background="@drawable/editbackgound"
                 android:inputType="number"
                 android:text=""
                 android:textColorHint="#CFCFCF" />
@@ -111,6 +117,7 @@
                 android:id="@+id/pno2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/editbackgound"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
@@ -125,6 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/editbackgound"
                 android:layout_marginRight="30dp"
                 android:ems="10"
                 android:hint="You are(eg.Host/participant/Manager)"
@@ -139,8 +147,9 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
+                android:background="@drawable/editbackgound"
                 android:hint="Enter Email Address"
-                android:textColor="@color/borderColor"
+                android:textColor="@android:color/black"
                 android:textColorHint="#CFCFCF" />
 
             <EditText
@@ -151,6 +160,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
                 android:hint="Enter Password"
+                android:background="@drawable/editbackgound"
                 android:inputType="textPassword"
                 android:textColor="@color/borderColor"
                 android:textColorHint="#CFCFCF" />
@@ -162,7 +172,7 @@
                 android:text="Register"
                 android:layout_marginRight="120dp"
                 android:layout_marginLeft="120dp"
-
+                android:background="@drawable/submit_button_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

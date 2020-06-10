@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0E0E0"
     tools:context=".UploadNotice">
 
     <EditText
@@ -16,6 +17,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
+        android:background="@drawable/editbackgound"
         android:layout_marginBottom="20dp"
         android:inputType="textPersonName"
         android:textSize="24sp" />
@@ -25,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="266dp"
         android:layout_marginLeft="30dp"
+        android:background="@drawable/editbackgound"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
@@ -38,7 +41,24 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
         android:onClick="funUN"
+        android:background="@drawable/submit_button_style"
         android:layout_marginTop="30dp"
         android:layout_marginRight="80dp"
         android:text="Upload" />
+    '
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+    android:id="@+id/button2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="55dp"
+    android:layout_marginRight="55dp"
+    android:onClick="back"
+    android:background="@drawable/button_shape"
+    android:text="Back TO Home Page" />
 </LinearLayout>

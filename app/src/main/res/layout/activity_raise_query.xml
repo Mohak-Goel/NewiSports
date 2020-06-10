@@ -5,12 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#E0E0E0"
     tools:context=".RaiseQuery">
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/tv1"
         android:layout_width="match_parent"
         android:layout_height="34dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="Enter Host's Mail Address-:"
         android:textColor="@android:color/black"
         android:textSize="24sp" />
@@ -19,7 +28,10 @@
         android:id="@+id/e1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:ems="10"
+        android:background="@drawable/editbackgound"
         android:inputType="textPersonName" />
 
     <TextView
@@ -27,6 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:text="Subject of Query-:"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:textColor="@android:color/black"
         android:textSize="24sp" />
 
@@ -35,6 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/editbackgound"
         android:inputType="textPersonName" />
 
     <TextView
@@ -42,30 +59,69 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Write Your Query below-:"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:textColor="@android:color/black"
         android:textSize="24sp" />
 
     <EditText
         android:id="@+id/e3"
         android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_height="130dp"
+        android:background="@drawable/editbackgound"
         android:ems="10"
         android:inputType="textLongMessage|textMultiLine|textPersonName|textImeMultiLine" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10sp" />
 
     <Button
         android:id="@+id/b1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send Mail"
+        android:layout_marginRight="55dp"
+        android:layout_marginLeft="55dp"
         android:onClick="sendgmail"
         android:textColor="@android:color/holo_red_dark"
+        android:background="@drawable/button_shape"
         android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="55dp"
+        android:onClick="back"
+        android:background="@drawable/submit_button_style"
+        android:text="Back TO Home Page" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text='Note-: "Please have some patience after mailing your query. It will be answered via mail as soon as possible..."'
+        android:textColor="@android:color/black"
         android:textSize="18sp" />
+
+
 
 </LinearLayout>
