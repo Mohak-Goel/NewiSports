@@ -26,7 +26,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    Button createEvent, ongoing, upcoming, previous;
+    Button createEvent;
 
     private HomePageAdapter homePageAdapter;
     private RecyclerView recyclerView;
@@ -39,9 +39,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_home_page);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        ongoing = findViewById(R.id.ongoing);
-        upcoming = findViewById(R.id.upcoming);
-        previous = findViewById(R.id.previous);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
         createEvent = findViewById(R.id.create_event);
@@ -77,31 +74,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         homePageAdapter.setOnClickListener(new HomePageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-
-            }
-        });
-
-        upcoming.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                upcoming.setBackground(getDrawable(R.drawable.buttonclick));
-
-            }
-        });
-
-        ongoing.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ongoing.setBackground(getDrawable(R.drawable.buttonclick));
-
-            }
-        });
-
-        previous.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                previous.setBackground(getDrawable(R.drawable.buttonclick));
 
             }
         });

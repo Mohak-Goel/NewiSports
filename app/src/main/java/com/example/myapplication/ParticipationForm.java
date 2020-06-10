@@ -201,6 +201,7 @@ public class ParticipationForm extends AppCompatActivity {
                                     i1.putExtra(PARTICIPANT_UNIVERSITY_DETAIL, participantFormItemObj);
                                     i1.putExtra("Event Participated Detail", createEvent);
                                     startActivity(i1);
+                                    finish();
 
                                 }catch (Exception e){
                                     t.cancel();

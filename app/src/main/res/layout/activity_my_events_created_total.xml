@@ -4,39 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="4dp"
+    android:layout_margin="16dp"
     android:orientation="vertical"
     tools:context=".MyEventsCreatedTotal">
-<LinearLayout
-    android:id="@+id/linear_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
 
-    <Button
-       android:layout_width="0dp"
-       android:layout_weight="1"
-       android:layout_height="wrap_content"
-       android:text="Ongoing"/>
-
-    <Button
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="Upcoming"/>
-
-    <Button
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="Previous"/>
-
-</LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_event_created_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/linear_layout"
         android:scrollbars="vertical"
         android:background="@android:color/white"
         android:padding="2dp"/>

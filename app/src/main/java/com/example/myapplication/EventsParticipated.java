@@ -50,7 +50,7 @@ public class EventsParticipated extends AppCompatActivity {
                         for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
 
 
-                            Intent intent = new Intent(EventsParticipated.this, GetParticipantList.class);
+                            Intent intent = new Intent(EventsParticipated.this, ParticipantList.class);
 
                             intent.putExtra("ED Key", childSnapshot.getKey());
 

@@ -42,7 +42,7 @@
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:layout_below="@id/participant_email"
-            android:id="@id/participant_phoneNo"
+            android:id="@+id/participant_phoneNo"
             />
 
         <TextView

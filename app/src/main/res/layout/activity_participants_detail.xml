@@ -104,21 +104,5 @@
         android:textColor="@color/common_google_signin_btn_text_light_default"
         android:background="@drawable/submit_button_style"/>
 
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="100dp"
-        android:layout_marginLeft="100dp"
-        android:background="@drawable/button_shape"
-        android:onClick="back"
-        android:layout_weight="0"
-        android:text="Back to home page" />
 
 </LinearLayout>

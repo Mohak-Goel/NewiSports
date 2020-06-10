@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -299,8 +298,4 @@ public class ParticipantsDetail extends AppCompatActivity {
         backPressedTime = System.currentTimeMillis();
     }
 
-    public void back(View v)
-    {
-        startActivity(new Intent(ParticipantsDetail.this,HomePage.class));
-    }
 }
