@@ -51,7 +51,16 @@
             android:textSize="16dp"
             android:id="@+id/event_participated_time"/>
 
-
+        <Button
+            android:id="@+id/event_participated_view_detail"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_below="@id/event_participated_time"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginVertical="8dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/button_shape"
+            android:text="View Details" />
 
     </RelativeLayout>
 

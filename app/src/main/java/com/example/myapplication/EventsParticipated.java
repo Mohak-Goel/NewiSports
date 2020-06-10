@@ -1,58 +1,51 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import com.squareup.picasso.Picasso;
 
 public class EventsParticipated extends AppCompatActivity {
 
+    ImageView eventPoster;
+    TextView eventTitle, eventDescription, eventLocation, eventVenue;
+    Button participantList, getFixture, getResult, raiseQuery;
+    CreateEvent createEvent;
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_participated);
 
-        Button button1=findViewById(R.id.participants_list);
-        Button button2=findViewById(R.id.fixture_details);
-        Button button3=findViewById(R.id.result_published);
-        Button button4=findViewById(R.id.any_queries);
+        extractView();
 
-
-
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Toast.makeText(EventsParticipated.this,"Get Participants Details",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Toast.makeText(EventsParticipated.this,"Get Fixture Details",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Toast.makeText(EventsParticipated.this,"Get Results",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-
-                Toast.makeText(EventsParticipated.this,"Get Queries",Toast.LENGTH_SHORT).show();
-            }
-        });
+        Picasso.with(this).load(createEvent.getUrlLink()).into(eventPoster);
+        eventTitle.setText(createEvent.getEventName());
+        eventDescription.setText(createEvent.getEventDescription());
+        eventLocation.setText("Location : "+createEvent.getField_Name()+", "+createEvent.getCity_Name()+", "+createEvent.getPostal_Code());
+        eventVenue.setText("Venue : "+createEvent.getEt_Date()+"    "+createEvent.getChoose_Time());
 
     }
+
+    public void extractView(){
+
+        participantList=findViewById(R.id.get_my_participant_list);
+        getFixture=findViewById(R.id.get_my_fixture);
+        getResult=findViewById(R.id.get_my_result);
+        raiseQuery=findViewById(R.id.my_raise_query);
+        eventPoster = findViewById(R.id.participant_my_event_created_poster);
+        eventTitle = findViewById(R.id.participant_my_event_created_title);
+        eventDescription = findViewById(R.id.participant_my_event_created_detail);
+        eventVenue = findViewById(R.id.participant_my_event_created_venue);
+        eventLocation = findViewById(R.id.participant_my_event_created_location);
+        createEvent = (CreateEvent)getIntent().getSerializableExtra("My Event Participated Detail");
+
+    }
+
 }
