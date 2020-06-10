@@ -25,6 +25,7 @@ public class GetFixture extends AppCompatActivity {
     ArrayList<FixtureDetail> fixtureDetailList;
 
     DatabaseReference fixtureDatabase;
+    String EDKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +33,14 @@ public class GetFixture extends AppCompatActivity {
         setContentView(R.layout.activity_get_fixture);
 
         getFixtureList = (RecyclerView)findViewById(R.id.get_fixture_list);
+        EDKey = (String)getIntent().getStringExtra("ED Key");
         fixtureDetailList = new ArrayList<>();
         getFixtureList.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mAdapter = new GetFixtureAdapter(fixtureDetailList);
         getFixtureList.setLayoutManager(mLayoutManager);
         getFixtureList.setAdapter(mAdapter);
-        fixtureDatabase = FirebaseDatabase.getInstance().getReference("Fixture Details");
+        fixtureDatabase = FirebaseDatabase.getInstance().getReference("Fixture Details").child(EDKey);
 
         Toast.makeText(getApplicationContext(), "Please Wait for few Seconds while we fetch data. :-)", Toast.LENGTH_LONG).show();
 
