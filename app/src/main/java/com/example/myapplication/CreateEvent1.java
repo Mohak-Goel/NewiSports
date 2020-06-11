@@ -1,28 +1,21 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.format.DateFormat;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class CreateEvent1 extends AppCompatActivity {
@@ -202,6 +195,7 @@ public class CreateEvent1 extends AppCompatActivity {
         Intent homeIntent = new Intent(CreateEvent1.this, CreateEvent2.class);
         homeIntent.putExtra("CreateEvent1 Data", e);
         startActivity(homeIntent);
+        finish();
     }
 
 }

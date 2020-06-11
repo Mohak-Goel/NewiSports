@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -12,23 +13,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class HomePageAdapter extends FirebaseRecyclerAdapter<CreateEvent, HomePageAdapter.homePageViewHolder> {
+public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.homePageViewHolder> {
 
     private OnItemClickListener mListener;
     private ArrayList<CreateEvent> eventArrayList;
     private Context context;
 
-    public HomePageAdapter (Context context, FirebaseRecyclerOptions<CreateEvent> options){
+    public HomePageAdapter (Context context, ArrayList<CreateEvent> list){
 
-        super(options);
+        eventArrayList = list;
         this.context = context;
-        eventArrayList = new ArrayList<>();
 
     }
 
@@ -48,16 +46,16 @@ public class HomePageAdapter extends FirebaseRecyclerAdapter<CreateEvent, HomePa
         return homePageVH;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull homePageViewHolder holder, final int position, @org.jetbrains.annotations.NotNull final CreateEvent createEvent) {
+    public void onBindViewHolder(@NonNull homePageViewHolder holder, final int position) {
 
+        CreateEvent createEvent = eventArrayList.get(position);
         holder.eventTitle.setText(createEvent.getEventName()+", "+ createEvent.getCity_Name());
         holder.eventTime.setText(createEvent.getChoose_Time());
         holder.eventDate.setText(createEvent.getEt_Date());
 
         Picasso.with(context).load(createEvent.getUrlLink()).into(holder.eventPoster);
-
-        eventArrayList.add(new CreateEvent(createEvent.getEventName(), createEvent.getField_Name(), createEvent.getCity_Name(), createEvent.getPostal_Code(), createEvent.getSports_Name(), createEvent.getChoose_Time(), createEvent.getEt_Date(), createEvent.isFood(), createEvent.isLodging(), createEvent.isTransport(), createEvent.getEventDescription(), createEvent.getOurContact(), createEvent.getUrlLink(), createEvent.getStatus()));
 
         holder.participateNowButton.setOnClickListener(new View.OnClickListener() {
 
@@ -74,6 +72,11 @@ public class HomePageAdapter extends FirebaseRecyclerAdapter<CreateEvent, HomePa
 
         });
 
+    }
+
+    @Override
+    public int getItemCount() {
+        return eventArrayList.size();
     }
 
 
@@ -106,7 +109,6 @@ public class HomePageAdapter extends FirebaseRecyclerAdapter<CreateEvent, HomePa
 
         }
     }
-
 
 
 }

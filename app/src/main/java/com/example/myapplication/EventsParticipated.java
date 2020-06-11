@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,7 +22,8 @@ import com.squareup.picasso.Picasso;
 public class EventsParticipated extends AppCompatActivity {
 
     ImageView eventPoster;
-    TextView eventTitle, eventDescription, eventLocation, eventVenue;
+    TextView eventTitle, eventDescription, eventLocation, eventVenue, phone;
+    RelativeLayout food, lodge, transport;
     Button participantList, getFixture, getResult, raiseQuery;
     CreateEvent createEvent;
 
@@ -38,6 +40,18 @@ public class EventsParticipated extends AppCompatActivity {
         eventDescription.setText(createEvent.getEventDescription());
         eventLocation.setText("Location : "+createEvent.getField_Name()+", "+createEvent.getCity_Name()+", "+createEvent.getPostal_Code());
         eventVenue.setText("Venue : "+createEvent.getEt_Date()+"    "+createEvent.getChoose_Time());
+
+        if (!createEvent.isFood())
+            food.setVisibility(View.GONE);
+
+        if (!createEvent.isTransport())
+            transport.setVisibility(View.GONE);
+
+        if (!createEvent.isLodging())
+            lodge.setVisibility(View.GONE);
+
+        phone.setText((createEvent.getOurContact().startsWith("+91")?createEvent.getOurContact():"+91"+createEvent.getOurContact()));
+
 
         participantList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +167,10 @@ public class EventsParticipated extends AppCompatActivity {
         getFixture=findViewById(R.id.get_my_fixture);
         getResult=findViewById(R.id.get_my_result);
         raiseQuery=findViewById(R.id.my_raise_query);
+        food = findViewById(R.id.participated_my_event_created_food);
+        lodge = findViewById(R.id.participated_my_event_created_lodge);
+        transport = findViewById(R.id.participated_my_event_created_transport);
+        phone = findViewById(R.id.participated_my_event_created_contact_no);
         eventPoster = findViewById(R.id.participant_my_event_created_poster);
         eventTitle = findViewById(R.id.participant_my_event_created_title);
         eventDescription = findViewById(R.id.participant_my_event_created_detail);

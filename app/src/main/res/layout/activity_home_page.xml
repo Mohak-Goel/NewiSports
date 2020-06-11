@@ -34,6 +34,8 @@
             android:id="@+id/toolbar"
             app:navigationIcon="@drawable/ic_menu_black_24dp"/>
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -42,6 +44,39 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginHorizontal="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Upcoming"
+                    android:onClick="xyz"
+                    android:background="#8BC34A"
+                    android:id="@+id/upcoming_button"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/live_button"
+                    android:background="@android:color/transparent"
+                    android:text="Live"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:id="@+id/previous_button"
+                    android:text="Previous"/>
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
@@ -59,6 +94,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
             android:text="Create Event"
+            android:visibility="gone"
             android:id="@+id/create_event"
             android:background="@drawable/submit_button_style"
             />
