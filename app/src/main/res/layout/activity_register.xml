@@ -78,11 +78,9 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="30dp"
-
-
                     android:textSize="20sp"
-                    android:entries="@array/state_list"
                     android:background="@drawable/spinner_background"
+                    android:entries="@array/state_list"
                     android:id="@+id/university_state"/>
 
 
@@ -130,19 +128,28 @@
                     android:inputType="number"
                     android:text=""
                     android:textColorHint="#CFCFCF" />
-                <EditText
-                    android:id="@+id/usertype"
+
+                <TextView
+                    android:id="@+id/tex"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
+                    android:text="Select user type from below options-:"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/ut"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/editbackgound"
                     android:layout_marginRight="30dp"
-                    android:ems="10"
-                    android:hint="You are(eg.Host/participant/Manager)"
-                    android:inputType="textPersonName"
-                    android:text=""
-                    android:textColorHint="#CFCFCF" />
+                    android:textSize="20sp"
+                    android:background="@drawable/spinner_background"
+                    android:entries="@array/user_type"
+                    />
 
                 <EditText
                     android:id="@+id/Remail"

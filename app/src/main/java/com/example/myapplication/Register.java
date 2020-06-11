@@ -45,7 +45,7 @@ public class Register extends AppCompatActivity {
     private DatabaseReference dbref;
     FirebaseUser user;
     String uid;
-    Spinner UnivState;
+    Spinner UnivState,utype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +59,16 @@ public class Register extends AppCompatActivity {
        // E4=findViewById(R.id.state);
         E5=findViewById(R.id.pno);
         E6=findViewById(R.id.pno2);
-        E7=findViewById(R.id.usertype);
+     //   E7=findViewById(R.id.usertype);
         E8=findViewById(R.id.pincode);
         Register=findViewById(R.id.Rregister);
         Email=findViewById(R.id.Remail);
         Password=findViewById(R.id.Rpass);
         firebaseAuth=FirebaseAuth.getInstance();
         UnivState = findViewById(R.id.university_state);
+        utype=findViewById(R.id.ut);
         UnivState.setSelection(0);
+        utype.setSelection(0);
 
 
 
@@ -123,7 +125,8 @@ public class Register extends AppCompatActivity {
             String st4  = UnivState.getSelectedItem().toString();
             String st5 = E5.getText().toString().trim();
             String st6 = E6.getText().toString().trim();
-            String st7 = E7.getText().toString().trim();
+         //   String st7 = E7.getText().toString().trim();
+            String st7=utype.getSelectedItem().toString();
             String st8 = E8.getText().toString().trim();
             if (st7.length() > 0 &&st6.length() > 0 && st5.length() > 0 && st2.length() > 0 ) {
                 dbref = FirebaseDatabase.getInstance().getReference().child("Registration Details").child(uid);

@@ -34,6 +34,12 @@
         <item>O-</item>
         <item>Unknown</item>
     </string-array>
+    <string-array name="user_type">
+        <item>PARTICIPANT</item>
+        <item>HOST</item>
+        <item>OPERATIONAL MANAGER</item>
+
+    </string-array>
 
 
     <string-array name="state_list">
