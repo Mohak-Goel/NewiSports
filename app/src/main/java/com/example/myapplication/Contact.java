@@ -13,7 +13,7 @@ public class Contact extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
-        Toast.makeText(Contact.this, "Please Wait...", Toast.LENGTH_SHORT).show();
+    //    Toast.makeText(Contact.this, "Please Wait...", Toast.LENGTH_SHORT).show();
     }
     public void back(View v)
     {

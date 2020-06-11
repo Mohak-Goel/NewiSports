@@ -27,7 +27,7 @@ public class GetNotice extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_notice);
-        Toast.makeText(GetNotice.this, "Please Wait...", Toast.LENGTH_LONG).show();
+    //    Toast.makeText(GetNotice.this, "Please Wait...", Toast.LENGTH_LONG).show();
         ref= FirebaseDatabase.getInstance().getReference().child("Notice");
         recyclerView=findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
