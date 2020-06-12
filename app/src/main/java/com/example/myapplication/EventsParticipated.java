@@ -38,8 +38,8 @@ public class EventsParticipated extends AppCompatActivity {
         Picasso.with(this).load(createEvent.getUrlLink()).into(eventPoster);
         eventTitle.setText(createEvent.getEventName());
         eventDescription.setText(createEvent.getEventDescription());
-        eventLocation.setText("Location : "+createEvent.getField_Name()+", "+createEvent.getCity_Name()+", "+createEvent.getPostal_Code());
-        eventVenue.setText("Venue : "+createEvent.getEt_Date()+"    "+createEvent.getChoose_Time());
+        eventLocation.setText(createEvent.getField_Name()+", "+createEvent.getCity_Name()+", "+createEvent.getPostal_Code());
+        eventVenue.setText(createEvent.getEt_Date()+"    "+createEvent.getChoose_Time());
 
         if (!createEvent.isFood())
             food.setVisibility(View.GONE);

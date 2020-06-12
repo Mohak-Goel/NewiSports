@@ -91,6 +91,7 @@
                 <TextView android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Transport"
+                    android:id="@+id/transport_tv"
                     android:textAllCaps="true"
                     android:textSize="28sp"
                     android:layout_marginTop="10dp"
@@ -109,7 +110,6 @@
                         android:layout_marginBottom="4dp"
                         android:layout_marginTop="4dp"
                         android:text="Yes"
-                        android:checked="true"
                         android:textSize="20dp"
                         android:id="@+id/transport_radio_yes"/>
 
@@ -118,6 +118,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="No"
                         android:textSize="20dp"
+                        android:checked="true"
                         android:id="@+id/transport_radio_no"/>
 
                 </RadioGroup>
@@ -125,6 +126,7 @@
                 <TextView android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Food"
+                    android:id="@+id/food_tv"
                     android:textSize="28sp"
                     android:textAllCaps="true"
                     android:textColor="@android:color/holo_green_dark"
@@ -144,13 +146,13 @@
                         android:layout_marginTop="4dp"
                         android:text="Yes"
                         android:id="@+id/food_radio_yes"
-                        android:textSize="20dp"
-                        android:checked="true"/>
+                        android:textSize="20dp" />
 
                     <RadioButton android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:layout_marginBottom="8dp"
                         android:text="No"
+                        android:checked="true"
                         android:id="@+id/food_radio_no"
                         android:textSize="20dp"/>
 
@@ -160,6 +162,7 @@
                     android:layout_height="wrap_content"
                     android:text="Lodging"
                     android:textAllCaps="true"
+                    android:id="@+id/lodge_tv"
                     android:textSize="28sp"
                     android:textColor="@android:color/holo_green_dark"
                     android:layout_marginTop="10dp"
@@ -177,7 +180,6 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="4dp"
                         android:text="Yes"
-                        android:checked="true"
                         android:textSize="20dp"
                         android:id="@+id/lodging_radio_yes"/>
 
@@ -186,6 +188,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="No"
                         android:textSize="20dp"
+                        android:checked="true"
                         android:id="@+id/lodging_radio_no"/>
 
                 </RadioGroup>

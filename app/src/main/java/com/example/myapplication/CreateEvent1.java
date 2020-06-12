@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -8,40 +9,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateEvent1 extends AppCompatActivity {
-    TextView tvDate;
-    EditText etDate;
-    EditText chooseTime;
-    TimePickerDialog timePickerDialog;
-
-    Calendar calendar;
-    int currentHour;
-    int currentMinute;
-    String amPm;
-
-
-    EditText EventName, FieldLocation, CityName, PostalCode, SportsName;
+    EditText etDate, chooseTime, EventName, FieldLocation, CityName, PostalCode, SportsName;
     Button ClickNext;
 
-    FirebaseDatabase rootNode;
-     DatabaseReference reference;
-
-
-    //EditText et;
-    //Button bt;
-    //ListView lv;
-    //ArrayList<String> arrayList;
-    //ArrayAdapter<String> adapter;
+    Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,30 +35,11 @@ public class CreateEvent1 extends AppCompatActivity {
         PostalCode = findViewById(R.id.postalCode);
         SportsName = findViewById(R.id.sportsName);
         ClickNext = findViewById(R.id.clickNext);
-
-
-        // et = findViewById(R.id.editText);
-        //bt = findViewById(R.id.button_addData);
-        // lv = findViewById(R.id.listView_lv);
-
-        //arrayList = new ArrayList<String>();
-        //adapter = new ArrayAdapter<String>(CreateEvent1.this, android.R.layout.simple_list_item_1,
-        //      arrayList);
-        //lv.setAdapter(adapter);
-
-        //bt.setOnClickListener(new View.OnClickListener() {
-        //  @Override
-        //public void onClick(View view) {
-        //  String names=et.getText().toString();
-        //arrayList.add(names);
-        //lv.setAdapter(adapter);
-        //adapter.notifyDataSetChanged();
-        //}
-        //});
-
-        // onBtnClick();
-
         chooseTime = findViewById(R.id.etChooseTime);
+
+        toast = Toast.makeText(getApplicationContext(), "Kindly Fill the Form", Toast.LENGTH_SHORT);
+        toast.show();
+
         chooseTime.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View view) {
@@ -86,6 +48,7 @@ public class CreateEvent1 extends AppCompatActivity {
                                               final int min = calendar.get(Calendar.MINUTE);
                                               TimePickerDialog mTimePicker;
                                               mTimePicker = new TimePickerDialog(CreateEvent1.this, new TimePickerDialog.OnTimeSetListener() {
+                                                  @SuppressLint({"DefaultLocale", "SetTextI18n"})
                                                   @Override
                                                   public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
@@ -114,25 +77,6 @@ public class CreateEvent1 extends AppCompatActivity {
                                           }
             });
 
-              //  timePickerDialog = new TimePickerDialog(CreateEvent1.this, new TimePickerDialog.OnTimeSetListener() {
-
-                //    @Override
-                  //  public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-                    //    if (hourOfDay >= 12) {
-                      //      amPm = "PM";
-                        //} else {
-                          //  amPm = "AM";
-                        //}
-                        //chooseTime.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
-                        //chooseTime.setText(hourOfDay + ":" + minutes + amPm);
-                    //}
-                //}, currentHour, currentMinute, false);
-                //timePickerDialog.show();
-
-
-
-
-
 
         etDate = findViewById(R.id.et_date);
 
@@ -154,6 +98,7 @@ public class CreateEvent1 extends AppCompatActivity {
                         etDate.setText(date);
                     }
                 }, year, month, day);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });
@@ -161,32 +106,79 @@ public class CreateEvent1 extends AppCompatActivity {
         ClickNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // rootNode = FirebaseDatabase.getInstance();
-               // reference = rootNode.getReference("Event Details");
 
-                CreateEvent1Form e = new CreateEvent1Form(EventName.getText().toString(), FieldLocation.getText().toString(),
-                        CityName.getText().toString(), PostalCode.getText().toString(), SportsName.getText().toString(),
-                        chooseTime.getText().toString(), etDate.getText().toString());
+                if(EventName.getText().toString().isEmpty()){
 
-                // reference.setValue(e);
-                intentCall();
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Enter event name!!", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+
+                else if(FieldLocation.getText().toString().isEmpty()){
+
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Enter Location!!", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+
+                else if(CityName.getText().toString().isEmpty()){
+
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Enter City Name!!", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+
+
+                else if(PostalCode.getText().toString().isEmpty()){
+
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Enter Postal Code!!", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+
+
+                else if(SportsName.getText().toString().isEmpty()){
+
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Enter Sports Name!!", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+
+
+                else if(chooseTime.getText().toString().isEmpty()){
+
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Choose Time!!", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+
+
+                else if(etDate.getText().toString().isEmpty()){
+
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Choose Date!!", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+
+                else if (!isPostalCodeValid(PostalCode.getText().toString()))
+                {
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Invalid Postal code!!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
+                else  intentCall();
             }
         });
 
     }
-
-
-    // public void onBtnClick(){
-    //   bt.setOnClickListener(new View.OnClickListener() {
-    //     @Override
-    //   public void onClick(View view) {
-    //     String result=et.getText().toString();
-    //   arrayList.add(result);
-    // adapter.notifyDataSetChanged();
-    //}
-    // });
-    // }
-
 
     public void intentCall() {
         CreateEvent1Form e=new CreateEvent1Form(EventName.getText().toString(), FieldLocation.getText().toString(),
@@ -196,6 +188,20 @@ public class CreateEvent1 extends AppCompatActivity {
         homeIntent.putExtra("CreateEvent1 Data", e);
         startActivity(homeIntent);
         finish();
+    }
+
+    public static boolean isPostalCodeValid(String pcode) {
+        boolean isValid = false;
+
+        String expression = "^[1-9][0-9]{5}$";
+        CharSequence inputStr = pcode;
+
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            isValid = true;
+        }
+        return isValid;
     }
 
 }
