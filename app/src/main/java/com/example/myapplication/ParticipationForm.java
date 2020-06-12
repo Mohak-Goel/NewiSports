@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -118,18 +119,18 @@ public class ParticipationForm extends AppCompatActivity {
                 int selectedId = radioGroupFood.getCheckedRadioButtonId();
                 radioButtonFood = (RadioButton)findViewById(selectedId);
 
-                boolean pfood = true;
-                if (radioButtonFood.getId()==R.id.food_radio_no)    pfood = false;
+                boolean pfood = false;
+                if (radioButtonFood.getId()!=R.id.food_radio_no)    pfood = true;
 
                 selectedId = radioGroupLodging.getCheckedRadioButtonId();
                 radioButtonLodging = (RadioButton)findViewById(selectedId);
-                boolean pLodging = true;
-                if (radioButtonLodging.getId()==R.id.lodging_radio_no)  pLodging = false;
+                boolean pLodging = false;
+                if (radioButtonLodging.getId()!=R.id.lodging_radio_no)  pLodging = true;
 
                 selectedId = radioGroupTransport.getCheckedRadioButtonId();
                 radioButtonTransport = (RadioButton)findViewById(selectedId);
-                boolean pTransport = true;
-                if (radioButtonTransport.getId()==R.id.transport_radio_no) pTransport = false;
+                boolean pTransport = false;
+                if (radioButtonTransport.getId()!=R.id.transport_radio_no) pTransport = true;
 
                 if (UnivCoachName.isEmpty() || UnivCoachPhNo.isEmpty() || UnivCoachEmail.isEmpty() ){
 
@@ -235,6 +236,22 @@ public class ParticipationForm extends AppCompatActivity {
         radioGroupTransport = findViewById(R.id.transport_radio_group);
         buttonNext = findViewById(R.id.participant_next_button);
         buttonReset = findViewById(R.id.reset_button);
+        TextView food = findViewById(R.id.food_tv), lodge = findViewById(R.id.lodge_tv), transport = findViewById(R.id.transport_tv);
+
+        if (!createEvent.isLodging()) {
+            radioGroupLodging.setVisibility(View.GONE);
+            lodge.setVisibility(View.GONE);
+        }
+
+        if (!createEvent.isFood()) {
+            radioGroupFood.setVisibility(View.GONE);
+            food.setVisibility(View.GONE);
+        }
+
+        if (!createEvent.isTransport()) {
+            radioGroupTransport.setVisibility(View.GONE);
+            transport.setVisibility(View.GONE);
+        }
 
 
     }

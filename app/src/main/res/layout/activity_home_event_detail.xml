@@ -33,12 +33,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:layout_marginBottom="8dp"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/primary_text_light"
                     android:layout_marginHorizontal="8dp"
-                    android:id="@+id/event_title"
-                    />
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:id="@+id/event_title" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -51,22 +52,167 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/event_location"
-                    android:textSize="20sp"
+                    android:text="Location"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
                     android:textColor="@android:color/black"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginBottom="14dp"
+                    android:textSize="24sp"
+                    android:layout_marginHorizontal="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/home_location"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="18dp"
                     android:layout_marginHorizontal="8dp"
                     />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/event_venue"
+                    android:text="Venue"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginBottom="14dp"
+                    android:textSize="24sp"
+                    android:layout_marginHorizontal="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/home_venue"
                     android:layout_marginHorizontal="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginBottom="10dp"
                     android:textSize="20sp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@android:color/holo_red_light"/>
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Amenities"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="24sp"
+                    android:layout_marginHorizontal="8dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:id="@+id/home_food"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_fastfood_24"
+                        android:id="@+id/food_icon"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Food"
+                        android:textColor="@android:color/primary_text_light"
+                        android:textSize="18sp"
+                        android:paddingLeft="10dp"
+                        android:layout_toRightOf="@id/food_icon" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:id="@+id/home_lodge"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_lodge_24"
+                        android:id="@+id/lodge_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lodging"
+                        android:textColor="@android:color/primary_text_light"
+                        android:textSize="18sp"
+                        android:paddingStart="10dp"
+                        android:layout_toEndOf="@id/lodge_icon"
+                        tools:ignore="RtlSymmetry" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:id="@+id/home_transport"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_transport_24"
+                        android:id="@+id/transport_icon"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Transport"
+                        android:textColor="@android:color/primary_text_light"
+                        android:textSize="18sp"
+                        android:paddingStart="8dp"
+                        android:layout_toEndOf="@id/transport_icon"
+                        tools:ignore="RtlSymmetry" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Us"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="24sp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="8dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="14dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_local_phone_24"
+                        android:id="@+id/phone_icon"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autoLink="phone"
+                        android:textColor="@android:color/primary_text_light"
+                        android:textSize="18sp"
+                        android:paddingStart="10dp"
+                        android:textColorLink="@android:color/holo_blue_dark"
+                        android:id="@+id/home_contact_no"
+                        android:layout_toEndOf="@id/phone_icon"
+                        tools:ignore="RtlSymmetry" />
+
+                </RelativeLayout>
+
 
 
             </LinearLayout>

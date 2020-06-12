@@ -33,10 +33,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:layout_marginBottom="8dp"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/primary_text_light"
                     android:layout_marginHorizontal="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
                     android:id="@+id/my_event_created_title"
                     />
 
@@ -44,30 +46,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/my_event_created_detail"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="18dp"
                     android:textSize="18sp"
                     android:layout_marginHorizontal="8dp"/>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginBottom="14dp"
+                    android:textSize="24sp"
+                    android:layout_marginHorizontal="8dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/my_event_created_location"
                     android:textSize="20sp"
-                    android:textColor="@android:color/holo_red_light"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginBottom="18dp"
                     android:layout_marginHorizontal="8dp"
                     />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Venue"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginBottom="14dp"
+                    android:textSize="24sp"
+                    android:layout_marginHorizontal="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:id="@+id/my_event_created_venue"
                     android:layout_marginHorizontal="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginBottom="10dp"
                     android:textSize="20sp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@android:color/holo_red_light"/>
+                    android:layout_marginTop="4dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -225,7 +246,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:id="@+id/for_operational_manager"
+                        android:visibility="gone">
 
                         <Button
                             android:layout_width="0dp"

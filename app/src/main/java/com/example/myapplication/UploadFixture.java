@@ -331,7 +331,6 @@ public class UploadFixture extends AppCompatActivity {
                         toast.show();
                     } else {
 
-                        //FixtureDetail fixtureDetail = new FixtureDetail(participant1.getText().toString(), participant2.getText().toString(), fixtureDate.getText().toString(), fixtureTime.getText().toString());
                         fixtureDatabase.setValue(fixtureDetails);
                         toast.cancel();
                         toast = Toast.makeText(getApplicationContext(), "Fixture Uploaded Successfully !! :-)", Toast.LENGTH_SHORT);

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,8 +60,8 @@ public class MyEventsCreated extends AppCompatActivity {
             lodge.setVisibility(View.GONE);
 
         contact.setText((createEvent.getOurContact().startsWith("+91")?createEvent.getOurContact():"+91"+createEvent.getOurContact()));
-        eventLocation.setText("Location : "+createEvent.getField_Name()+", "+createEvent.getCity_Name()+", "+createEvent.getPostal_Code());
-        eventVenue.setText("Venue : "+createEvent.getEt_Date()+"    "+createEvent.getChoose_Time());
+        eventLocation.setText(createEvent.getField_Name()+", "+createEvent.getCity_Name()+", "+createEvent.getPostal_Code());
+        eventVenue.setText(createEvent.getEt_Date()+"    "+createEvent.getChoose_Time());
 
 
         uploadFixture.setOnClickListener(new View.OnClickListener() {
@@ -281,20 +282,20 @@ public class MyEventsCreated extends AppCompatActivity {
                             String key = childSnapshot.getKey();
                             if (button.getText().toString().equalsIgnoreCase("Start Event")) {
                                 assert key != null;
-                                Toast.makeText(getApplicationContext(), button.getText().toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Congratulations! Events has been started. :-)", Toast.LENGTH_SHORT).show();
                                 FirebaseDatabase.getInstance().getReference("Event Details").child(key).child("status").setValue("Live");
                                 FirebaseDatabase.getInstance().getReference("My Events Created").child(uid_a).child(key).child("status").setValue("Live");
                                 button.setText("Finish Event");
                                 button.setTextColor(Color.BLACK);
                             } else if (button.getText().toString().equalsIgnoreCase("Finish Event")) {
                                 assert key != null;
-                                Toast.makeText(getApplicationContext(), button.getText().toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Congratulations! Events has been finished. :-)", Toast.LENGTH_SHORT).show();
                                 FirebaseDatabase.getInstance().getReference("My Events Created").child(uid_a).child(key).child("status").setValue("Live");
                                 FirebaseDatabase.getInstance().getReference("Event Details").child(key).child("status").setValue("Finished");
                                 button.setText("Finished");
                                 button.setTextColor(Color.GRAY);
                             } else {
-                                Toast.makeText(getApplicationContext(), "Event Finished", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Event already Finished", Toast.LENGTH_SHORT).show();
                                 button.setTextColor(Color.GRAY);
                             }
                         }
@@ -332,6 +333,35 @@ public class MyEventsCreated extends AppCompatActivity {
         user_a= FirebaseAuth.getInstance().getCurrentUser();
         assert user_a != null;
         uid_a=user_a.getUid();
+
+        DatabaseReference reff= FirebaseDatabase.getInstance().getReference().child("Registration Details").child(uid_a);
+        reff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                try {
+
+                    String user = Objects.requireNonNull(dataSnapshot.child("UserType").getValue()).toString();
+
+
+                    if (user.equalsIgnoreCase("OPERATIONAL MANAGER"))
+                    {
+                        LinearLayout op = findViewById(R.id.for_operational_manager);
+                        op.setVisibility(View.VISIBLE);
+                    }
+
+                }
+                catch(Exception e)
+                {
+                    Toast.makeText(MyEventsCreated.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 

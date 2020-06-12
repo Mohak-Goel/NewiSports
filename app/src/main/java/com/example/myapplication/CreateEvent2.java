@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -29,6 +30,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateEvent2 extends AppCompatActivity {
 
@@ -60,6 +64,8 @@ public class CreateEvent2 extends AppCompatActivity {
 
     CreateEvent createEvent;
 
+    Toast toast;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +73,8 @@ public class CreateEvent2 extends AppCompatActivity {
         setContentView(R.layout.activity_create_event2);
         mstorageRef = FirebaseStorage.getInstance().getReference("Event Details");
 
+        toast = Toast.makeText(getApplicationContext(), "Kindly Fill the form", Toast.LENGTH_SHORT);
+        toast.show();
 
         EventName = findViewById(R.id.eventName);
         FieldLocation = findViewById(R.id.fieldLoc);
@@ -79,7 +87,6 @@ public class CreateEvent2 extends AppCompatActivity {
         Lodging = findViewById(R.id.provideLodging);
         Transport = findViewById(R.id.provideTransport);
         ch = findViewById(R.id.btnChoose);
-        img = findViewById(R.id.imgview);
         up = findViewById(R.id.btnUpload);
         EventDescription = findViewById(R.id.eventdescrip);
         OurContact = findViewById(R.id.ourContact);
@@ -99,11 +106,16 @@ public class CreateEvent2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Filechooser();
+                tvUrl.setText("Click on Upload Button To Upload the Poster");
             }
         });
         up.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
+                toast.cancel();
+                toast = Toast.makeText(getApplicationContext(),"Please wait While we Upload Poster!!", Toast.LENGTH_LONG);
+                toast.show();
                 Fileuploader();
             }
         });
@@ -127,32 +139,60 @@ public class CreateEvent2 extends AppCompatActivity {
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   rootNode = FirebaseDatabase.getInstance();
-             //   reference = rootNode.getReference("My Events");
 
-                int select = Food.getCheckedRadioButtonId();
-                ProvideFood = (RadioButton) findViewById(select);
-                boolean food = true;
-                if (ProvideFood.getId() == R.id.food_no) food = false;
+                if (OurContact.getText().toString().isEmpty())
+                {
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Enter Contact Number!!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
 
-                select = Lodging.getCheckedRadioButtonId();
-                ProvideLodging = (RadioButton) findViewById(select);
-                boolean lodging = true;
-                if (ProvideLodging.getId() == R.id.lodging_no) lodging = false;
+                else if (EventDescription.getText().toString().isEmpty())
+                {
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Enter Event Description!!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
 
-                select = Transport.getCheckedRadioButtonId();
-                ProvideTransport = (RadioButton) findViewById(select);
-                boolean transport = true;
-                if (ProvideTransport.getId() == R.id.transport_no) transport = false;
+                else if (tvUrl.getText().toString().isEmpty() || tvUrl.getText().toString().equalsIgnoreCase("Click on Upload Button To Upload the Poster"))
+                {
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Upload Event Poster!!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
 
-                createEvent = new CreateEvent(createEvent1Form.getEventName(), createEvent1Form.getFieldName(), createEvent1Form.getCityName(),
-                        createEvent1Form.getPostalCode(), createEvent1Form.getSportsName(), createEvent1Form.getChooseTime(), createEvent1Form.getEtDate(),
-                        food, lodging, transport, EventDescription.getText().toString(), OurContact.getText().toString(),tvUrl.getText().toString(), "Upcoming");
-                reference.child(String.valueOf(ev_details+1)).setValue(createEvent);
-                reference2.child(String.valueOf(ev_details+1)).setValue(createEvent);
-                Toast.makeText(getApplicationContext(),"Event Created Successfully", Toast.LENGTH_SHORT).show();
-                finish();
-                //uploadFile();
+                else if (!isValidMobile(OurContact.getText().toString()))
+                {
+                    toast.cancel();
+                    toast = Toast.makeText(getApplicationContext(), "Invalid Contact Number!!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
+                else {
+                    int select = Food.getCheckedRadioButtonId();
+                    ProvideFood = (RadioButton) findViewById(select);
+                    boolean food = true;
+                    if (ProvideFood.getId() == R.id.food_no) food = false;
+
+                    select = Lodging.getCheckedRadioButtonId();
+                    ProvideLodging = (RadioButton) findViewById(select);
+                    boolean lodging = true;
+                    if (ProvideLodging.getId() == R.id.lodging_no) lodging = false;
+
+                    select = Transport.getCheckedRadioButtonId();
+                    ProvideTransport = (RadioButton) findViewById(select);
+                    boolean transport = true;
+                    if (ProvideTransport.getId() == R.id.transport_no) transport = false;
+
+                    createEvent = new CreateEvent(createEvent1Form.getEventName(), createEvent1Form.getFieldName(), createEvent1Form.getCityName(),
+                            createEvent1Form.getPostalCode(), createEvent1Form.getSportsName(), createEvent1Form.getChooseTime(), createEvent1Form.getEtDate(),
+                            food, lodging, transport, EventDescription.getText().toString(), OurContact.getText().toString(), tvUrl.getText().toString(), "Upcoming");
+                    reference.child(String.valueOf(ev_details + 1)).setValue(createEvent);
+                    reference2.child(String.valueOf(ev_details + 1)).setValue(createEvent);
+                    Toast.makeText(getApplicationContext(), "Event Created Successfully", Toast.LENGTH_SHORT).show();
+                    finish();
+                    //uploadFile();
+                }
 
             }
         });
@@ -191,7 +231,9 @@ public class CreateEvent2 extends AppCompatActivity {
                         Ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                Toast.makeText(CreateEvent2.this, "Image uploaded successfully!!!", Toast.LENGTH_SHORT).show();
+                                toast.cancel();
+                                toast = Toast.makeText(CreateEvent2.this, "Image uploaded successfully!!!", Toast.LENGTH_SHORT);
+                                toast.show();
                                 String ImageURL= String.valueOf(uri);
                                 tvUrl.setText(ImageURL);
                             }
@@ -204,7 +246,21 @@ public class CreateEvent2 extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private boolean isValidMobile(String phone) {
+        String expression = "^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[6789]\\d{9}$";
+        CharSequence inputString = phone;
+        Pattern pattern = Pattern.compile(expression);
+        Matcher matcher = pattern.matcher(inputString);
+        if (matcher.matches())
+        {
+            return true;
         }
+        else{
+            return false;
+        }
+    }
 
 }
 
