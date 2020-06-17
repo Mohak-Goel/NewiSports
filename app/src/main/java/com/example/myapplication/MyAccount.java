@@ -34,7 +34,7 @@ public class MyAccount extends AppCompatActivity {
         pincodead=findViewById(R.id.pincodedisp);
         ph=findViewById(R.id.phondisp);
         altph=findViewById(R.id.altphodisp);
-        utype=findViewById(R.id.userdisp);
+     //   utype=findViewById(R.id.userdisp);
         eid=findViewById(R.id.emaildisp);
         user_a= FirebaseAuth.getInstance().getCurrentUser();
         uid_a=user_a.getUid();
@@ -51,7 +51,7 @@ public class MyAccount extends AppCompatActivity {
                     String phone_no = dataSnapshot.child("PhoneNumber").getValue().toString();
                     String Alt_phone_no = dataSnapshot.child("AlternativeNumber").getValue().toString();
                     String email_address = dataSnapshot.child("EmailAddress").getValue().toString();
-                    String user_type = dataSnapshot.child("UserType").getValue().toString();
+                  //  String user_type = dataSnapshot.child("UserType").getValue().toString();
                     un.setText(university_na);
                     Laddr.setText(laddr);
                     cityad.setText(cty);
@@ -59,7 +59,7 @@ public class MyAccount extends AppCompatActivity {
                     pincodead.setText(pinc);
                     ph.setText(phone_no);
                     altph.setText(Alt_phone_no);
-                    utype.setText(user_type);
+                  //  utype.setText(user_type);
                     eid.setText(email_address);
                 }
                 catch(Exception e)

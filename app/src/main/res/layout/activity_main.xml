@@ -36,6 +36,30 @@
         android:inputType="textPassword"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textColorHint="#CFCFCF" />
+
+    <TextView
+        android:id="@+id/tex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:text="Select user type from below options-:"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:id="@+id/ut"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:textSize="20sp"
+        android:background="@drawable/spinner_background"
+        android:entries="@array/user_type"
+        />
+
+
     <Button
 
         android:layout_marginTop="32sp"

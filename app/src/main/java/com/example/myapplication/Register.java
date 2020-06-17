@@ -45,7 +45,7 @@ public class Register extends AppCompatActivity {
     private DatabaseReference dbref;
     FirebaseUser user;
     String uid;
-    Spinner UnivState,utype;
+    Spinner UnivState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +66,8 @@ public class Register extends AppCompatActivity {
         Password=findViewById(R.id.Rpass);
         firebaseAuth=FirebaseAuth.getInstance();
         UnivState = findViewById(R.id.university_state);
-        utype=findViewById(R.id.ut);
         UnivState.setSelection(0);
-        utype.setSelection(0);
+
 
 
 
@@ -126,9 +125,9 @@ public class Register extends AppCompatActivity {
             String st5 = E5.getText().toString().trim();
             String st6 = E6.getText().toString().trim();
          //   String st7 = E7.getText().toString().trim();
-            String st7=utype.getSelectedItem().toString();
+
             String st8 = E8.getText().toString().trim();
-            if (st7.length() > 0 &&st6.length() > 0 && st5.length() > 0 && st2.length() > 0 ) {
+            if (st6.length() > 0 && st5.length() > 0 && st2.length() > 0 ) {
                 dbref = FirebaseDatabase.getInstance().getReference().child("Registration Details").child(uid);
                 HashMap<String, String> user_details = new HashMap<>();
                 if(isEmailValid(record_email)&&isPostalCodeValid(st8)&&isValidMobile(st5)&&isValidMobile(st6))
@@ -138,7 +137,7 @@ public class Register extends AppCompatActivity {
                 user_details.put("State", st4);
                 user_details.put("PhoneNumber", st5);
                 user_details.put("AlternativeNumber", st6);
-                user_details.put("UserType", st7);
+             //   user_details.put("UserType", st7);
                 user_details.put("PinCode", st8);
                 user_details.put("EmailAddress",record_email);
                 dbref.setValue(user_details);}

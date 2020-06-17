@@ -170,26 +170,6 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/usertype"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="User Type-: "
-                android:textColor="@color/common_google_signin_btn_text_light_pressed"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/userdisp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:background="@drawable/editbackgound"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/common_google_signin_btn_text_light_pressed"
-                android:textSize="18sp" />
-
-            <TextView
                 android:id="@+id/emailview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

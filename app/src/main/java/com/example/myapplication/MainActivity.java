@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +27,15 @@ public class MainActivity extends AppCompatActivity {
     Button forgotpass;
     TextView mRegister;
     FirebaseAuth firebaseAuth;
+    Spinner utype;
     FirebaseAuth.AuthStateListener firebaseAuthListener;
     private static final String TAG = "AndroidClarified";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        utype=findViewById(R.id.ut);
+        utype.setSelection(0);
         Toast.makeText(MainActivity.this, "Please Wait...", Toast.LENGTH_SHORT).show();
 
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -146,7 +150,9 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth.removeAuthStateListener(firebaseAuthListener);
     }
 
-
-
+    public void user_type(View v)
+    {
+        String st7=utype.getSelectedItem().toString();
+    }
 
 }
