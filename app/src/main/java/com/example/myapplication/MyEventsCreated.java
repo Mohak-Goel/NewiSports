@@ -333,37 +333,13 @@ public class MyEventsCreated extends AppCompatActivity {
         user_a= FirebaseAuth.getInstance().getCurrentUser();
         assert user_a != null;
         uid_a=user_a.getUid();
+        String user = (String)getIntent().getStringExtra("User Type");
 
-        DatabaseReference reff= FirebaseDatabase.getInstance().getReference().child("Registration Details").child(uid_a);
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                try {
-
-                    String user = Objects.requireNonNull(dataSnapshot.child("UserType").getValue()).toString();
-
-
-                    if (user.equalsIgnoreCase("OPERATIONAL MANAGER"))
-                    {
-                        LinearLayout op = findViewById(R.id.for_operational_manager);
-                        op.setVisibility(View.VISIBLE);
-                    }
-
-                }
-                catch(Exception e)
-                {
-                    Toast.makeText(MyEventsCreated.this, "Something went wrong", Toast.LENGTH_LONG).show();
-                }
-
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        if (user.equalsIgnoreCase("OPERATIONAL MANAGER")) {
+              LinearLayout op = findViewById(R.id.for_operational_manager);
+              op.setVisibility(View.VISIBLE);
+        }
 
     }
-
-
 
 }

@@ -18,6 +18,8 @@ public class EventsParticipatedTotal extends AppCompatActivity {
     FirebaseUser user_id;
     DatabaseReference ref;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

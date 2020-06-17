@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        utype=findViewById(R.id.ut);
-        utype.setSelection(0);
+        utype=(Spinner) findViewById(R.id.ut);
         Toast.makeText(MainActivity.this, "Please Wait...", Toast.LENGTH_SHORT).show();
 
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -73,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
                                 Toast.makeText(MainActivity.this, "Please Wait...", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(MainActivity.this, HomePage.class));
+                                Intent intent = new Intent(MainActivity.this, HomePage.class);
+                                intent.putExtra("User Type", utype.getSelectedItem().toString());
+                                startActivity(intent);
                                 finish();
                             } else {
                                 Toast.makeText(MainActivity.this, "Sign in error", Toast.LENGTH_LONG).show();
@@ -150,9 +151,5 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth.removeAuthStateListener(firebaseAuthListener);
     }
 
-    public void user_type(View v)
-    {
-        String st7=utype.getSelectedItem().toString();
-    }
 
 }

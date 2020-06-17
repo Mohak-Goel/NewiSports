@@ -23,7 +23,7 @@ public class MyEventsCreatedTotal extends AppCompatActivity {
 
         mRecyclerView=findViewById(R.id.my_event_created_list);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
-
+        String user_type = (String)getIntent().getStringExtra("User Type").trim();
         FirebaseUser user_id= FirebaseAuth.getInstance().getCurrentUser();
         assert user_id != null;
         String uid_user=user_id.getUid();
@@ -31,7 +31,7 @@ public class MyEventsCreatedTotal extends AppCompatActivity {
 
         FirebaseRecyclerOptions<CreateEvent> options = new FirebaseRecyclerOptions.Builder<CreateEvent>().setQuery(ref, CreateEvent.class).build();
 
-        mAdapter = new EventCreatedTotalAdapter(MyEventsCreatedTotal.this, options);
+        mAdapter = new EventCreatedTotalAdapter(MyEventsCreatedTotal.this, user_type,options);
 
         mRecyclerView.setAdapter(mAdapter);
 

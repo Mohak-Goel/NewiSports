@@ -23,11 +23,13 @@ public class EventCreatedTotalAdapter extends FirebaseRecyclerAdapter<CreateEven
     private OnItemClickListener mListener;
     private Context context;
     private ArrayList<CreateEvent> arrayList;
+    private String user;
 
-    public EventCreatedTotalAdapter (Context context, FirebaseRecyclerOptions<CreateEvent> options){
+    public EventCreatedTotalAdapter (Context context, String user_type ,FirebaseRecyclerOptions<CreateEvent> options){
 
         super(options);
         this.context = context;
+        user=user_type;
         arrayList = new ArrayList<>();
 
     }
@@ -65,6 +67,7 @@ public class EventCreatedTotalAdapter extends FirebaseRecyclerAdapter<CreateEven
 
                 Intent intent = new Intent(context, MyEventsCreated.class);
                 intent.putExtra("Event Created Details Adapter", arrayList.get(position));
+                intent.putExtra("User Type", user);
                 context.startActivity(intent);
 
             }

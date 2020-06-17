@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -28,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -39,6 +37,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     DatabaseReference reff;
     FirebaseUser user_a;
     String uid_a;
+
+    String user_type;
 
     Button upcoming, live, previous;
 
@@ -67,7 +67,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         homePageAdapter = new HomePageAdapter(HomePage.this, eventArrayList);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(homePageAdapter);
-
+        user_type = (String)getIntent().getStringExtra("User Type").trim();
         setSupportActionBar(toolbar);
 
         navigationView.bringToFront();
@@ -77,43 +77,22 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         final Menu menu = navigationView.getMenu();
 
-        reff= FirebaseDatabase.getInstance().getReference().child("Registration Details").child(uid_a);
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                try {
+        if (user_type.equalsIgnoreCase("PARTICIPANT"))
+        {
+             menu.findItem(R.id.nav_hostedevents).setVisible(false);
+             menu.findItem(R.id.nav_unotice).setVisible(false);
+        }
 
-                    String user = Objects.requireNonNull(dataSnapshot.child("UserType").getValue()).toString();
+        else if (user_type.equalsIgnoreCase("OPERATIONAL MANAGER"))
+        {
+             menu.findItem(R.id.nav_participatedevents).setVisible(false);
+        }
+        else if (user_type.equalsIgnoreCase("HOST"))
+        {
+             menu.findItem(R.id.nav_unotice).setVisible(false);
+             createEvent.setVisibility(View.VISIBLE);
+        }
 
-                    if (user.equalsIgnoreCase("PARTICIPANT"))
-                    {
-                        menu.findItem(R.id.nav_hostedevents).setVisible(false);
-                        menu.findItem(R.id.nav_unotice).setVisible(false);
-                    }
-
-                    else if (user.equalsIgnoreCase("OPERATIONAL MANAGER"))
-                    {
-                        menu.findItem(R.id.nav_participatedevents).setVisible(false);
-                    }
-
-                    else if (user.equalsIgnoreCase("HOST"))
-                    {
-                        menu.findItem(R.id.nav_unotice).setVisible(false);
-                        createEvent.setVisibility(View.VISIBLE);
-                    }
-
-                }
-                catch(Exception e)
-                {
-                    Toast.makeText(HomePage.this, "Something went wrong", Toast.LENGTH_LONG).show();
-                }
-
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         createEvent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -290,9 +269,13 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                 break;
 
             case R.id.nav_hostedevents:
+
                 eventArrayList.clear();
                 homePageAdapter.notifyDataSetChanged();
-                startActivity(new Intent(HomePage.this, MyEventsCreatedTotal.class)); break;
+                Intent intent = new Intent(HomePage.this, MyEventsCreatedTotal.class);
+                intent.putExtra("User Type", user_type);
+                startActivity(intent);
+                break;
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
