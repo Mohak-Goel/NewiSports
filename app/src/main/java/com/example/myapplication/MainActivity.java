@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        utype=(Spinner) findViewById(R.id.ut);
         Toast.makeText(MainActivity.this, "Please Wait...", Toast.LENGTH_SHORT).show();
 
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -45,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         setContentView(R.layout.activity_main);
+        utype=(Spinner) findViewById(R.id.ut);
         mEmail =findViewById(R.id.email);
         mPassword =findViewById(R.id.pass);
         mLogin=findViewById(R.id.login);
